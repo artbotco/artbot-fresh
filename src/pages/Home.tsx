@@ -1,11 +1,11 @@
-import $                       from "jquery";
-import React                   from "react";
-import Tower                   from "../assets/tower.png";
-import Button                  from "../components/Button";
-import {Card, LearnMore}       from "../components/Card";
-import Section                 from "../components/Section";
-import SectionWrapper          from "../components/SectionWrapper";
-import Page                    from "../Page";
+import $                 from "jquery";
+import React             from "react";
+import Tower             from "../assets/tower.png";
+import Button            from "../components/Button";
+import {Card, LearnMore} from "../components/Card";
+import Section           from "../components/Section";
+import SectionWrapper    from "../components/SectionWrapper";
+import Page              from "../Page";
 import "./Home.scss";
 
 class HomeContent extends React.Component {
@@ -73,15 +73,17 @@ class HomeContent extends React.Component {
                 scrollTop: closestSectionTop
             }, 100, () => {
                 this.animating = false;
-                $('[data-section].active').removeClass('active');
-                let sectionNumber = $(sections[closestSection]).attr('data-section');
-                $('[data-section="' + sectionNumber + '"]').addClass('active');
+                $("[data-section].active").removeClass("active");
+                let sectionNumber = $(sections[closestSection]).attr("data-section");
+                $("[data-section=\"" + sectionNumber + "\"]").addClass("active");
             });
         }, 250);
     };
 
     render() {
         window.addEventListener("scroll", this.towerScroll);
+        window.addEventListener("resize", this.towerScroll);
+        $(window).on("load", this.scrollSnap);
         $(window).on("scroll", this.scrollSnap);
         $(window).on("keydown mousedown", this.scrollSnap);
         return (
