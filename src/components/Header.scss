@@ -1,0 +1,26 @@
+@import "../base";
+
+header {
+    background:      rgba(0, 0, 0, 0.5);
+    display:         flex;
+    justify-content: space-between;
+    align-items:     center;
+    position:        fixed;
+    top:             0;
+    left:            0;
+    right:           0;
+    z-index:         100;
+    height:          $header-height;
+    backdrop-filter: blur(10px);
+
+    .nav-brand.logo {
+        display: inline-block;
+        height:  100%;
+
+        img {
+            display: inline-block;
+            height:  auto;
+            width:   auto;
+        }
+    }
+}

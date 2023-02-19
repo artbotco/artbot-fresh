@@ -1,0 +1,17 @@
+.sectionwrapper {
+    display:               block;
+    width:                 100%;
+    height:                auto;
+    overflow:              hidden;
+    clear:                 both;
+    position:              relative;
+    margin:                0;
+    padding:               0;
+
+    background-image:      url("../assets/mountain.svg");
+    background-position-y: 70vh;
+    background-position-x: center;
+    background-attachment: fixed;
+    background-size:       cover;
+    background-repeat:     no-repeat;
+}
