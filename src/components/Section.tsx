@@ -1,11 +1,11 @@
 import {Component} from "react";
-import './Section.scss';
-import Helpers from "../Helpers";
+import Helpers     from "../Helpers";
+import "./Section.scss";
 
 class Section extends Component<any> {
     render() {
         return (
-            <div className={Helpers.getClasses('section', this.props.className)}>
+            <div className={Helpers.getClasses("section", this.props.className)} data-section={this.props.index}>
                 {this.props.children}
             </div>
         );

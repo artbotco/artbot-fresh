@@ -8,25 +8,25 @@
 }
 
 .btn {
-    display:       inline-block;
+    font-family:   $font-default;
 
-    height:        40px;
-    width:         auto;
-    padding:       6px 8px;
+    font-size:     16px;
+    font-weight:   500;
+    font-style:    normal;
 
     line-height:   150%;
-    text-align:    center;
+    display:       inline-block;
 
-    border-width:  2px;
-    border-style:  solid;
-    border-radius: 10px;
-
-    font-family:   $font-default;
-    font-size:     16px;
-    font-style:    normal;
-    font-weight:   500;
+    width:         auto;
+    height:        40px;
+    padding:       6px 8px;
 
     cursor:        pointer;
+    text-align:    center;
+    border-width:  2px;
+    border-style:  solid;
+
+    border-radius: 10px;
 
     svg.svg-inline--fa {
         font-size: 145%;

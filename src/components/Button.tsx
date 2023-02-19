@@ -1,5 +1,5 @@
-import React from 'react';
-import './Button.scss';
+import React from "react";
+import "./Button.scss";
 
 /***
  * Button
@@ -9,7 +9,7 @@ import './Button.scss';
  */
 class Button extends React.Component<any> {
     getClassNames() {
-        let classNames = ['btn'];
+        let classNames = ["btn"];
         if (this.props.color) {
             classNames.push(`btn-${this.props.color}`);
         }
@@ -19,8 +19,9 @@ class Button extends React.Component<any> {
         if (this.props.className) {
             classNames.push(this.props.className);
         }
-        return classNames.join(' ');
+        return classNames.join(" ");
     }
+
     render() {
         return (
             <button className={this.getClassNames()}>
@@ -29,4 +30,5 @@ class Button extends React.Component<any> {
         );
     }
 }
+
 export default Button;

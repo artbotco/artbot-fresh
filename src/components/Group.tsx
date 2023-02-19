@@ -5,16 +5,16 @@ class Group extends Component<any> {
         if (this.props.spacing) {
             return this.props.spacing;
         }
-        return '1.5rem';
+        return "1.5rem";
     }
 
     getStyle() {
         return {
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            width: 'auto',
-            height: 'auto',
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "auto",
+            height: "auto",
             gap: this.getSpacing()
         };
     }

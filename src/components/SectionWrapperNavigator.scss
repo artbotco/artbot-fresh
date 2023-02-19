@@ -1,0 +1,52 @@
+@import "../base";
+
+ul.section-navigator {
+    display:    inline-block;
+    width:      auto;
+    height:     auto;
+    list-style: none;
+    position:   fixed;
+    left:       $gutter;
+    top:        50%;
+    transform:  translateY(-50%);
+    margin:     0;
+    padding:    0;
+
+    li {
+        list-style: none;
+        margin:     0;
+        padding:    0;
+        display:    block;
+        clear:      both;
+        cursor:     pointer;
+
+        &[data-section="0"] {
+            color:      $color-primary-dark;
+            font-size:  30px;
+            text-align: center;
+            background: unset;
+
+            &.active {
+                background: unset;
+                color:      $color-light;
+            }
+        }
+
+        &:not([data-section="0"]) {
+            border-width:     3px;
+            border-radius:    100% 100%;
+            border-style:     solid;
+            border-color:     $color-primary-dark;
+            background-color: rgb(20, 12, 36);
+            margin:           40px auto;
+            width:            18px;
+            height:           18px;
+            clear:            both;
+            box-shadow:       2px 2px 0 $color-primary-shadow;
+        }
+
+        &.active {
+            background-color: $color-info-dark;
+        }
+    }
+}

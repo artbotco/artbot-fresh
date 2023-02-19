@@ -1,21 +1,24 @@
-import Page from "../Page";
+import $                       from "jquery";
+import React                   from "react";
+import Tower                   from "../assets/tower.png";
+import Button                  from "../components/Button";
+import {Card, LearnMore}       from "../components/Card";
+import Section                 from "../components/Section";
+import SectionWrapper          from "../components/SectionWrapper";
+import Page                    from "../Page";
 import "./Home.scss";
-import React from "react";
-import Section from "../components/Section";
-import SectionWrapper from "../components/SectionWrapper";
-import {Card, LearnMore} from "../components/Card";
-import Button from "../components/Button";
-import Tower from '../assets/tower.png';
-import $ from 'jquery';
 
 class HomeContent extends React.Component {
 
+    private scrollTimeout: any;
+    private animating = false;
+
     towerScroll = () => {
-        const tower = document.querySelector<HTMLElement>('.tower');
+        const tower = document.querySelector<HTMLElement>(".tower");
         if (!tower) {
             return;
         }
-        const towerStart = document.querySelector<HTMLElement>('.tower-start');
+        const towerStart = document.querySelector<HTMLElement>(".tower-start");
         if (!towerStart) {
             return;
         }
@@ -39,16 +42,14 @@ class HomeContent extends React.Component {
 
         const offset = baseOffset + (offsetRange * windowOffsetPercentage);
         tower.style.top = `${offset}px`;
-    }
+    };
 
-    private scrollTimeout: any;
-    private animating = false;
     scrollSnap = (ev: any) => {
         if (this.scrollTimeout) {
             clearTimeout(this.scrollTimeout);
         }
         this.scrollTimeout = setTimeout(() => {
-            let sections = document.querySelectorAll<HTMLElement>('.section');
+            let sections = document.querySelectorAll<HTMLElement>(".section");
             let sectionCenters = [];
             for (let i = 0; i < sections.length; i++) {
                 let section = sections[i];
@@ -68,27 +69,30 @@ class HomeContent extends React.Component {
             }
             let closestSectionTop = sections[closestSection].offsetTop;
             this.animating = true;
-            $('html, body').animate({
+            $("html, body").animate({
                 scrollTop: closestSectionTop
             }, 100, () => {
                 this.animating = false;
+                $('[data-section].active').removeClass('active');
+                let sectionNumber = $(sections[closestSection]).attr('data-section');
+                $('[data-section="' + sectionNumber + '"]').addClass('active');
             });
         }, 250);
-    }
+    };
 
     render() {
-        window.addEventListener('scroll', this.towerScroll);
-        $(window).on('scroll', this.scrollSnap);
-        $(window).on('keydown mousedown', this.scrollSnap);
+        window.addEventListener("scroll", this.towerScroll);
+        $(window).on("scroll", this.scrollSnap);
+        $(window).on("keydown mousedown", this.scrollSnap);
         return (
             <SectionWrapper>
-                <Section className="hero">
+                <Section className="hero" index={0}>
                     <h1>Let's Make a Movie!</h1>
                     <h2>Vote on every step of the movie making process, and earn money as the movie does!</h2>
                     {/*<Videos />*/}
                 </Section>
                 <img src={Tower} className="tower" alt="tower" />
-                <Section className="tower-start">
+                <Section className="tower-start" index={1}>
                     <Card>
                         <h2>Vote for your favorite movie idea</h2>
                         <p>We’re starting off with 4 animated movie ideas. Vote for your favorite idea, and once we reach 1,500 votes, we will have selected our movie idea!</p>
@@ -106,7 +110,7 @@ class HomeContent extends React.Component {
                         </LearnMore>
                     </Card>
                 </Section>
-                <Section>
+                <Section index={2}>
                     <Card>
                         <h2>Support the process</h2>
                         <p>Help crowdfund the movie. Back the production at any level you feel comfortable. Different tiers have different benefits.</p>
@@ -124,7 +128,7 @@ class HomeContent extends React.Component {
                         </LearnMore>
                     </Card>
                 </Section>
-                <Section>
+                <Section index={3}>
                     <Card>
                         <h2>Collaborate with the community</h2>
                         <p>Vote on every step of the movie making process. Vote on script ideas or join the writing room and help write the script. Help create concept art to show your own vision for the movie. You can create from your own
@@ -143,7 +147,7 @@ class HomeContent extends React.Component {
                         </LearnMore>
                     </Card>
                 </Section>
-                <Section>
+                <Section index={4}>
                     <Card>
                         <h2>Let’s make our movie</h2>
                         <p>Production begins! Give feedback to the voice actors, animators, and help spread the word.</p>
@@ -161,7 +165,7 @@ class HomeContent extends React.Component {
                         </LearnMore>
                     </Card>
                 </Section>
-                <Section>
+                <Section index={5}>
                     <Card>
                         <h2>Release movie and distribute royalties</h2>
                         <p>We will hold a digital and in-person premiere, then release the movie to be rented and streamed on ArtBot.tv</p>

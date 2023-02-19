@@ -1,16 +1,16 @@
 @import "../base";
 
 header {
-    background:      rgba(0, 0, 0, 0.5);
-    display:         flex;
-    justify-content: space-between;
-    align-items:     center;
     position:        fixed;
-    top:             0;
-    left:            0;
-    right:           0;
     z-index:         100;
+    top:             0;
+    right:           0;
+    left:            0;
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
     height:          $header-height;
+    background:      rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
 
     .nav-brand.logo {
@@ -19,8 +19,8 @@ header {
 
         img {
             display: inline-block;
-            height:  auto;
             width:   auto;
+            height:  auto;
         }
     }
 }

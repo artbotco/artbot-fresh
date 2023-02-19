@@ -10,6 +10,7 @@ class LearnMore extends React.Component<any> {
         );
     }
 }
+
 class Card extends React.Component<any> {
     render() {
         return (

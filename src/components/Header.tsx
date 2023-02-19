@@ -1,11 +1,11 @@
-import React from 'react';
-import './Header.scss';
-import Button from "./Button";
+import {faBars}          from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBars} from "@fortawesome/free-solid-svg-icons";
-import Logo from '../assets/logo.png'
-import Group from "./Group";
-import {Row, Column} from "./Grid";
+import React             from "react";
+import Logo              from "../assets/logo.png";
+import Button            from "./Button";
+import {Column, Row}     from "./Grid";
+import Group             from "./Group";
+import "./Header.scss";
 
 class Header extends React.Component {
     render() {

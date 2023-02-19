@@ -1,7 +1,7 @@
-import React from 'react';
-import './Page.scss';
-import Header from "./components/Header";
+import React  from "react";
 import Footer from "./components/Footer";
+import Header from "./components/Header";
+import "./Page.scss";
 
 class Page extends React.Component {
     name = "page";

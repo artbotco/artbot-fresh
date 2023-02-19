@@ -4,10 +4,10 @@ body {
 }
 
 .tower {
-    display:   inline-block;
     position:  absolute;
     top:       100%;
     right:     45%;
+    display:   inline-block;
     width:     55vw;
     max-width: 1000px;
     height:    auto;

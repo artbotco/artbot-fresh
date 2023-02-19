@@ -1,11 +1,11 @@
-import React from "react";
-import "./Grid.scss";
+import React   from "react";
 import Helpers from "../Helpers";
+import "./Grid.scss";
 
 class Column extends React.Component<any> {
     render() {
         return (
-            <div className={Helpers.getClasses('col', this.props.className)}>
+            <div className={Helpers.getClasses("col", this.props.className)}>
                 {this.props.children}
             </div>
         );
@@ -15,7 +15,7 @@ class Column extends React.Component<any> {
 class Row extends React.Component<any> {
     render() {
         return (
-            <div className={Helpers.getClasses('row', this.props.className)}>
+            <div className={Helpers.getClasses("row", this.props.className)}>
                 {this.props.children}
             </div>
         );
