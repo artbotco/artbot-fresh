@@ -6,16 +6,17 @@ import SectionWrapper from "../components/SectionWrapper";
 import {Card, LearnMore} from "../components/Card";
 import Button from "../components/Button";
 import Tower from '../assets/tower.png';
+import $ from 'jquery';
 
 class HomeContent extends React.Component {
 
     towerScroll = () => {
         const tower = document.querySelector<HTMLElement>('.tower');
-        if(!tower) {
+        if (!tower) {
             return;
         }
         const towerStart = document.querySelector<HTMLElement>('.tower-start');
-        if(!towerStart) {
+        if (!towerStart) {
             return;
         }
 
@@ -27,7 +28,7 @@ class HomeContent extends React.Component {
         const towerHeight = tower.clientHeight;
         const baseOffset = window.innerHeight + (window.innerHeight * 0.3);
 
-        if(windowScroll < 0) {
+        if (windowScroll < 0) {
             tower.style.top = `${baseOffset}px`;
             return;
         }
@@ -40,8 +41,45 @@ class HomeContent extends React.Component {
         tower.style.top = `${offset}px`;
     }
 
+    private scrollTimeout: any;
+    private animating = false;
+    scrollSnap = (ev: any) => {
+        if (this.scrollTimeout) {
+            clearTimeout(this.scrollTimeout);
+        }
+        this.scrollTimeout = setTimeout(() => {
+            let sections = document.querySelectorAll<HTMLElement>('.section');
+            let sectionCenters = [];
+            for (let i = 0; i < sections.length; i++) {
+                let section = sections[i];
+                let sectionCenter = section.offsetTop + (section.clientHeight / 2);
+                sectionCenters.push(sectionCenter);
+            }
+            let currentViewCenter = window.scrollY + (window.innerHeight / 2);
+            let closestSection = 0;
+            let closestDistance = document.body.clientHeight;
+            for (let i = 0; i < sectionCenters.length; i++) {
+                let sectionCenter = sectionCenters[i];
+                let distance = Math.abs(sectionCenter - currentViewCenter);
+                if (distance < closestDistance) {
+                    closestSection = i;
+                    closestDistance = distance;
+                }
+            }
+            let closestSectionTop = sections[closestSection].offsetTop;
+            this.animating = true;
+            $('html, body').animate({
+                scrollTop: closestSectionTop
+            }, 100, () => {
+                this.animating = false;
+            });
+        }, 250);
+    }
+
     render() {
         window.addEventListener('scroll', this.towerScroll);
+        $(window).on('scroll', this.scrollSnap);
+        $(window).on('keydown mousedown', this.scrollSnap);
         return (
             <SectionWrapper>
                 <Section className="hero">
@@ -89,7 +127,8 @@ class HomeContent extends React.Component {
                 <Section>
                     <Card>
                         <h2>Collaborate with the community</h2>
-                        <p>Vote on every step of the movie making process. Vote on script ideas or join the writing room and help write the script. Help create concept art to show your own vision for the movie. You can create from your own hand or use Midjourney to create AI concept art.</p>
+                        <p>Vote on every step of the movie making process. Vote on script ideas or join the writing room and help write the script. Help create concept art to show your own vision for the movie. You can create from your own
+                           hand or use Midjourney to create AI concept art.</p>
                         <Button className="toggle-learn-more btn-text-dark">Learn More</Button>
                         <LearnMore>
                             <h2>Projects</h2>
