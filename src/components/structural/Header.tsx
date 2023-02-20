@@ -14,7 +14,7 @@ class Header extends React.Component {
             <>
             <header className="header">
                 <Row>
-                    <Column className="justify-content-center"><Butgitton color="secondary" toggle="#aside-sidebar-left"><FontAwesomeIcon icon={faBars} /></Butgitton></Column>
+                    <Column className="justify-content-center"><Button color="secondary" toggle="#aside-sidebar-left"><FontAwesomeIcon icon={faBars} /></Button></Column>
                     <Column className="justify-content-center align-items-center"><a className={"nav-brand logo"} href={"/"}><img src={Logo} alt="logo" /></a></Column>
                     <Column className="justify-content-center align-items-end">
                         <Group spacing="1em" className="hidden-mobile">
