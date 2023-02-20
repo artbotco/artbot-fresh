@@ -9,7 +9,7 @@ import "./Button.scss";
  * @param [size] {"xs","sm","md","lg","xl"} Size of the button
  */
 class Button extends React.Component<any> {
-    element: HTMLButtonElement | null = null;
+    element: HTMLAnchorElement | null = null;
 
     getClassNames() {
         let classNames = ["btn"];
@@ -25,7 +25,7 @@ class Button extends React.Component<any> {
         return classNames.join(" ");
     }
 
-    registerClick = (element: HTMLButtonElement) => {
+    registerClick = (element: HTMLAnchorElement) => {
         this.element = element;
         if(!this.element) {
             return;
@@ -37,6 +37,11 @@ class Button extends React.Component<any> {
             let toggleId = this.props.toggle;
             if(this.element) {
                 this.element.addEventListener("click", () => {
+                    let tgt = $(toggleId);
+                    if(tgt.length === 0) {
+                        console.error('Element does not exist');
+                        return;
+                    }
                     $(toggleId).toggleClass("active");
                 });
             }
@@ -44,10 +49,12 @@ class Button extends React.Component<any> {
     };
 
     render() {
+        const dataToggle = this.props.toggle ? { "data-toggle": this.props.toggle } : {};
+        const href = this.props.href ? { href: this.props.href, target: '_blank' } : {};
         return (
-            <button className={this.getClassNames()} ref={this.registerClick}>
+            <a className={this.getClassNames()} {...dataToggle} {...href} ref={this.registerClick}>
                 {this.props.children}
-            </button>
+            </a>
         );
     }
 }

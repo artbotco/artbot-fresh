@@ -1,15 +1,16 @@
-import Helpers           from "Helpers";
-import $                 from "jquery";
-import Page              from "Page";
-import React             from "react";
-import Tower             from "../assets/tower.png";
-import {Card, LearnMore} from "../components/structural/Card";
-import Section           from "../components/structural/Section";
-import SectionWrapper    from "../components/structural/SectionWrapper";
-import Button            from "../components/visual/Button";
-import Slide             from "../components/visual/Slide";
-import Slider            from "../components/visual/Slider";
-import Video             from "../components/visual/Video";
+import Helpers        from "Helpers";
+import $              from "jquery";
+import Page           from "Page";
+import React          from "react";
+import Tower          from "../assets/tower.png";
+import Aside          from "../components/structural/Aside";
+import {Card}         from "../components/structural/Card";
+import Section        from "../components/structural/Section";
+import SectionWrapper from "../components/structural/SectionWrapper";
+import Button         from "../components/visual/Button";
+import Slide          from "../components/visual/Slide";
+import Slider         from "../components/visual/Slider";
+import Video          from "../components/visual/Video";
 import "./Home.scss";
 
 class HomeContent extends React.Component {
@@ -118,98 +119,104 @@ class HomeContent extends React.Component {
                         </Slide>
                     </Slider>
                 </Section>
+
                 <img src={Tower} className="tower" alt="tower" />
+
                 <Section className="tower-start" index={1}>
                     <Card>
                         <h2>Vote for your favorite movie idea</h2>
                         <p>We’re starting off with 4 animated movie ideas. Vote for your favorite idea, and once we reach 1,500 votes, we will have selected our movie idea!</p>
-                        <Button className="toggle-learn-more btn-text-dark">Learn More</Button>
-                        <LearnMore>
-                            <h2>Projects</h2>
-                            <ul>
-                                <li>
-                                    The Birth of IO the Artbot
-                                    <ul>
-                                        <li>A sentient robot, born of two junkyard robots, travels to earth after being inspired by movies, and helps a girl save her apartment building by putting on a great show.</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </LearnMore>
+                        <Button toggle="#learnmore-projects" className="btn-text-dark">Learn More</Button>
                     </Card>
                 </Section>
+                <Aside id="learnmore-projects">
+                    <h2>Projects</h2>
+                    <ul>
+                        <li>
+                            The Birth of IO the Artbot
+                            <ul>
+                                <li>A sentient robot, born of two junkyard robots, travels to earth after being inspired by movies, and helps a girl save her apartment building by putting on a great show.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </Aside>
+
                 <Section index={2}>
                     <Card>
                         <h2>Support the process</h2>
                         <p>Help crowdfund the movie. Back the production at any level you feel comfortable. Different tiers have different benefits.</p>
-                        <Button className="toggle-learn-more btn-text-dark">Learn More</Button>
-                        <LearnMore>
-                            <h2>Projects</h2>
-                            <ul>
-                                <li>
-                                    The Birth of IO the Artbot
-                                    <ul>
-                                        <li>A sentient robot, born of two junkyard robots, travels to earth after being inspired by movies, and helps a girl save her apartment building by putting on a great show.</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </LearnMore>
+                        <Button toggle="#learnmore-royalties" className="btn-text-dark">Learn More</Button>
                     </Card>
                 </Section>
+                <Aside id="learnmore-royalties">
+                    <h2>Royalties</h2>
+                    <ul>
+                        <li>
+                            The Birth of IO the Artbot
+                            <ul>
+                                <li>A sentient robot, born of two junkyard robots, travels to earth after being inspired by movies, and helps a girl save her apartment building by putting on a great show.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </Aside>
+
                 <Section index={3}>
                     <Card>
                         <h2>Collaborate with the community</h2>
                         <p>Vote on every step of the movie making process. Vote on script ideas or join the writing room and help write the script. Help create concept art to show your own vision for the movie. You can create from your own
                            hand or use Midjourney to create AI concept art.</p>
-                        <Button className="toggle-learn-more btn-text-dark">Learn More</Button>
-                        <LearnMore>
-                            <h2>Projects</h2>
-                            <ul>
-                                <li>
-                                    The Birth of IO the Artbot
-                                    <ul>
-                                        <li>A sentient robot, born of two junkyard robots, travels to earth after being inspired by movies, and helps a girl save her apartment building by putting on a great show.</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </LearnMore>
+                        <Button toggle="#learnmore-getinvolved" className="btn-text-dark">Learn More</Button>
                     </Card>
                 </Section>
+                <Aside id="learnmore-getinvolved">
+                    <h2>Get involved</h2>
+                    <ul>
+                        <li>
+                            The Birth of IO the Artbot
+                            <ul>
+                                <li>A sentient robot, born of two junkyard robots, travels to earth after being inspired by movies, and helps a girl save her apartment building by putting on a great show.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </Aside>
+
                 <Section index={4}>
                     <Card>
                         <h2>Let’s make our movie</h2>
                         <p>Production begins! Give feedback to the voice actors, animators, and help spread the word.</p>
-                        <Button className="toggle-learn-more btn-text-dark">Learn More</Button>
-                        <LearnMore>
-                            <h2>Projects</h2>
-                            <ul>
-                                <li>
-                                    The Birth of IO the Artbot
-                                    <ul>
-                                        <li>A sentient robot, born of two junkyard robots, travels to earth after being inspired by movies, and helps a girl save her apartment building by putting on a great show.</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </LearnMore>
+                        <Button toggle="#learnmore-ai" className="btn-text-dark">Learn More</Button>
                     </Card>
                 </Section>
+                <Aside id="learnmore-ai">
+                    <h2>AI</h2>
+                    <ul>
+                        <li>
+                            The Birth of IO the Artbot
+                            <ul>
+                                <li>A sentient robot, born of two junkyard robots, travels to earth after being inspired by movies, and helps a girl save her apartment building by putting on a great show.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </Aside>
+
                 <Section index={5}>
                     <Card>
                         <h2>Release movie and distribute royalties</h2>
                         <p>We will hold a digital and in-person premiere, then release the movie to be rented and streamed on ArtBot.tv</p>
-                        <Button className="toggle-learn-more btn-text-dark">Learn More</Button>
-                        <LearnMore>
-                            <h2>Projects</h2>
-                            <ul>
-                                <li>
-                                    The Birth of IO the Artbot
-                                    <ul>
-                                        <li>A sentient robot, born of two junkyard robots, travels to earth after being inspired by movies, and helps a girl save her apartment building by putting on a great show.</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </LearnMore>
+                        <Button toggle="#learnmore-shares" className="btn-text-dark">Learn More</Button>
                     </Card>
                 </Section>
+                <Aside id="learnmore-shares">
+                    <h2>Shares</h2>
+                    <ul>
+                        <li>
+                            The Birth of IO the Artbot
+                            <ul>
+                                <li>A sentient robot, born of two junkyard robots, travels to earth after being inspired by movies, and helps a girl save her apartment building by putting on a great show.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </Aside>
             </SectionWrapper>
         );
     }

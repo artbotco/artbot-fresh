@@ -1,9 +1,9 @@
 import {faTimes}         from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import Button            from "components/visual/Button";
 import Helpers           from "Helpers";
 import $                 from "jquery";
 import React             from "react";
-import Button            from "components/visual/Button";
 import "./Aside.scss";
 
 class Aside extends React.Component<any> {
@@ -13,13 +13,29 @@ class Aside extends React.Component<any> {
         if (this.props.className) {
             classes.push(this.props.className);
         }
+        if (this.props.id) {
+            classes.push(this.props.id);
+        }
+        if (this.props.side) {
+            classes.push("aside-" + (this.props.side === "left" ? "left" : "right"));
+        } else {
+            classes.push("aside-right");
+        }
         return classes;
     }
 
     registerCloseHandler = (element: HTMLElement) => {
         document.addEventListener("click", (event) => {
             // Check if document contains element with active class
-            let el = $(`#${this.props.id}`);
+            let el = $(`aside#${this.props.id}`);
+            let target = $(event.target as Node);
+            if (target && target.attr("data-toggle") === `#${this.props.id}`) {
+                return;
+            }
+            let parentToggle = target.closest("[data-toggle]");
+            if (parentToggle.length && parentToggle.attr("data-toggle") === `#${this.props.id}`) {
+                return;
+            }
             if (el.hasClass("active")) {
                 // Check if clicked element is not inside the aside
                 if (!el[0].contains(event.target as Node)) {
@@ -31,9 +47,9 @@ class Aside extends React.Component<any> {
 
     render() {
         return (
-            <aside id={this.props.id} ref={this.registerCloseHandler} className={Helpers.getClasses("aside", "aside-" + this.props.side ?? "right", this.getClasses())}>
+            <aside id={this.props.id} ref={this.registerCloseHandler} className={Helpers.getClasses("aside", this.getClasses())}>
                 <Button color="light" size="xl" toggle={`#${this.props.id}`} className="btn-content-only aside-close"><FontAwesomeIcon icon={faTimes} /></Button>
-                <h1>Aside</h1>
+                {this.props.children}
             </aside>
         );
     }
