@@ -5,6 +5,10 @@ import Button            from "../components/Button";
 import {Card, LearnMore} from "../components/Card";
 import Section           from "../components/Section";
 import SectionWrapper    from "../components/SectionWrapper";
+import Slide             from "../components/Slide";
+import Slider            from "../components/Slider";
+import Video             from "../components/Video";
+import Helpers           from "../Helpers";
 import Page              from "../Page";
 import "./Home.scss";
 
@@ -80,9 +84,14 @@ class HomeContent extends React.Component {
         }, 250);
     };
 
+    resizeActiveVideo = () => {
+        Helpers.ratioResize($(".video:visible"));
+    };
+
     render() {
         window.addEventListener("scroll", this.towerScroll);
         window.addEventListener("resize", this.towerScroll);
+        window.addEventListener("resize", this.resizeActiveVideo);
         $(window).on("load", this.scrollSnap);
         $(window).on("scroll", this.scrollSnap);
         $(window).on("keydown mousedown", this.scrollSnap);
@@ -91,7 +100,23 @@ class HomeContent extends React.Component {
                 <Section className="hero" index={0}>
                     <h1>Let's Make a Movie!</h1>
                     <h2>Vote on every step of the movie making process, and earn money as the movie does!</h2>
-                    {/*<Videos />*/}
+                    <Slider>
+                        <Slide className="active">
+                            <Video src="https://www.youtube.com/embed/__jYHX5CGic" />
+                            <h3>Birth of ArtBot</h3>
+                            <h5>Io Travels Time And Space To Save Great Works Of Art.</h5>
+                        </Slide>
+                        <Slide>
+                            <Video src="https://www.youtube.com/embed/P4KLh3kpH3A" />
+                            <h3>Ninja Cats: Teaser One</h3>
+                            <h5>Two lifelong friends and apprentice ninja cats take different paths in life after the brutal massacre of their sensei and dojo.</h5>
+                        </Slide>
+                        <Slide>
+                            <Video src="https://www.youtube.com/embed/t1yJSKgJnyo" />
+                            <h3>Ninja Cats: Tease Two</h3>
+                            <h5>Two lifelong friends and apprentice ninja cats take different paths in life after the brutal massacre of their sensei and dojo.</h5>
+                        </Slide>
+                    </Slider>
                 </Section>
                 <img src={Tower} className="tower" alt="tower" />
                 <Section className="tower-start" index={1}>

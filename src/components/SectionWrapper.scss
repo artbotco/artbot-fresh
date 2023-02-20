@@ -14,4 +14,8 @@
     background-position-x: center;
     background-position-y: 70vh;
     background-size:       cover;
+
+    .section {
+        scroll-snap-align: center;
+    }
 }

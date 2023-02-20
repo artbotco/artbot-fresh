@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 class Helpers {
 	static mergeNonEmpty(...stringsOrArrays) {
 		let retArr = [];
@@ -26,6 +28,19 @@ class Helpers {
 			}
 		}
 		return retArr.join(' ');
+	}
+
+	static ratioResize(element, wR = 16, hR = 9) {
+		let $element = $(element);
+		if (!$element) return;
+		let height = $element.height();
+		if(!height) {
+			return;
+		}
+		// Get width for 16:9
+		let ratio = wR / hR;
+		// Set width
+		$element.css("width", height * ratio);
 	}
 }
 

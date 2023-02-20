@@ -1,3 +1,5 @@
+@import "../base";
+
 body {
     background-image:      url(../assets/stars.png);
     background-attachment: fixed;
@@ -11,4 +13,34 @@ body {
     width:     55vw;
     max-width: 1000px;
     height:    auto;
+}
+
+.section.hero .slider {
+    height:   60vh;
+
+    .slide {
+        .video {
+            height:        calc(100% - 80px);
+            width:         auto;
+            border:        none;
+            margin-bottom: 16px;
+            border-radius: 15px;
+        }
+
+        h3 {
+            font-size:   150%;
+            margin:      0;
+            padding:     0;
+            line-height: 32px;
+        }
+
+        h5 {
+            font-size:   100%;
+            font-weight: normal;
+            color:       $color-light-shadow;
+            margin:      0;
+            padding:     0;
+            line-height: 32px;
+        }
+    }
 }
