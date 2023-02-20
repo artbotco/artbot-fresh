@@ -50,3 +50,9 @@ ul.section-navigator {
         }
     }
 }
+
+@media ($mobile) {
+    ul.section-navigator {
+        display: none;
+    }
+}

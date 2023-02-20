@@ -1,3 +1,5 @@
+@import "../base";
+
 .slider {
     display:      block;
     width:        106vh;
@@ -40,6 +42,24 @@
 
         &.slider-arrow-right {
             right: 0px;
+        }
+    }
+}
+
+@media ($mobile) {
+    .slider {
+        width: 100%;
+
+        .slider-arrow {
+            box-shadow: none !important;
+
+            &.slider-arrow-left {
+                left: 5px;
+            }
+
+            &.slider-arrow-right {
+                right: 5px;
+            }
         }
     }
 }

@@ -15,16 +15,30 @@ body {
     height:    auto;
 }
 
+@media ($mobile) {
+    .tower {
+        width:     60vh;
+        left:      50%;
+        transform: translate(-50%, -25vh);
+    }
+}
+
 .section.hero .slider {
-    height:   60vh;
+    height: 60vh;
 
     .slide {
+        text-align: center;
+
         .video {
             height:        calc(100% - 80px);
             width:         auto;
             border:        none;
             margin-bottom: 16px;
             border-radius: 15px;
+        }
+
+        h3, h5 {
+            white-space: break-spaces;
         }
 
         h3 {
@@ -41,6 +55,18 @@ body {
             margin:      0;
             padding:     0;
             line-height: 32px;
+        }
+    }
+}
+
+@media ($mobile) {
+    .section.hero .slider {
+        height: 45vh;
+
+        .slide {
+            h3, h5 {
+                padding: 0 5vw;
+            }
         }
     }
 }
