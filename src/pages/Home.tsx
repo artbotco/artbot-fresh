@@ -1,15 +1,15 @@
+import Helpers           from "Helpers";
 import $                 from "jquery";
+import Page              from "Page";
 import React             from "react";
 import Tower             from "../assets/tower.png";
-import Button            from "../components/Button";
-import {Card, LearnMore} from "../components/Card";
-import Section           from "../components/Section";
-import SectionWrapper    from "../components/SectionWrapper";
-import Slide             from "../components/Slide";
-import Slider            from "../components/Slider";
-import Video             from "../components/Video";
-import Helpers           from "../Helpers";
-import Page              from "../Page";
+import {Card, LearnMore} from "../components/structural/Card";
+import Section           from "../components/structural/Section";
+import SectionWrapper    from "../components/structural/SectionWrapper";
+import Button            from "../components/visual/Button";
+import Slide             from "../components/visual/Slide";
+import Slider            from "../components/visual/Slider";
+import Video             from "../components/visual/Video";
 import "./Home.scss";
 
 class HomeContent extends React.Component {

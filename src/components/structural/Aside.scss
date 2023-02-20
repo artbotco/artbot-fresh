@@ -1,0 +1,32 @@
+aside.aside {
+    display:         block;
+    height:          100vh;
+    width:           400px;
+    max-width:       100vw;
+    background:      rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index:         800;
+    position:        fixed;
+    top: 0;
+    transition:     0.3s ease-in-out;
+
+    &.aside-left {
+        left: 0;
+        transition:     0.3s ease-in-out;
+        &:not(.active) {
+            transform: translateX(-100%);
+        }
+    }
+
+    &.aside-right {
+        right: 0;
+        transition:     0.3s ease-in-out;
+        &:not(.active) {
+            transform: translateX(100%);
+        }
+    }
+
+    .active {
+        transition:     0.3s ease-in-out;
+    }
+}

@@ -1,6 +1,6 @@
 import $       from "jquery";
 import React   from "react";
-import Helpers from "../Helpers";
+import Helpers from "Helpers";
 
 class Video extends React.Component<any> {
 

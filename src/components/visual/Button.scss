@@ -1,4 +1,4 @@
-@import "../base";
+@import "base";
 
 @mixin button-color($color, $color-dark, $color-shadow, $text-color: $color-shadow) {
     background-color: $color;
@@ -106,5 +106,11 @@
 
     &.btn-text-dark {
         color: $color-dark;
+    }
+
+    &.btn-content-only {
+        background: none;
+        border:     none;
+        box-shadow: unset;
     }
 }

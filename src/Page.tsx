@@ -1,6 +1,6 @@
 import React  from "react";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import Footer from "./components/structural/Footer";
+import Header from "./components/structural/Header";
 import "./Page.scss";
 
 class Page extends React.Component {

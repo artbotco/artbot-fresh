@@ -1,5 +1,5 @@
 import React   from "react";
-import Helpers from "../Helpers";
+import Helpers from "Helpers";
 
 class Slide extends React.Component<any> {
     render() {

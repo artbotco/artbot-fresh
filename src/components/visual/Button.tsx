@@ -1,3 +1,4 @@
+import $     from "jquery";
 import React from "react";
 import "./Button.scss";
 
@@ -8,6 +9,8 @@ import "./Button.scss";
  * @param [size] {"xs","sm","md","lg","xl"} Size of the button
  */
 class Button extends React.Component<any> {
+    element: HTMLButtonElement | null = null;
+
     getClassNames() {
         let classNames = ["btn"];
         if (this.props.color) {
@@ -22,9 +25,27 @@ class Button extends React.Component<any> {
         return classNames.join(" ");
     }
 
+    registerClick = (element: HTMLButtonElement) => {
+        this.element = element;
+        if(!this.element) {
+            return;
+        }
+        if (this.props.onClick) {
+            this.element.addEventListener("click", this.props.onClick);
+        }
+        if (this.props.toggle) {
+            let toggleId = this.props.toggle;
+            if(this.element) {
+                this.element.addEventListener("click", () => {
+                    $(toggleId).toggleClass("active");
+                });
+            }
+        }
+    };
+
     render() {
         return (
-            <button className={this.getClassNames()} onClick={this.props.onClick}>
+            <button className={this.getClassNames()} ref={this.registerClick}>
                 {this.props.children}
             </button>
         );

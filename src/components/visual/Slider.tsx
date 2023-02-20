@@ -2,7 +2,7 @@ import {faCaretLeft, faCaretRight} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon}           from "@fortawesome/react-fontawesome";
 import $                           from "jquery";
 import React                       from "react";
-import Helpers                     from "../Helpers";
+import Helpers                     from "Helpers";
 import Button                      from "./Button";
 import "./Slider.scss";
 

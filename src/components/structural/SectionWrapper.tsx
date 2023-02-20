@@ -1,8 +1,8 @@
+import Section                 from "components/structural/Section";
+import SectionWrapperNavigator from "components/visual/SectionWrapperNavigator";
+import Helpers                 from "Helpers";
 import {Component}             from "react";
-import Helpers                 from "../Helpers";
 import "./SectionWrapper.scss";
-import Section                 from "./Section";
-import SectionWrapperNavigator from "./SectionWrapperNavigator";
 
 class SectionWrapper extends Component<any> {
     windowScroll = () => {
@@ -21,14 +21,15 @@ class SectionWrapper extends Component<any> {
     renderNavigator() {
         let indexes: any[] = [];
         this.props.children.forEach((child: any) => {
-           if(child.type === Section && child.props.index !== undefined) {
-               indexes.push(child.props.index);
-           }
+            if (child.type === Section && child.props.index !== undefined) {
+                indexes.push(child.props.index);
+            }
         });
         return (
             <SectionWrapperNavigator indexes={indexes} />
         );
     }
+
     render() {
         window.addEventListener("scroll", this.windowScroll);
         return (
