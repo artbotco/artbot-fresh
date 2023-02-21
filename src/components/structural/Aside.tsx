@@ -8,6 +8,8 @@ import "./Aside.scss";
 
 class Aside extends React.Component<any> {
 
+    name = 'aside';
+    element = 'aside';
     getClasses() {
         let classes = [];
         if (this.props.className) {
@@ -17,17 +19,17 @@ class Aside extends React.Component<any> {
             classes.push(this.props.id);
         }
         if (this.props.side) {
-            classes.push("aside-" + (this.props.side === "left" ? "left" : "right"));
+            classes.push(this.name + "-" + (this.props.side === "left" ? "left" : "right"));
         } else {
-            classes.push("aside-right");
+            classes.push(this.name + "-right");
         }
         return classes;
     }
 
-    registerCloseHandler = (element: HTMLElement) => {
+    protected registerCloseHandler(element: HTMLElement) {
         document.addEventListener("click", (event) => {
             // Check if document contains element with active class
-            let el = $(`aside#${this.props.id}`);
+            let el = $(this.element + `#${this.props.id}`);
             let target = $(event.target as Node);
             if (target && target.attr("data-toggle") === `#${this.props.id}`) {
                 return;
@@ -47,8 +49,8 @@ class Aside extends React.Component<any> {
 
     render() {
         return (
-            <aside id={this.props.id} ref={this.registerCloseHandler} className={Helpers.getClasses("aside", this.getClasses())}>
-                <Button color="light" size="xl" toggle={`#${this.props.id}`} className="btn-content-only aside-close"><FontAwesomeIcon icon={faTimes} /></Button>
+            <aside id={this.props.id} ref={this.registerCloseHandler} className={Helpers.getClasses(this.name, this.getClasses())}>
+                <Button color="light" size="xl" toggle={`#${this.props.id}`} className={Helpers.getClasses("btn-content-only",this.name+"-close")}><FontAwesomeIcon icon={faTimes} /></Button>
                 {this.props.children}
             </aside>
         );
