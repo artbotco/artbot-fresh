@@ -48,83 +48,82 @@ const LoginForm = (props: any) => {
       });
     }
   };
-  return <></>;
-  // return (
-  //   <>
-  //     <div>Log In</div>
-  //     <form onSubmit={submitHandler}>
-  //       <div className="form-container">
-  //         {/* icon here */}
-  //         <div className="form-item">
-  //           <label htmlFor="username">Username:</label>
-  //           <input
-  //             required
-  //             type="text"
-  //             value={username.value}
-  //             onChange={(e) =>
-  //               setUsername({
-  //                 value: e.target.value,
-  //                 touch: true,
-  //                 error: e.target.value ? false : true,
-  //               })
-  //             }
-  //             className="form-control login-form__input"
-  //             placeholder="Username"
-  //           />
-  //         </div>
-  //       </div>
-  //       <div className="form-container">
-  //         {/* icon here */}
-  //         <div className="form-item">
-  //           <label htmlFor="password">Password:</label>
-  //           <input
-  //             required
-  //             type="password"
-  //             value={password.value}
-  //             onChange={(e) =>
-  //               setPassword({
-  //                 value: e.target.value,
-  //                 touch: true,
-  //                 error: e.target.value ? false : true,
-  //               })
-  //             }
-  //             className="form-control login-form__input"
-  //             placeholder="Password"
-  //           />
-  //         </div>
-  //       </div>
-  //       <div className="form-container">
-  //         <div className="form-item">{/* icon here */}</div>
-  //         <div className="form-item">
-  //           <label htmlFor="remember">Remember me:</label>
-  //           <input
-  //             type="checkbox"
-  //             id="remember"
-  //             checked={remember}
-  //             onChange={(event) => setRemember(event.target.checked)}
-  //             style={{ marginTop: '8px' }}
-  //           />
-  //         </div>
-  //       </div>
-  //       {loading && <div>Loading...</div>}
-  //       {message?.value && (
-  //         <div
-  //           style={{
-  //             color: message.error ? 'red' : 'green',
-  //             marginTop: '16px',
-  //           }}
-  //         >
-  //           {message?.value}
-  //         </div>
-  //       )}
-  //       <button type="submit" style={{ marginTop: '16px' }}>
-  //         Log In
-  //       </button>
-  //     </form>
-  //     <button onClick={props.toSignup}>Sign Up</button>
-  //     <button onClick={props.toRecover}>Recover</button>
-  //   </>
-  // );
+  return (
+    <>
+      <div>Log In</div>
+      <form onSubmit={submitHandler}>
+        <div className="form-container">
+          {/* icon here */}
+          <div className="form-item">
+            <label htmlFor="username">Username:</label>
+            <input
+              required
+              type="text"
+              value={username.value}
+              onChange={(e) =>
+                setUsername({
+                  value: e.target.value,
+                  touch: true,
+                  error: e.target.value ? false : true,
+                })
+              }
+              className="form-control login-form__input"
+              placeholder="Username"
+            />
+          </div>
+        </div>
+        <div className="form-container">
+          {/* icon here */}
+          <div className="form-item">
+            <label htmlFor="password">Password:</label>
+            <input
+              required
+              type="password"
+              value={password.value}
+              onChange={(e) =>
+                setPassword({
+                  value: e.target.value,
+                  touch: true,
+                  error: e.target.value ? false : true,
+                })
+              }
+              className="form-control login-form__input"
+              placeholder="Password"
+            />
+          </div>
+        </div>
+        <div className="form-container">
+          <div className="form-item">{/* icon here */}</div>
+          <div className="form-item">
+            <label htmlFor="remember">Remember me:</label>
+            <input
+              type="checkbox"
+              id="remember"
+              checked={remember}
+              onChange={(event) => setRemember(event.target.checked)}
+              style={{ marginTop: '8px' }}
+            />
+          </div>
+        </div>
+        {loading && <div>Loading...</div>}
+        {message?.value && (
+          <div
+            style={{
+              color: message.error ? 'red' : 'green',
+              marginTop: '16px',
+            }}
+          >
+            {message?.value}
+          </div>
+        )}
+        <button type="submit" style={{ marginTop: '16px' }}>
+          Log In
+        </button>
+      </form>
+      <button onClick={props.toSignup}>Sign Up</button>
+      <button onClick={props.toRecover}>Recover</button>
+    </>
+  );
 };
 
 const mapDispatchToProps = (dispatch: any) => ({

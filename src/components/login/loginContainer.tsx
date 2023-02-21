@@ -1,7 +1,7 @@
 import './modal.css';
-// import LoginForm from './loginForm';
-// import SignUpForm from './signupForm';
-// import RecoverForm from './recoverForm';
+import LoginForm from './loginForm';
+import SignUpForm from './signupForm';
+import RecoverForm from './recoverForm';
 import { useState } from 'react';
 
 const LoginContainer = () => {
@@ -9,7 +9,7 @@ const LoginContainer = () => {
 
   return (
     <>
-      {/* {active === 'login' ? (
+      {active === 'login' ? (
         <LoginForm
           toSignup={() => setActive('signup')}
           toRecover={() => setActive('recover')}
@@ -18,7 +18,7 @@ const LoginContainer = () => {
         <SignUpForm backToLogin={() => setActive('login')} />
       ) : (
         <RecoverForm backToLogin={() => setActive('login')} />
-      )} */}
+      )}
     </>
   );
 };
