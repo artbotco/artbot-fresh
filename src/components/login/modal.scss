@@ -9,11 +9,15 @@
     display:     flex;
     align-items: center;
     margin-top:  16px;
+    flex:        1 1 auto;
+    width:       100%;
 }
 
 .form-item {
+    display:        flex;
     flex:           1;
     flex-direction: column;
+
 }
 
 .headerLogoWrapper p {
