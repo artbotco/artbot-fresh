@@ -67,6 +67,7 @@ aside.main-menu {
             display:        flex;
             flex-direction: column;
             gap:            $gutter/2;
+            align-items:    center;
 
             .group.social-icons {
                 justify-content: center !important;
