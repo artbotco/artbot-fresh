@@ -8,8 +8,9 @@ import "./Aside.scss";
 
 class Aside extends React.Component<any> {
 
-    name = 'aside';
-    element = 'aside';
+    name = "aside";
+    element = "aside";
+
     getClasses() {
         let classes = [];
         if (this.props.className) {
@@ -26,7 +27,7 @@ class Aside extends React.Component<any> {
         return classes;
     }
 
-    protected registerCloseHandler(element: HTMLElement) {
+    registerCloseHandler = (element: HTMLElement) => {
         document.addEventListener("click", (event) => {
             // Check if document contains element with active class
             let el = $(this.element + `#${this.props.id}`);
@@ -50,7 +51,7 @@ class Aside extends React.Component<any> {
     render() {
         return (
             <aside id={this.props.id} ref={this.registerCloseHandler} className={Helpers.getClasses(this.name, this.getClasses())}>
-                <Button color="light" size="xl" toggle={`#${this.props.id}`} className={Helpers.getClasses("btn-content-only",this.name+"-close")}><FontAwesomeIcon icon={faTimes} /></Button>
+                <Button color="light" size="xl" toggle={`#${this.props.id}`} className={Helpers.getClasses("btn-content-only", this.name + "-close")}><FontAwesomeIcon icon={faTimes} /></Button>
                 {this.props.children}
             </aside>
         );
