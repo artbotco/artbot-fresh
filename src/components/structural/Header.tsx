@@ -15,6 +15,8 @@ import Button from 'components/visual/Button';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { logout } from '_redux/reducers/auth.duck';
+import { terms } from 'utils/FooterText';
+import Modal from './Modal';
 import './Header.scss';
 import './Modal.scss';
 
@@ -186,7 +188,11 @@ const Header: React.FC<any> = () => {
               <Button onClick={openTerms} color="primary" size="lg">
                 Terms & Conditions
               </Button>
-              {showTerms && (
+              <Modal id="aside-sidebar-left" className="main-menu" side="left">
+                <h1>{terms.title}</h1>
+                {terms.desc}
+              </Modal>
+              {/* {showTerms && (
                 <div className="modal-overlay" onClick={closeTerms}>
                   <div
                     className="modal-content"
@@ -195,7 +201,7 @@ const Header: React.FC<any> = () => {
                     test
                   </div>
                 </div>
-              )}
+              )} */}
               <Button color="primary" size="lg">
                 Privacy Policy
               </Button>
