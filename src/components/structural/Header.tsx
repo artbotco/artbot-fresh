@@ -28,6 +28,7 @@ const Header: React.FC<any> = () => {
   const user = useSelector((state: any) => state.auth);
 
   const clickHandler = (ele: string) => {
+    console.log(ele);
     Helpers.scrollTo($(ele));
   };
 
