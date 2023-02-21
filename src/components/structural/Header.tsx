@@ -185,13 +185,21 @@ const Header: React.FC<any> = () => {
               </Button>
             </Group>
             <Group spacing="1em">
-              <Button onClick={openTerms} color="primary" size="lg">
+              <Button
+                color="primary"
+                className="mobile-terms mobile-ftr-btn"
+                size="lg"
+              >
                 Terms & Conditions
               </Button>
-              <Modal id="aside-sidebar-left" className="main-menu" side="left">
+              {/* <Modal
+                id="aside-sidebar-left"
+                className="mobile-ftr-btn"
+                side="left"
+              >
                 <h1>{terms.title}</h1>
                 {terms.desc}
-              </Modal>
+              </Modal> */}
               {/* {showTerms && (
                 <div className="modal-overlay" onClick={closeTerms}>
                   <div
@@ -202,7 +210,7 @@ const Header: React.FC<any> = () => {
                   </div>
                 </div>
               )} */}
-              <Button color="primary" size="lg">
+              <Button color="primary" className="mobile-ftr-btn" size="lg">
                 Privacy Policy
               </Button>
             </Group>

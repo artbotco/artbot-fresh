@@ -55,7 +55,7 @@ class Modal extends React.Component<any> {
         className={Helpers.getClasses('aside', this.getClasses())}
       >
         <Button color="primary" size="lg">
-          Terms and COnditions
+          Terms and Conditions
         </Button>
         {this.props.children}
       </aside>

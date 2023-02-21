@@ -1,117 +1,160 @@
-@import "../../base";
+@import '../../base';
 
-@mixin button-color($color, $color-dark, $color-shadow, $text-color: $color-shadow) {
-    background-color: $color;
-    border-color:     $color-dark;
-    box-shadow:       4px 4px 0 $color-shadow;
-    color:            $color-shadow;
+@mixin button-color(
+  $color,
+  $color-dark,
+  $color-shadow,
+  $text-color: $color-shadow
+) {
+  background-color: $color;
+  border-color: $color-dark;
+  box-shadow: 4px 4px 0 $color-shadow;
+  color: $color-shadow;
 }
 
 .btn {
-    font-family:     $font-default;
+  font-family: $font-default;
 
-    font-size:       16px;
-    font-weight:     500;
-    font-style:      normal;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
 
-    line-height:     150%;
-    display:         inline-block;
+  line-height: 150%;
+  display: inline-block;
 
-    width:           auto;
-    height:          40px;
-    padding:         6px 8px;
+  width: auto;
+  height: 40px;
+  padding: 6px 8px;
 
-    cursor:          pointer;
-    text-align:      center;
-    border-width:    2px;
-    border-style:    solid;
+  cursor: pointer;
+  text-align: center;
+  border-width: 2px;
+  border-style: solid;
 
-    border-radius:   10px;
-    text-decoration: none;
+  border-radius: 10px;
+  text-decoration: none;
 
-    &.btn-icon-only svg.svg-inline--fa {
-        font-size: 145%;
-    }
+  &.btn-icon-only svg.svg-inline--fa {
+    font-size: 145%;
+  }
 
-    a, a:hover, a:visited, a:active {
-        color: inherit;
-    }
+  a,
+  a:hover,
+  a:visited,
+  a:active {
+    color: inherit;
+  }
 
-    @include button-color($color-primary, $color-primary-dark, $color-primary-shadow);
+  @include button-color(
+    $color-primary,
+    $color-primary-dark,
+    $color-primary-shadow
+  );
 
-    &.btn-primary {
-        @include button-color($color-primary, $color-primary-dark, $color-primary-shadow);
-    }
+  &.btn-primary {
+    @include button-color(
+      $color-primary,
+      $color-primary-dark,
+      $color-primary-shadow
+    );
+  }
 
-    &.btn-secondary {
-        @include button-color($color-secondary, $color-secondary-dark, $color-secondary-shadow);
-    }
+  &.btn-secondary {
+    @include button-color(
+      $color-secondary,
+      $color-secondary-dark,
+      $color-secondary-shadow
+    );
+  }
 
-    &.btn-default {
-        @include button-color($color-default, $color-default-dark, $color-default-shadow);
-    }
+  &.btn-default {
+    @include button-color(
+      $color-default,
+      $color-default-dark,
+      $color-default-shadow
+    );
+  }
 
-    &.btn-success {
-        @include button-color($color-success, $color-success-dark, $color-success-shadow);
-    }
+  &.btn-success {
+    @include button-color(
+      $color-success,
+      $color-success-dark,
+      $color-success-shadow
+    );
+  }
 
-    &.btn-warning {
-        @include button-color($color-warning, $color-warning-dark, $color-warning-shadow);
-    }
+  &.btn-warning {
+    @include button-color(
+      $color-warning,
+      $color-warning-dark,
+      $color-warning-shadow
+    );
+  }
 
-    &.btn-danger {
-        @include button-color($color-danger, $color-danger-dark, $color-danger-shadow);
-    }
+  &.btn-danger {
+    @include button-color(
+      $color-danger,
+      $color-danger-dark,
+      $color-danger-shadow
+    );
+  }
 
-    &.btn-info {
-        @include button-color($color-info, $color-info-dark, $color-info-shadow);
-    }
+  &.btn-info {
+    @include button-color($color-info, $color-info-dark, $color-info-shadow);
+  }
 
-    &.btn-light {
-        @include button-color($color-light, $color-light-dark, $color-light-shadow);
-    }
+  &.btn-light {
+    @include button-color($color-light, $color-light-dark, $color-light-shadow);
+  }
 
-    &.btn-dark {
-        @include button-color($color-dark, $color-dark-dark, $color-dark-shadow);
-    }
+  &.btn-dark {
+    @include button-color($color-dark, $color-dark-dark, $color-dark-shadow);
+  }
 
-    &.btn-xs {
-        font-size: 12px;
-        height:    30px;
-    }
+  &.btn-xs {
+    font-size: 12px;
+    height: 30px;
+  }
 
-    &.btn-sm {
-        font-size: 14px;
-        height:    35px;
-    }
+  &.btn-sm {
+    font-size: 14px;
+    height: 35px;
+  }
 
-    &.btn-md {
-        // Default size
-        font-size: 16px;
-        height:    40px;
-    }
+  &.btn-md {
+    // Default size
+    font-size: 16px;
+    height: 40px;
+  }
 
-    &.btn-lg {
-        font-size: 18px;
-        height:    45px;
-    }
+  &.btn-lg {
+    font-size: 18px;
+    height: 45px;
+  }
 
-    &.btn-xl {
-        font-size: 20px;
-        height:    50px;
-    }
+  &.btn-xl {
+    font-size: 20px;
+    height: 50px;
+  }
 
-    &.btn-text-light {
-        color: $color-light;
-    }
+  &.btn-text-light {
+    color: $color-light;
+  }
 
-    &.btn-text-dark {
-        color: $color-dark;
-    }
+  &.btn-text-dark {
+    color: $color-dark;
+  }
 
-    &.btn-content-only {
-        background: none;
-        border:     none;
-        box-shadow: unset;
-    }
+  &.btn-content-only {
+    background: none;
+    border: none;
+    box-shadow: unset;
+  }
+}
+
+@media ($mobile) {
+  .mobile-ftr-btn {
+    font-size: 14px !important;
+    height: 42px !important;
+  }
 }
