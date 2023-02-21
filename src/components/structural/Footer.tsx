@@ -5,8 +5,8 @@ import './Footer.scss';
 class Footer extends React.Component {
   render() {
     return (
-      <footer className="footer hidden-desktop mobile-discord-btn">
-        <Button className="btn-text-dark">Join Discord</Button>
+      <footer className="footer hidden-desktop">
+        <Button className="btn-text-dark mobile-discord-btn">Join Discord</Button>
       </footer>
     );
   }

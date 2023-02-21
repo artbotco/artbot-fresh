@@ -61,12 +61,33 @@ body {
 }
 
 @media ($mobile) {
-    .section.hero .slider {
-        height: 45vh;
+    .section.hero {
+        h1 {
+            font-size: 130%;
+        }
 
+        h2 {
+            font-size: 100%;
+        }
+
+        .scroll-cta {
+            bottom: -25px;
+        }
+
+        .slider {
+            max-height: 45vh;
+        }
         .slide {
             h3, h5 {
                 padding: 0 5vw;
+            }
+
+            h3 {
+                font-size: 120%;
+            }
+
+            h5 {
+                font-size: 80%;
             }
         }
     }

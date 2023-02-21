@@ -42,6 +42,24 @@
             }
         }
     }
+
+    .card {
+        transition:  0.5s ease-in-out;
+        opacity: 1;
+    }
+    &:not(.active) {
+        .card {
+            transform: translateY(-100vh);
+            opacity: 0;
+            transition: 0.5s ease-in-out;
+        }
+    }
+    &.active ~ .section {
+        .card {
+            transform: translateY(100vh);
+            transition:  0.5s ease-in-out;
+        }
+    }
 }
 
 @keyframes bounce {
