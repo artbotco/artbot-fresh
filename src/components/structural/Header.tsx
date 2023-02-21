@@ -69,7 +69,7 @@ const Header: React.FC<any> = () => {
                 <FontAwesomeIcon icon={faDiscord} />
                 <span className="hidden-mobile"> Discord</span>
               </Button>
-              {user.authToken ? (
+              {!user.authToken ? (
                 <>
                   <Button
                     color="secondary"
@@ -77,7 +77,7 @@ const Header: React.FC<any> = () => {
                     className="btn-text-light"
                   >
                     <FontAwesomeIcon icon={faPerson} />
-                    <span className="hidden-mobile"> Log Out</span>
+                    <span className="hidden-mobile"> Log In</span>
                   </Button>
                 </>
               ) : (
@@ -88,7 +88,7 @@ const Header: React.FC<any> = () => {
                     className="btn-text-light"
                   >
                     <FontAwesomeIcon icon={faPerson} />
-                    <span className="hidden-mobile"> Log In</span>
+                    <span className="hidden-mobile"> Log Out</span>
                   </Button>
                 </>
               )}
