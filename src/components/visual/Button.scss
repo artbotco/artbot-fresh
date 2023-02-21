@@ -152,9 +152,7 @@
   }
 }
 
-@media ($mobile) {
-  .mobile-ftr-btn {
-    font-size: 14px !important;
-    height: 42px !important;
-  }
+.mobile-ftr-btn {
+  font-size: 14px !important;
+  height: 42px !important;
 }

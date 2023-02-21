@@ -1,50 +1,50 @@
-@import "base";
+@import 'base';
 
 .modal {
-    display:         flex;
-    height:          100vh;
-    width:           100vw;
-    max-width:       100vw;
-    background:      rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    z-index:         900;
-    position:        fixed;
-    top:             0;
-    left:            0;
-    transition:      0.3s ease-in-out;
-    color:           $color-light;
-    justify-content: center;
-    align-items:     center;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 900;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: 0.3s ease-in-out;
+  color: $color-light;
+  justify-content: center;
+  align-items: center;
 
-    &:not(.active) {
-        display: none;
+  &:not(.active) {
+    display: none;
+  }
+
+  .modal-content {
+    background-color: $color-secondary-shadow;
+    padding: $gutter;
+    color: $color-light;
+    overflow-y: auto;
+    z-index: 1000;
+    height: auto;
+    min-height: 50vh;
+    width: 75vh;
+    border-radius: 15px;
+    position: relative;
+    display: inline-block;
+    max-height: 90vh;
+
+    .modal-close {
+      position: absolute;
+      top: $gutter;
+      right: $gutter;
     }
 
-    .modal-content {
-        background-color: $color-light;
-        padding:          $gutter;
-        color:            black;
-        overflow-y:       auto;
-        z-index:          1000;
-        height:           auto;
-        min-height:       50vh;
-        width:            75vh;
-        border-radius:    15px;
-        position:         relative;
-        display:          inline-block;
-        max-height:       90vh;
-
-        .modal-close {
-            position: absolute;
-            top:      $gutter;
-            right:    $gutter;
-        }
-
-        h1:first-of-type {
-            margin-top:    0;
-            padding-top:   6px;
-            padding-left:  $gutter;
-            padding-right: calc($gutter + 34px);
-        }
+    h1:first-of-type {
+      margin-top: 0;
+      padding-top: 6px;
+      padding-left: $gutter;
+      padding-right: calc($gutter + 34px);
     }
+  }
 }
