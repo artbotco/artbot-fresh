@@ -28,7 +28,8 @@ const Header: React.FC<any> = () => {
   const user = useSelector((state: any) => state.auth);
 
   const clickHandler = (ele: string) => {
-    console.log(ele);
+    let aside = $('#aside-sidebar-left');
+    aside.removeClass('active');
     Helpers.scrollTo($(ele));
   };
 
