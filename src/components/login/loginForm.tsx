@@ -120,8 +120,8 @@ const LoginForm = (props: any) => {
                     Log In
                 </Button>
                 <Group className={"justify-content-center margin-half-top"}>
-                    <Button onClick={props.toSignup}>Sign Up</Button>
-                    <Button onClick={props.toRecover}>Recover</Button>
+                    <Button color={"secondary"} onClick={props.toSignup}>Sign Up</Button>
+                    <Button color={"secondary"} onClick={props.toRecover}>Recover</Button>
                 </Group>
             </form>
         </>

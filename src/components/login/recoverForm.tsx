@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import {resetPassword}   from "services/util";
 import "./modal.scss";
+import Group             from "../structural/Group";
+import Button            from "../visual/Button";
 
 function RecoverForm(props: any) {
     const [email, setEmail] = useState({value: "", touch: false, error: false});
@@ -39,7 +41,7 @@ function RecoverForm(props: any) {
             <h1>Forgot Password</h1>
             <form onSubmit={submitHandler} className={"form form-centered padding"}>
                 <div className="form-container">
-                    <div style={{flex: 1}}>
+                    <div className={"form-item"}>
                         <label htmlFor="email">Email:</label>
                         <input
                             required
@@ -68,11 +70,11 @@ function RecoverForm(props: any) {
                         {message?.message}
                     </div>
                 )}
-                <button type="submit" style={{marginTop: "16px"}}>
+                <Button type="submit" className={"margin-half-top"}>
                     Submit
-                </button>
+                </Button>
+                <Button color={"secondary"} onClick={props.backToLogin} className={"justify-content-center margin-half-top"}>Back</Button>
             </form>
-            <button onClick={props.backToLogin}>Back</button>
         </>
     );
 }

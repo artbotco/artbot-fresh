@@ -2,8 +2,10 @@ import jwt_decode        from "jwt-decode";
 import React, {useState} from "react";
 import {useDispatch}     from "react-redux";
 import {login, signUp}   from "services/util";
-import { loginUser } from "_redux/reducers/auth.duck";
+import { loginUser }     from "_redux/reducers/auth.duck";
 import "./modal.scss";
+import Group             from "../structural/Group";
+import Button            from "../visual/Button";
 
 function SignUpForm(props: any) {
     const [username, setUsername] = useState({
@@ -151,15 +153,15 @@ function SignUpForm(props: any) {
             Password Must Match With Previous Entry
           </span>
                 )}
-                <div>
-                    <div>
-                        <input type="checkbox" id="termsOfUse" name="termsOfUse" />
-                        <label htmlFor="termsOfUse">I agree to the terms of use</label>
-                    </div>
+                <div className={"form-item radio"}>
+                    <input type="checkbox" id="termsOfUse" name="termsOfUse" />
+                    <label htmlFor="termsOfUse">I agree to the terms of use</label>
                 </div>
-                <button type="submit">Submit</button>
+                <Button type="submit" className={"margin-half-top"}>
+                    Sign Up
+                </Button>
+                <Button color={"secondary"} onClick={props.backToLogin} className={"justify-content-center margin-half-top"}>Back</Button>
             </form>
-            <button onClick={props.backToLogin}>Back</button>
         </>
     );
 }
