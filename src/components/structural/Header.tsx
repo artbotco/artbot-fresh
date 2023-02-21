@@ -2,18 +2,19 @@ import {faDiscord, faInstagram, faTiktok, faTwitter} from "@fortawesome/free-bra
 import {faBars, faPerson}                            from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon}                             from "@fortawesome/react-fontawesome";
 import {logout}                                      from "_redux/reducers/auth.duck";
-import Logo                                          from "assets/logo.png";
-import LoginContainer                                from "components/login/loginContainer";
-import Aside                                         from "components/structural/Aside";
-import {Column, Row}                                 from "components/structural/Grid";
-import Group                                         from "components/structural/Group";
-import Button                                        from "components/visual/Button";
-import Helpers                                       from "Helpers";
-import $                                             from "jquery";
-import React, {useState}                             from "react";
-import {useSelector}                                 from "react-redux";
+import Logo              from "assets/logo.png";
+import LoginContainer    from "components/login/loginContainer";
+import Aside             from "components/structural/Aside";
+import {Column, Row}     from "components/structural/Grid";
+import Group             from "components/structural/Group";
+import Button            from "components/visual/Button";
+import Helpers           from "Helpers";
+import $                 from "jquery";
+import React, {useState} from "react";
+import {useSelector}     from "react-redux";
 import "./Header.scss";
-import Modal                                         from "./Modal";
+import {terms}           from "../../utils/FooterText";
+import Modal             from "./Modal";
 import "./Modal.scss";
 
 const Header: React.FC<any> = () => {
@@ -227,7 +228,8 @@ const Header: React.FC<any> = () => {
                 </div>
             </Aside>
             <Modal id="modal-terms">
-                <h1>Terms & Conditions</h1>
+                <h1>{terms.title}</h1>
+                <div dangerouslySetInnerHTML={{ __html: terms.desc }} ></div>
             </Modal>
         </>
     );

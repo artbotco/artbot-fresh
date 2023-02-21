@@ -24,7 +24,7 @@
         background-color: $color-light;
         padding:          $gutter;
         color:            black;
-        overflow:         auto;
+        overflow-y:       auto;
         z-index:          1000;
         height:           auto;
         min-height:       50vh;
@@ -32,6 +32,7 @@
         border-radius:    15px;
         position:         relative;
         display:          inline-block;
+        max-height:       90vh;
 
         .modal-close {
             position: absolute;
