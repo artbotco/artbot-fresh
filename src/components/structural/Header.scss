@@ -28,12 +28,49 @@ header {
 aside.main-menu {
     h1 {
         padding-top: 0;
+
         .nav-brand.logo {
             vertical-align: top;
-            display: inline-block;
-            position: absolute;
-            top: 5px;
-            left: $gutter;
+            display:        inline-block;
+            position:       absolute;
+            top:            5px;
+            left:           $gutter;
+        }
+    }
+
+    .main-menu-contents {
+        display:         flex;
+        height:          100%;
+        flex-direction:  column;
+        overflow:        auto;
+        width:           100%;
+        padding:         $header-height $gutter;
+        flex-wrap:       nowrap;
+        justify-content: space-between;
+
+        ul {
+            list-style: none;
+            width:      100%;
+            margin:     0;
+            padding:    0;
+
+            li {
+                margin-bottom: $gutter / 2;
+
+                .btn {
+                    width: 100%;
+                }
+            }
+        }
+
+        .main-menu-footer {
+            display:        flex;
+            flex-direction: column;
+            gap:            $gutter/2;
+
+            .group.social-icons {
+                justify-content: center !important;
+            }
         }
     }
 }
