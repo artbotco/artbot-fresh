@@ -6,13 +6,14 @@ body {
 }
 
 .tower {
-    position:  absolute;
-    top:       100%;
-    right:     45%;
-    display:   inline-block;
-    width:     55vw;
-    max-width: 1000px;
-    height:    auto;
+    position:       absolute;
+    top:            100%;
+    right:          45%;
+    display:        inline-block;
+    width:          55vw;
+    max-width:      1000px;
+    height:         auto;
+    pointer-events: none;
 }
 
 @media ($mobile) {

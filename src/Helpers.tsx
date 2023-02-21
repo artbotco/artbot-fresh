@@ -1,8 +1,8 @@
 import $ from "jquery";
 
 class Helpers {
-	static mergeNonEmpty(...stringsOrArrays) {
-		let retArr = [];
+	static mergeNonEmpty(...stringsOrArrays: any): any[] {
+		let retArr = [] as any[];
 		// Go through stringsOrArrays, merge all non-empty
 		for (let i = 0; i < stringsOrArrays.length; i++) {
 			let item = stringsOrArrays[i];
@@ -17,8 +17,8 @@ class Helpers {
 		return retArr;
 	}
 
-	static getClasses(...stringsOrArrays) {
-		let retArr = [];
+	static getClasses(...stringsOrArrays: any[]): string {
+		let retArr = [] as string[];
 		for (let i = 0; i < stringsOrArrays.length; i++) {
 			let item = stringsOrArrays[i];
 			if (Array.isArray(item)) {
@@ -30,7 +30,7 @@ class Helpers {
 		return retArr.join(' ');
 	}
 
-	static ratioResize(element, wR = 16, hR = 9) {
+	static ratioResize(element: JQuery<HTMLElement>|HTMLElement, wR: number = 16, hR: number = 9) {
 		let $element = $(element);
 		if (!$element) return;
 		let height = $element.height();
@@ -41,6 +41,17 @@ class Helpers {
 		let ratio = wR / hR;
 		// Set width
 		$element.css("width", height * ratio);
+	}
+
+	static scrollTo(element: JQuery<HTMLElement>|HTMLElement, duration: number = 1000, callback?: () => void) {
+		let offsetTop = $(element)[0].offsetTop;
+		$("html, body").animate({
+			scrollTop: offsetTop
+		}, 100, () => {
+			if (callback) {
+				callback();
+			}
+		});
 	}
 }
 
