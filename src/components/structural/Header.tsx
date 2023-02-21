@@ -7,7 +7,7 @@ import { Column, Row } from 'components/structural/Grid';
 import Group from 'components/structural/Group';
 import Button from 'components/visual/Button';
 import React from 'react';
-// import LoginContainer from 'components/login/loginContainer';
+import LoginContainer from 'components/login/loginContainer';
 import './Header.scss';
 
 class Header extends React.Component {
@@ -54,7 +54,7 @@ class Header extends React.Component {
         </header>
         <Aside id="aside-login" side="right">
           <h1>Log in/Sign up</h1>
-          {/* <LoginContainer /> */}
+          <LoginContainer />
         </Aside>
         <Aside id="aside-sidebar-left" side="left">
           <h1>Left Sidebar</h1>

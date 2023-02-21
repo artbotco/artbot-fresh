@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './index.scss';
 import Home from './pages/Home';
 import store from '_redux';
@@ -14,7 +15,11 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate persistor={store.__PERSISTOR} loading={null}>
-        <Home />
+        <BrowserRouter>
+          <Routes>
+            <Route path={'/'} element={<Home />} />
+          </Routes>
+        </BrowserRouter>
       </PersistGate>
     </Provider>
   </React.StrictMode>
