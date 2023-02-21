@@ -95,16 +95,14 @@ const LoginForm = (props: any) => {
                     </div>
                 </div>
                 <div className="form-container">
-                    <div className="form-item">{/* icon here */}</div>
-                    <div className="form-item">
-                        <label htmlFor="remember">Remember me:</label>
+                    <div className="form-item radio">
                         <input
                             type="checkbox"
                             id="remember"
                             checked={remember}
                             onChange={(event) => setRemember(event.target.checked)}
-                            style={{marginTop: "8px"}}
                         />
+                        <label htmlFor="remember">Remember me</label>
                     </div>
                 </div>
                 {loading && <div>Loading...</div>}

@@ -18,6 +18,30 @@
     flex:           1;
     flex-direction: column;
 
+    input[type="text"], input[type="password"] {
+        height:        36px;
+        line-height:   36px;
+        border-radius: 15px;
+        padding:       2px $gutter/2;
+    }
+
+    &.radio {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 8px;
+        margin-bottom: 8px;
+
+        input[type="radio"] {
+            margin: 0 8px;
+        }
+    }
+
+    label {
+        padding: 2px $gutter/2;
+    }
+
 }
 
 .headerLogoWrapper p {
