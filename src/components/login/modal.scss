@@ -1,0 +1,42 @@
+@import '../../base';
+
+.offcanvas.modal {
+  right: 0;
+  left: auto;
+}
+
+.form-container {
+  display: 'flex';
+  align-items: 'center';
+  margin-top: '16px';
+}
+
+.form-item {
+  flex: 1;
+  flex-direction: column;
+}
+
+.headerLogoWrapper p {
+  color: white;
+  font-size: x-large;
+}
+
+.modal-list {
+}
+
+.sidebar__btns {
+  position: relative;
+  display: block;
+  background: #8041ff;
+  border: 2px solid #6634cc;
+  box-shadow: 4px 4px 0px #372163;
+  border-radius: 10px;
+  color: white;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  width: 160px;
+  height: 44px;
+  margin-bottom: 1rem;
+  left: 4rem;
+}
