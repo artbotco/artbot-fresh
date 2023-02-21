@@ -4,6 +4,8 @@ import React, {useState} from "react";
 import {connect}         from "react-redux";
 import {useNavigate}     from "react-router-dom";
 import {login}           from "services/util";
+import Group             from "../structural/Group";
+import Button            from "../visual/Button";
 import "./modal.scss";
 
 const LoginForm = (props: any) => {
@@ -50,8 +52,7 @@ const LoginForm = (props: any) => {
     };
     return (
         <>
-            <div>Log In</div>
-            <form onSubmit={submitHandler}>
+            <form onSubmit={submitHandler} className={"form form-centered padding"}>
                 <div className="form-container">
                     {/* icon here */}
                     <div className="form-item">
@@ -116,12 +117,14 @@ const LoginForm = (props: any) => {
                         {message?.message}
                     </div>
                 )}
-                <button type="submit" style={{marginTop: "16px"}}>
+                <Button type="submit" className={"margin-half-top"}>
                     Log In
-                </button>
+                </Button>
+                <Group className={"justify-content-center margin-half-top"}>
+                    <Button onClick={props.toSignup}>Sign Up</Button>
+                    <Button onClick={props.toRecover}>Recover</Button>
+                </Group>
             </form>
-            <button onClick={props.toSignup}>Sign Up</button>
-            <button onClick={props.toRecover}>Recover</button>
         </>
     );
 };
