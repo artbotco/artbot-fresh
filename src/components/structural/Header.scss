@@ -24,3 +24,16 @@ header {
         }
     }
 }
+
+aside.main-menu {
+    h1 {
+        padding-top: 0;
+        .nav-brand.logo {
+            vertical-align: top;
+            display: inline-block;
+            position: absolute;
+            top: 5px;
+            left: $gutter;
+        }
+    }
+}
