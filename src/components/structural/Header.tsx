@@ -144,7 +144,7 @@ class Header extends React.Component<any> {
                             </li>
                         </ul>
                         <div className={"main-menu-footer"}>
-                            <Button color="primary" size="lg">
+                            <Button color="primary" className={"btn-text-dark"} size="lg">
                                 Work in Progress
                             </Button>
                             <Group spacing="1em" className={"justify-content-center"}>
@@ -159,10 +159,10 @@ class Header extends React.Component<any> {
                                 </Button>
                             </Group>
                             <Group spacing="1em">
-                                <Button color="primary" size="lg">
+                                <Button color="primary" className={"btn-text-dark"} size="lg">
                                     Terms & Conditions
                                 </Button>
-                                <Button color="primary" size="lg">
+                                <Button color="primary" className={"btn-text-dark"} size="lg">
                                     Privacy Policy
                                 </Button>
                             </Group>
