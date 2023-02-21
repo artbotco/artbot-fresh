@@ -16,11 +16,12 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { logout } from '_redux/reducers/auth.duck';
 import './Header.scss';
+import './Modal.scss';
 
 const Header: React.FC<any> = () => {
   const [showTerms, setShowTerms] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
-  const user = useSelector((state: any) => state.auth.user);
+  const user = useSelector((state: any) => state.auth);
 
   const openTerms = () => {
     setShowTerms(true);
@@ -182,9 +183,19 @@ const Header: React.FC<any> = () => {
               </Button>
             </Group>
             <Group spacing="1em">
-              <Button color="primary" size="lg">
+              <Button onClick={openTerms} color="primary" size="lg">
                 Terms & Conditions
               </Button>
+              {showTerms && (
+                <div className="modal-overlay" onClick={closeTerms}>
+                  <div
+                    className="modal-content"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    test
+                  </div>
+                </div>
+              )}
               <Button color="primary" size="lg">
                 Privacy Policy
               </Button>
