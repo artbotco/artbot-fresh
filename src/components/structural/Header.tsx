@@ -14,9 +14,13 @@ import Group from 'components/structural/Group';
 import Button from 'components/visual/Button';
 import React from 'react';
 import { connect } from 'react-redux';
+import { logout } from '_redux/reducers/auth.duck';
 import './Header.scss';
 
-class Header extends React.Component {
+class Header extends React.Component<any> {
+  // constructor(props: any) {
+  //     super(props);
+  // }
   render() {
     return (
       <>
@@ -46,15 +50,29 @@ class Header extends React.Component {
                   <FontAwesomeIcon icon={faDiscord} />
                   <span className="hidden-mobile"> Discord</span>
                 </Button>
-                {/* conditionally render log in/out buttons */}
-                <Button
-                  color="secondary"
-                  toggle="#aside-login"
-                  className="btn-text-light"
-                >
-                  <FontAwesomeIcon icon={faPerson} />
-                  <span className="hidden-mobile"> Log In</span>
-                </Button>
+                {this.props.user ? (
+                  <>
+                    <Button
+                      color="secondary"
+                      //   onClick={this.props.logOut()}
+                      className="btn-text-light"
+                    >
+                      <FontAwesomeIcon icon={faPerson} />
+                      <span className="hidden-mobile"> Log Out</span>
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      color="secondary"
+                      toggle="#aside-login"
+                      className="btn-text-light"
+                    >
+                      <FontAwesomeIcon icon={faPerson} />
+                      <span className="hidden-mobile"> Log In</span>
+                    </Button>
+                  </>
+                )}
               </Group>
             </Column>
           </Row>
@@ -168,5 +186,11 @@ const mapState = function (state: any) {
     user: state.auth.user,
   };
 };
+
+// const mapDispatch = (dispatch: any) => {
+//     return (
+//         logOut: () => dispatch(logout)
+//     )
+// };
 
 export default connect(mapState)(Header);
