@@ -30,7 +30,7 @@ export const redirectUser = (res, path) => {
 };
 
 export const getClientSideToken = () => {
-    if (process.browser) {
+    if (typeof window !== 'undefined') {
         const parsed = JSON.parse(localStorage.getItem('persist:root'));
         if (parsed) {
             const parsedUser = JSON.parse(parsed['auth']);

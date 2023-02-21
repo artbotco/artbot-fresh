@@ -39,7 +39,7 @@ function SignUpForm(props: any) {
             ...(props.isMovie && {isMovie: props.isMovie})
         });
         if (responseData.code === "ABT0002") {
-            if (process.browser) window.scrollTo(0, 0);
+            if (typeof window !== 'undefined') window.scrollTo(0, 0);
             setMessage({message: responseData.message, error: true});
         }
 
