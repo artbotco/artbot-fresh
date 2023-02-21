@@ -52,6 +52,7 @@ const LoginForm = (props: any) => {
     };
     return (
         <>
+            <h1>Login</h1>
             <form onSubmit={submitHandler} className={"form form-centered padding"}>
                 <div className="form-container">
                     {/* icon here */}

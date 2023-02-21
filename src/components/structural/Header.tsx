@@ -72,7 +72,6 @@ class Header extends React.Component<any> {
                     </Row>
                 </header>
                 <Aside id="aside-login" side="right">
-                    <h1>Log in/Sign up</h1>
                     <LoginContainer />
                 </Aside>
                 <Aside id="aside-sidebar-left" className="main-menu" side="left">

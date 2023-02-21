@@ -36,8 +36,8 @@ function RecoverForm(props: any) {
 
     return (
         <>
-            <div>Forgot Password</div>
-            <form onSubmit={submitHandler}>
+            <h1>Forgot Password</h1>
+            <form onSubmit={submitHandler} className={"form form-centered padding"}>
                 <div className="form-container">
                     <div style={{flex: 1}}>
                         <label htmlFor="email">Email:</label>

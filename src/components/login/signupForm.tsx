@@ -55,8 +55,8 @@ function SignUpForm(props: any) {
 
     return (
         <>
-            <div>Sign Up</div>
-            <form onSubmit={submitHandler}>
+            <h1>Sign Up</h1>
+            <form onSubmit={submitHandler} className={"form form-centered padding"}>
                 <div className="form-container">
                     <div className="form-item">
                         <label htmlFor="username">Username:</label>
