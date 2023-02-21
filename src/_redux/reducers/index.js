@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { all } from 'redux-saga/effects';
+import { all }             from 'redux-saga/effects';
 import * as searchAction from '../actions/searchAction';
 import searchReducer from './searchReducer';
 
