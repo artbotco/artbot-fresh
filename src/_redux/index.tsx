@@ -8,6 +8,7 @@ let store: any;
 let initialState = {};
 const middleware = [];
 const sagaMiddleware = createSagaMiddleware();
+middleware.push(sagaMiddleware);
 
 if (process.env.NODE_ENV === "development") {
     middleware.push(logger);
