@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './modal.scss';
 import { useNavigate } from 'react-router-dom';
 import { connect, useSelector } from 'react-redux';
-import { loginUser } from '../../redux/reducers/auth.duck';
-import { login } from '../../services/util';
+import { loginUser } from '_redux/reducers/auth.duck';
+import { login } from 'services/util';
 import jwt_decode from 'jwt-decode';
 
 const LoginForm = (props: any) => {

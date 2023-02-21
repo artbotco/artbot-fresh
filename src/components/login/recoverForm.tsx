@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { resetPassword } from '../../services/util';
+import { resetPassword } from 'services/util';
 import './modal.scss';
 
 function RecoverForm(props: any) {

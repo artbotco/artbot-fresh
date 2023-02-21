@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './modal.scss';
-import { signUp, login } from '../../services/util';
+import { signUp, login } from 'services/util';
 import { useDispatch, useSelector } from 'react-redux';
 import jwt_decode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
