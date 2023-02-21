@@ -17,13 +17,19 @@ import { useSelector } from 'react-redux';
 import { logout } from '_redux/reducers/auth.duck';
 import { terms } from 'utils/FooterText';
 import Modal from './Modal';
+import $ from 'jquery';
 import './Header.scss';
 import './Modal.scss';
+import Helpers from 'Helpers';
 
 const Header: React.FC<any> = () => {
   const [showTerms, setShowTerms] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
   const user = useSelector((state: any) => state.auth);
+
+  const clickHandler = (ele: string) => {
+    Helpers.scrollTo($(ele));
+  };
 
   const openTerms = () => {
     setShowTerms(true);
@@ -114,6 +120,7 @@ const Header: React.FC<any> = () => {
                 size="lg"
                 className="btn-text-light"
                 data-section="0"
+                onClick={() => clickHandler('.section[data-section="0"]')}
               >
                 Home
               </Button>
@@ -124,6 +131,7 @@ const Header: React.FC<any> = () => {
                 size="lg"
                 className="btn-text-light"
                 data-section="1"
+                onClick={() => clickHandler('.section[data-section="1"]')}
               >
                 1. Vote
               </Button>
@@ -134,6 +142,7 @@ const Header: React.FC<any> = () => {
                 size="lg"
                 className="btn-text-light"
                 data-section="2"
+                onClick={() => clickHandler('.section[data-section="2"]')}
               >
                 2. Crowdfund
               </Button>
@@ -144,6 +153,7 @@ const Header: React.FC<any> = () => {
                 size="lg"
                 className="btn-text-light"
                 data-section="3"
+                onClick={() => clickHandler('.section[data-section="3"]')}
               >
                 3. Pre-production
               </Button>
@@ -154,6 +164,7 @@ const Header: React.FC<any> = () => {
                 size="lg"
                 className="btn-text-light"
                 data-section="4"
+                onClick={() => clickHandler('.section[data-section="4"]')}
               >
                 4. Production
               </Button>
@@ -164,6 +175,7 @@ const Header: React.FC<any> = () => {
                 size="lg"
                 className="btn-text-light"
                 data-section="5"
+                onClick={() => clickHandler('.section[data-section="5"]')}
               >
                 5. Profit!
               </Button>
