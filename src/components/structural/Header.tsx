@@ -147,7 +147,7 @@ class Header extends React.Component<any> {
                             <Button color="primary" size="lg">
                                 Work in Progress
                             </Button>
-                            <Group spacing="1em">
+                            <Group spacing="1em" className={"justify-content-center"}>
                                 <Button color="primary" size="lg" className="btn-icon-only">
                                     <FontAwesomeIcon icon={faInstagram} />
                                 </Button>
