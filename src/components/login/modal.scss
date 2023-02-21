@@ -1,42 +1,42 @@
-@import '../../base';
+@import "../../base";
 
 .offcanvas.modal {
-  right: 0;
-  left: auto;
+    right: 0;
+    left:  auto;
 }
 
 .form-container {
-  display: 'flex';
-  align-items: 'center';
-  margin-top: '16px';
+    display:     flex;
+    align-items: center;
+    margin-top:  16px;
 }
 
 .form-item {
-  flex: 1;
-  flex-direction: column;
+    flex:           1;
+    flex-direction: column;
 }
 
 .headerLogoWrapper p {
-  color: white;
-  font-size: x-large;
+    font-size: x-large;
+    color:     white;
 }
 
 .modal-list {
 }
 
 .sidebar__btns {
-  position: relative;
-  display: block;
-  background: #8041ff;
-  border: 2px solid #6634cc;
-  box-shadow: 4px 4px 0px #372163;
-  border-radius: 10px;
-  color: white;
-  font-family: 'Rubik', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  width: 160px;
-  height: 44px;
-  margin-bottom: 1rem;
-  left: 4rem;
+    font-family:   "Rubik", sans-serif;
+    font-size:     16px;
+    font-weight:   500;
+    position:      relative;
+    left:          4rem;
+    display:       block;
+    width:         160px;
+    height:        44px;
+    margin-bottom: 1rem;
+    color:         white;
+    border:        2px solid #6634cc;
+    border-radius: 10px;
+    background:    #8041ff;
+    box-shadow:    4px 4px 0px #372163;
 }
