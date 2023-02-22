@@ -1,0 +1,131 @@
+import React from "react";
+import { castVote, getAllPlans, getAllVotes, getAllVotesFromPoll, getPoolOptions, moviePayment } from "../services/movie";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import DonateCard from "./DonateCard";
+import { createFundingPaymentHistory } from "services/util";
+import { changeBacking } from "_redux/reducers/auth.duck";
+const LetsMakeaMovie = () => {
+    const formRef = React.useRef();
+    const router = useRouter();
+
+    const user = useSelector((state: any) => state.auth);
+    const [price, setPrice] = React.useState(0);
+
+    const [openModel, setOpenModel] = React.useState({
+        message: "",
+        open: false,
+        login: false,
+        parse: false,
+    });
+
+    const dispatch = useDispatch();
+
+    const [packages, setPackages] = React.useState([]);
+    React.useEffect(() => {
+        // getVotes();
+        getPlans();
+    }, []);
+
+    const getPlans = async () => {
+        const data = await getAllPlans();
+        if (data.code === "ABT0000") setPackages([...data.plans]);
+    };
+    React.useEffect(() => {
+        const { success } = router.query;
+        const pay = JSON.parse(localStorage.getItem("pay"));
+        if (success && pay) {
+            localStorage.setItem("pay", false);
+            setOpenModel({
+                ...openModel,
+                open: true,
+                parse: true,
+                message:
+                    "<p className='mb-0'>Thanks for taking the first step in helping us #letsmakeamovie.</p><p className='mb-0'> Please check your email and spam for your private discord invite.</p><p className='mb-0'> Let's make something amazing!</p>",
+            });
+            createPaymentHistory();
+        }
+    }, []);
+
+    React.useEffect(() => {
+        if (price) {
+            const plan = packages.find((item) => item.priceId === price);
+            localStorage.setItem("pay", true);
+            localStorage.setItem("price", plan.price);
+            localStorage.setItem("planId", plan._id);
+            localStorage.setItem("planTitle", plan.title);
+
+            setTimeout(() => formRef.current.submit(), 1000);
+        }
+    }, [price]);
+
+    const donateHandler = (id, price) => {
+        if (!user.authToken) {
+            setOpenModel({ open: true, message: " to choose backing tier", login: true });
+            return;
+        }
+        setPrice(price);
+        // setSelectedPlan(id);
+        // formRef.current.submit();
+    };
+    const createPaymentHistory = async () => {
+        const price = localStorage.getItem("price");
+        const planId = localStorage.getItem("planId");
+        const planTitle = localStorage.getItem("planTitle");
+        const reqData = {
+            transactionId: "",
+            paymentMethod: "stripe",
+            paid: true,
+            email: user.user.email,
+            user: user.user._id,
+            payTo: "5f0de0fb57fce500203473bb",
+            amount: price,
+            paymentFor: "croudfunding",
+            planId: planId,
+        };
+        dispatch(changeBacking(price, planTitle));
+        localStorage.removeItem("price");
+        localStorage.removeItem("planId");
+        localStorage.removeItem("planTitle");
+        await createFundingPaymentHistory(reqData);
+        getPlans();
+    };
+
+    return (
+        <React.Fragment>
+            {/* How much donate */}
+            <div className="container">
+                <p className="much-donate-title">
+                    How much do you want to back
+                    <span className="lets-make-movie--fact">?</span>
+                </p>
+                <div className="row ">
+                    {packages.map((item, i) => (
+                        <div key={i} className="col-md-4">
+                            <DonateCard
+                                id={item._id}
+                                index={i}
+                                priceId={item.priceId}
+                                title={item.title}
+                                price={item.price}
+                                originalPrice={item.originalPrice}
+                                total={item.total}
+                                benefits={item.benefits}
+                                leftPrice={item.leftCount}
+                                donateHandler={donateHandler}
+                            />
+                        </div>
+                    ))}
+                </div>
+                <div className="opacity-0">
+                    <form ref={formRef} action="https://artbot-backend-api-9v7k9.ondigitalocean.app/api/plan/openStripe" method="POST">
+                        <input type="hidden" value={price} name="priceId" />
+                        <button type="submit">Checkout</button>
+                    </form>
+                </div>
+            </div>
+        </React.Fragment>
+    );
+};
+
+export default LetsMakeaMovie;
