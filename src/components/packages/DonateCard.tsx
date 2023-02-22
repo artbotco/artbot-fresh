@@ -1,9 +1,22 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import PropTypes from "prop-types";
-import clsx from "clsx";
+import React     from "react";
+import Helpers   from "../../Helpers";
 // import ReactIcons from '../UI/ReactIcons/ReactIcons';
-const DonateCard = ({ id, title, price, originalPrice, leftPrice, benefits, total, index, priceId, donateHandler }) => {
+
+export type DonateItem = {
+    id: string;
+    title: string;
+    price: number;
+    originalPrice: number;
+    leftPrice: number;
+    benefits: string[];
+    total: number;
+    index?: number;
+    priceId?: string;
+    donateHandler: (id: string, priceId?: string) => void;
+}
+
+const DonateCard = ({ id, title, price, originalPrice, leftPrice, benefits, total, index, priceId, donateHandler }: DonateItem) => {
     const [amount, setAmount] = React.useState(0);
     const [edit, setEdit] = React.useState(false);
     return (
@@ -33,7 +46,7 @@ const DonateCard = ({ id, title, price, originalPrice, leftPrice, benefits, tota
                     <input className="form-control  bg-transparent form-input__feild" type="number" value={amount} onChange={(e) => setAmount(e.target.value)} min="0" />
                 </div>
             )}
-            <p className={`much-donate-card--left ${clsx({ "opacity-0": index === 0 })}`}>{leftPrice} left at this price</p>
+            <p className={Helpers.getClasses(`much-donate-card--left`, (index === 0 ? 'opacity-0' : ''))}>{leftPrice} left at this price</p>
             <button
                 onClick={() => {
                     setEdit(false);
@@ -46,16 +59,6 @@ const DonateCard = ({ id, title, price, originalPrice, leftPrice, benefits, tota
             </button>
         </div>
     );
-};
-
-DonateCard.propTypes = {
-    id: PropTypes.string,
-    title: PropTypes.string,
-    price: PropTypes.number,
-    originalPrice: PropTypes.number,
-    leftPrice: PropTypes.number,
-    benefits: PropTypes.array,
-    total: PropTypes.number,
 };
 
 export default DonateCard;
