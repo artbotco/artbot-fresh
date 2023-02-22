@@ -14,6 +14,7 @@ const initialState = {
     genre: []
 };
 const videoUploadAds = (state = initialState, action) => {
+    const updatedTags = [...state.tags];
     switch (action.type) {
         case actions.ADS_INPUT_CHANGE:
             return {
@@ -30,14 +31,12 @@ const videoUploadAds = (state = initialState, action) => {
                 age: action.value
             };
         case actions.ADS_CHIP_ADD:
-            const updatedtags = [...state.tags];
-            updatedtags.push(action.value);
+            updatedTags.push(action.value);
             return {
                 ...state,
                 [action.input]: action.value
             };
         case actions.ADS_CHIP_REMOVE:
-            const updatedTags = [...state.tags];
             updatedTags.splice(action.index, 1);
             console.log(action.input, action.value);
 
