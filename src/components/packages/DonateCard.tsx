@@ -43,7 +43,7 @@ const DonateCard = ({ id, title, price, originalPrice, leftPrice, benefits, tota
             </div>
             {edit && (
                 <div>
-                    <input className="form-control  bg-transparent form-input__feild" type="number" value={amount} onChange={(e) => setAmount(e.target.value)} min="0" />
+                    <input className="form-control  bg-transparent form-input__feild" type="number" value={amount} onChange={(e) => setAmount(parseInt(e.target.value, 10))} min="0" />
                 </div>
             )}
             <p className={Helpers.getClasses(`much-donate-card--left`, (index === 0 ? 'opacity-0' : ''))}>{leftPrice} left at this price</p>
