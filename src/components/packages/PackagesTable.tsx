@@ -1,17 +1,16 @@
-import { changeBacking } from "_redux/reducers/auth.duck";
-// import {useRouter}                   from "next/router";
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { createFundingPaymentHistory } from "services/util";
-import { getAllPlans } from "services/movie";
-import DonateCard from "./DonateCard";
+import {changeBacking}               from "_redux/reducers/auth.duck";
+import React                         from "react";
+import {useDispatch, useSelector}    from "react-redux";
+import {getAllPlans}                 from "services/movie";
+import {createFundingPaymentHistory} from "services/util";
+import {useRouter}                   from "services/Router";
+import DonateCard, {DonateItem}      from "./DonateCard";
 
 const LetsMakeaMovie = () => {
     const formRef = React.useRef();
-    // const router = useRouter();
-
     const user = useSelector((state: any) => state.auth);
     const [price, setPrice] = React.useState(0);
+    const router = useRouter();
 
     const [openModel, setOpenModel] = React.useState({
         message: "",
@@ -22,7 +21,8 @@ const LetsMakeaMovie = () => {
 
     const dispatch = useDispatch();
 
-    const [packages, setPackages] = React.useState([]);
+    let packs: any[] = [];
+    const [packages, setPackages] = React.useState(packs);
     React.useEffect(() => {
         // getVotes();
         getPlans();
@@ -33,8 +33,7 @@ const LetsMakeaMovie = () => {
         if (data.code === "ABT0000") setPackages([...data.plans]);
     };
     React.useEffect(() => {
-        // const { success } = router.query;
-        const success = true;
+        const {success} = router.query;
         const pay = JSON.parse(localStorage.getItem("pay") ?? "[]");
         if (success && pay) {
             localStorage.setItem("pay", "false");
@@ -70,12 +69,12 @@ const LetsMakeaMovie = () => {
         }, 1000);
     }, [price]);
 
-    const donateHandler = (id, price) => {
+    const donateHandler = (id: string, price: number | undefined | string) => {
         if (!user.authToken) {
-            setOpenModel({ open: true, message: " to choose backing tier", login: true });
+            setOpenModel({open: true, message: " to choose backing tier", login: true, parse: false});
             return;
         }
-        setPrice(price);
+        setPrice(price as number);
         // setSelectedPlan(id);
         // formRef.current.submit();
     };
@@ -102,41 +101,40 @@ const LetsMakeaMovie = () => {
         getPlans();
     };
 
-    return (
-        <React.Fragment>
-            {/* How much donate */}
-            <div className="container">
-                <p className="much-donate-title">
-                    How much do you want to back
-                    <span className="lets-make-movie--fact">?</span>
-                </p>
-                <div className="row ">
-                    {packages.map((item, i) => (
-                        <div key={i} className="col-md-4">
-                            <DonateCard
-                                id={item._id}
-                                index={i}
-                                priceId={item.priceId}
-                                title={item.title}
-                                price={item.price}
-                                originalPrice={item.originalPrice}
-                                total={item.total}
-                                benefits={item.benefits}
-                                leftPrice={item.leftCount}
-                                donateHandler={donateHandler}
-                            />
-                        </div>
-                    ))}
-                </div>
-                <div className="opacity-0">
-                    <form ref={formRef} action="https://artbot-backend-api-9v7k9.ondigitalocean.app/api/plan/openStripe" method="POST">
-                        <input type="hidden" value={price} name="priceId" />
-                        <button type="submit">Checkout</button>
-                    </form>
-                </div>
+    let fragment: JSX.Element = <><React.Fragment>
+        {/* How much donate */}
+        <div className="container">
+            <p className="much-donate-title">
+                How much do you want to back
+                <span className="lets-make-movie--fact">?</span>
+            </p>
+            <div className="row ">
+                {packages.map((item: DonateItem, i: number) => (
+                    <div key={i} className="col-md-4">
+                        <DonateCard
+                            id={item._id}
+                            index={i}
+                            priceId={item.priceId}
+                            title={item.title}
+                            price={item.price}
+                            originalPrice={item.originalPrice}
+                            total={item.total}
+                            benefits={item.benefits}
+                            leftPrice={item.leftCount}
+                            donateHandler={donateHandler}
+                        />
+                    </div>
+                ))}
             </div>
-        </React.Fragment>
-    );
+            <div className="opacity-0">
+                <form ref={formRef} action="https://artbot-backend-api-9v7k9.ondigitalocean.app/api/plan/openStripe" method="POST">
+                    <input type="hidden" value={price} name="priceId" />
+                    <button type="submit">Checkout</button>
+                </form>
+            </div>
+        </div>
+    </React.Fragment></>;
+    return fragment;
 };
 
 export default LetsMakeaMovie;

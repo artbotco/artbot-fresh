@@ -4,16 +4,18 @@ import Helpers   from "../../Helpers";
 // import ReactIcons from '../UI/ReactIcons/ReactIcons';
 
 export type DonateItem = {
-    id: string;
+    _id?: string;
+    id?: string;
     title: string;
     price: number;
     originalPrice: number;
-    leftPrice: number;
+    leftPrice?: number;
     benefits: string[];
     total: number;
     index?: number;
     priceId?: string;
-    donateHandler: (id: string, priceId?: string) => void;
+    donateHandler: (id?: string, priceId?: string) => void;
+    leftCount?: number;
 }
 
 const DonateCard = ({ id, title, price, originalPrice, leftPrice, benefits, total, index, priceId, donateHandler }: DonateItem) => {
