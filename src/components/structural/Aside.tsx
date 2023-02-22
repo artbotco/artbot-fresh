@@ -53,6 +53,7 @@ class Aside extends React.Component<any> {
             this.setState({active: false});
         } else {
             this.setState({active: true});
+            $('aside.active:not(#' + this.props.id + ')').trigger("toggle");
         }
     }
 
