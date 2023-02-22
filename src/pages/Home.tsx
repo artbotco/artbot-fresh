@@ -156,7 +156,7 @@ class HomeContent extends React.Component {
         return (
             <SectionWrapper>
                 <Section className="hero" index={0}>
-                    <h1>Let's Make a Movie!</h1>
+                    <h1>Let&apos;s Make a Movie!</h1>
                     <h2>
                         Vote on every step of the movie making process, and earn money as
                         the movie does!

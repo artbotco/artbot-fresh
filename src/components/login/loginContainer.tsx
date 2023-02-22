@@ -1,5 +1,5 @@
-import {useState}  from "react";
-import LoginForm   from "./loginForm";
+import React, {useState} from "react";
+import LoginForm         from "./loginForm";
 import "./login.scss";
 import RecoverForm from "./recoverForm";
 import SignUpForm  from "./signupForm";

@@ -5,6 +5,10 @@ const instance = axios.create({
     // baseURL: 'http://localhost:8080/api'
 });
 
+function doNothingWithThisError(error) {
+    return '';
+}
+
 instance.interceptors.request.use(
     function (config) {
         try {
@@ -17,7 +21,9 @@ instance.interceptors.request.use(
             // token = JSON.parse(user.authToken);
             if (token) config.headers['Authorization'] = 'Bearer ' + token;
             config.headers['Content-Type'] = 'application/json';
-        } catch (error) {}
+        } catch (error) {
+            doNothingWithThisError(error); // Just for linter, we don't need to do anything with this error
+        }
         return config;
     },
     function (error) {

@@ -1,7 +1,7 @@
 import Section                 from "components/structural/Section";
 import SectionWrapperNavigator from "components/visual/SectionWrapperNavigator";
-import Helpers                 from "Helpers";
-import {Component}             from "react";
+import Helpers            from "Helpers";
+import React, {Component} from "react";
 import "./SectionWrapper.scss";
 
 class SectionWrapper extends Component<any> {

@@ -1,5 +1,5 @@
-import {Component} from "react";
-import Helpers     from "Helpers";
+import React, {Component} from "react";
+import Helpers            from "Helpers";
 
 class Group extends Component<any> {
     getSpacing() {
