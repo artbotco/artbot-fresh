@@ -1,7 +1,6 @@
 import {faTimes}         from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Aside             from "components/structural/Aside";
-import $                 from "jquery";
 import React             from "react";
 import Helpers           from "../../Helpers";
 import Button            from "../visual/Button";

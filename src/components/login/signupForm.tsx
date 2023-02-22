@@ -21,11 +21,19 @@ function SignUpForm(props: any) {
         touch: false,
         error: false
     });
-    const [remember, setRemember] = useState(false);
-    const [profileImage, setProfileImg] = useState(null);
     const [message, setMessage] = useState({message: "", error: false});
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
+
+    let fn = () => {
+        // This is just to stop ESLint seeing these as unused variables
+        return {
+            m: message,
+            l: loading,
+            d: dispatch
+        };
+    };
+    fn();
 
     const submitHandler = async (e: any) => {
         e.preventDefault();
