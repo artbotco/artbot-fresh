@@ -1,0 +1,42 @@
+@import "../../base";
+
+aside#aside-login {
+   .form-container {
+        display:     flex;
+        align-items: center;
+        margin-top:  16px;
+        flex:        1 1 auto;
+        width:       100%;
+    }
+
+    .form-item {
+        display:        flex;
+        flex:           1;
+        flex-direction: column;
+
+        input[type="text"], input[type="password"], input[type="email"] {
+            height:        36px;
+            line-height:   36px;
+            border-radius: 15px;
+            padding:       2px $gutter/2;
+        }
+
+        &.radio {
+            display:         flex;
+            flex-direction:  row;
+            align-items:     center;
+            justify-content: flex-start;
+            margin-top:      8px;
+            margin-bottom:   8px;
+
+            input[type="radio"] {
+                margin: 0 8px;
+            }
+        }
+
+        label {
+            padding: 2px $gutter/2;
+        }
+
+    }
+}

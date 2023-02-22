@@ -6,7 +6,7 @@ import {useNavigate}     from "react-router-dom";
 import {login}           from "services/util";
 import Group             from "../structural/Group";
 import Button            from "../visual/Button";
-import "./modal.scss";
+import "./login.scss";
 
 const LoginForm = (props: any) => {
     const [username, setUsername] = useState({

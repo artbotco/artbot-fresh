@@ -1,10 +1,7 @@
-import jwt_decode        from "jwt-decode";
 import React, {useState} from "react";
 import {useDispatch}     from "react-redux";
-import {login, signUp}   from "services/util";
-import { loginUser }     from "_redux/reducers/auth.duck";
-import "./modal.scss";
-import Group             from "../structural/Group";
+import {signUp}   from "services/util";
+import "./login.scss";
 import Button            from "../visual/Button";
 
 function SignUpForm(props: any) {

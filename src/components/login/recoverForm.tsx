@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {resetPassword}   from "services/util";
-import "./modal.scss";
-import Group             from "../structural/Group";
+import "./login.scss";
 import Button            from "../visual/Button";
 
 function RecoverForm(props: any) {

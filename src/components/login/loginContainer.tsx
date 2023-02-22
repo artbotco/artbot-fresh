@@ -1,6 +1,6 @@
 import {useState}  from "react";
 import LoginForm   from "./loginForm";
-import "./modal.scss";
+import "./login.scss";
 import RecoverForm from "./recoverForm";
 import SignUpForm  from "./signupForm";
 

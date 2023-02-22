@@ -112,13 +112,13 @@ class HomeContent extends React.Component {
         if (target.hasClass("close")) {
             return false;
         }
-        if (target.closest(active).length) {
+        if (target.closest(active).length && !target.is('.modal')) {
             return false;
         }
         if (target.is(".modal button") || target.is(".aside button")) {
             return false;
         }
-        if (target.closest(".modal").is(".active") || target.closest(".aside").is(".active")) {
+        if ((target.closest(".modal").is(".active") || target.closest(".aside").is(".active")) && !target.is('.modal')) {
             return false;
         }
         if (target.attr("data-toggle") === "#" + active.attr("id")) {

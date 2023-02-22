@@ -200,7 +200,7 @@ const Header: React.FC<any> = () => {
             <Group spacing="1em">
               <Button
                 color="primary"
-                className="mobile-terms mobile-ftr-btn"
+                className="mobile-ftr-btn"
                 size="lg"
                 toggle="#modal-terms"
               >
@@ -208,7 +208,7 @@ const Header: React.FC<any> = () => {
               </Button>
               <Button
                 color="primary"
-                className="mobile-terms mobile-ftr-btn"
+                className="mobile-ftr-btn"
                 size="lg"
                 toggle="#modal-privacy"
               >
