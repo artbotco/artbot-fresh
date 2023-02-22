@@ -1,23 +1,35 @@
 import * as actions from '../actionTypes';
 
 const initialState = {
-    profileUser: {
-        user: { featured_2d3d: [], featured_audio: [], featured_video: [], created_at: '' },
+    profileUser:          {
+        user:   {
+            featured_2d3d:  [],
+            featured_audio: [],
+            featured_video: [],
+            created_at:     ''
+        },
         rating: 0
     },
     selectedSubscription: null,
-    subscriptions: [],
-    paymentStatus: false,
-    planDuration: '1',
-    referralDialog: false
+    subscriptions:        [],
+    paymentStatus:        false,
+    planDuration:         '1',
+    referralDialog:       false
 };
-const copyState = { ...initialState };
-const profile = (state = initialState, action) => {
+const copyState    = {...initialState};
+const profile      = (state = initialState, action) => {
+    const {
+              name,
+              value
+          } = action.e.target;
+    let updateSubscription,
+        editSubsc,
+        updateSubsc;
     switch (action.type) {
         case actions.PROFILE_USER:
             return {
                 ...state,
-                profileUser: action.user,
+                profileUser:   action.user,
                 subscriptions: action.user.user.subscriptions
             };
         case actions.PROFILE_FEATURED_VIDEO:
@@ -64,26 +76,31 @@ const profile = (state = initialState, action) => {
                 ...state,
                 subscriptions: [
                     ...state.subscriptions,
-                    { price: '', month: '1', title: '', desc: '', edit: false }
+                    {
+                        price: '',
+                        month: '1',
+                        title: '',
+                        desc:  '',
+                        edit:  false
+                    }
                 ]
             };
         case actions.REMOVE_SUBSCRIPTION:
-            const updateSubscription = [...state.subscriptions];
+            updateSubscription = [...state.subscriptions];
             updateSubscription.splice(action.index, 1);
             return {
                 ...state,
                 subscriptions: updateSubscription
             };
         case actions.HANDLE_SUBSCRIPTION_EDIT:
-            const editSubsc = [...state.subscriptions];
+            editSubsc                       = [...state.subscriptions];
             editSubsc[action.index]['edit'] = action.edit;
             return {
                 ...state,
                 subscriptions: editSubsc
             };
         case actions.HANDLE_SUBSCRIPTION_CHANGE:
-            const { name, value } = action.e.target;
-            const updateSubsc = [...state.subscriptions];
+            updateSubsc                                         = [...state.subscriptions];
             updateSubsc[name.split('-')[1]][name.split('-')[0]] = value;
             return {
                 ...state,
@@ -93,7 +110,7 @@ const profile = (state = initialState, action) => {
             return {
                 ...state,
                 paymentStatus: action.value,
-                planDuration: '1'
+                planDuration:  '1'
             };
         case actions.PLAN_DURATION_CHANGE:
             return {
