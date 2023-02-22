@@ -1,14 +1,14 @@
-import {changeBacking}               from "_redux/reducers/auth.duck";
-import {useRouter}                   from "next/router";
-import React                         from "react";
-import {useDispatch, useSelector}    from "react-redux";
-import {createFundingPaymentHistory} from "services/util";
-import {getAllPlans}                 from "../services/movie";
-import DonateCard                    from "./DonateCard";
+import { changeBacking } from "_redux/reducers/auth.duck";
+// import {useRouter}                   from "next/router";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createFundingPaymentHistory } from "services/util";
+import { getAllPlans } from "services/movie";
+import DonateCard from "./DonateCard";
 
 const LetsMakeaMovie = () => {
     const formRef = React.useRef();
-    const router = useRouter();
+    // const router = useRouter();
 
     const user = useSelector((state: any) => state.auth);
     const [price, setPrice] = React.useState(0);
@@ -17,7 +17,7 @@ const LetsMakeaMovie = () => {
         message: "",
         open: false,
         login: false,
-        parse: false
+        parse: false,
     });
 
     const dispatch = useDispatch();
@@ -33,8 +33,9 @@ const LetsMakeaMovie = () => {
         if (data.code === "ABT0000") setPackages([...data.plans]);
     };
     React.useEffect(() => {
-        const {success} = router.query;
-        const pay = JSON.parse(localStorage.getItem("pay") ?? '[]');
+        // const { success } = router.query;
+        const success = true;
+        const pay = JSON.parse(localStorage.getItem("pay") ?? "[]");
         if (success && pay) {
             localStorage.setItem("pay", "false");
             setOpenModel({
@@ -42,7 +43,7 @@ const LetsMakeaMovie = () => {
                 open: true,
                 parse: true,
                 message:
-                    "<p className='mb-0'>Thanks for taking the first step in helping us #letsmakeamovie.</p><p className='mb-0'> Please check your email and spam for your private discord invite.</p><p className='mb-0'> Let's make something amazing!</p>"
+                    "<p className='mb-0'>Thanks for taking the first step in helping us #letsmakeamovie.</p><p className='mb-0'> Please check your email and spam for your private discord invite.</p><p className='mb-0'> Let's make something amazing!</p>",
             });
             createPaymentHistory();
         }
@@ -52,7 +53,7 @@ const LetsMakeaMovie = () => {
         if (!price) {
             return;
         }
-        const plan = packages.find(({priceId}) => priceId === price);
+        const plan = packages.find(({ priceId }) => priceId === price);
         if (!plan) {
             return;
         }
@@ -71,7 +72,7 @@ const LetsMakeaMovie = () => {
 
     const donateHandler = (id, price) => {
         if (!user.authToken) {
-            setOpenModel({open: true, message: " to choose backing tier", login: true});
+            setOpenModel({ open: true, message: " to choose backing tier", login: true });
             return;
         }
         setPrice(price);
@@ -91,7 +92,7 @@ const LetsMakeaMovie = () => {
             payTo: "5f0de0fb57fce500203473bb",
             amount: price,
             paymentFor: "croudfunding",
-            planId: planId
+            planId: planId,
         };
         dispatch(changeBacking(price, planTitle));
         localStorage.removeItem("price");
