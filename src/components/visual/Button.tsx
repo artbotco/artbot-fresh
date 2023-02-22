@@ -9,7 +9,7 @@ import "./Button.scss";
  * @param [size] {"xs","sm","md","lg","xl"} Size of the button
  */
 class Button extends React.Component<any> {
-    element: HTMLAnchorElement | null = null;
+    ref: any = React.createRef();
 
     getClassNames() {
         let classNames = ["btn"];
@@ -25,34 +25,46 @@ class Button extends React.Component<any> {
         return classNames.join(" ");
     }
 
-    registerClick = (element: HTMLAnchorElement) => {
-        this.element = element;
-        if(!this.element) {
+    componentDidMount() {
+        let element = this.ref.current;
+        if (!element) {
+            console.error("Element does not exist");
             return;
         }
         if (this.props.onClick) {
-            this.element.addEventListener("click", this.props.onClick);
+            element.addEventListener("click", this.props.onClick);
         }
-        if (this.props.toggle) {
-            let toggleId = this.props.toggle;
-            if(this.element) {
-                this.element.addEventListener("click", () => {
-                    let tgt = $(toggleId);
-                    if(tgt.length === 0) {
-                        console.error('Element does not exist');
-                        return;
-                    }
-                    $(toggleId).toggleClass("active");
-                });
-            }
+        if (this.props.toggle && this.props.toggle.length > 0) {
+            element.addEventListener("click", this.handleToggle);
         }
+    }
+
+    handleToggle = (event: any) => {
+        let toggleId = this.props.toggle;
+        let tgt = $(toggleId);
+        if (tgt.length === 0) {
+            console.error("Element does not exist", toggleId);
+            return;
+        }
+        tgt.trigger("toggle");
     };
 
+    componentWillUnmount() {
+        let element = this.ref.current;
+        if (!element) {
+            console.error("Element does not exist");
+            return;
+        }
+        element.removeEventListener("click", this.props.onClick);
+        element.removeEventListener("click", this.handleToggle);
+    }
+
     render() {
-        const dataToggle = this.props.toggle ? { "data-toggle": this.props.toggle } : {};
-        const href = this.props.href ? { href: this.props.href, target: '_blank' } : {};
+        const dataToggle = this.props.toggle ? {"data-toggle": this.props.toggle} : {};
+        const dataNoToggle = this.props.notoggle ? {"data-notoggle": this.props.notoggle} : {};
+        const href = this.props.href ? {href: this.props.href, target: "_blank"} : {};
         return (
-            <a className={this.getClassNames()} {...dataToggle} {...href} ref={this.registerClick}>
+            <a ref={this.ref} className={this.getClassNames()} {...dataToggle} {...dataNoToggle} {...href}>
                 {this.props.children}
             </a>
         );

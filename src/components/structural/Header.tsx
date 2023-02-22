@@ -29,7 +29,7 @@ const Header: React.FC<any> = () => {
 
   const clickHandler = (ele: string) => {
     let aside = $('#aside-sidebar-left');
-    aside.removeClass('active');
+    //aside.removeClass('active');
     Helpers.scrollTo($(ele));
   };
 
@@ -206,24 +206,6 @@ const Header: React.FC<any> = () => {
               >
                 Terms & Conditions
               </Button>
-              {/* <Modal
-                id="aside-sidebar-left"
-                className="mobile-ftr-btn"
-                side="left"
-              >
-                <h1>{terms.title}</h1>
-                {terms.desc}
-              </Modal> */}
-              {/* {showTerms && (
-                <div className="modal-overlay" onClick={closeTerms}>
-                  <div
-                    className="modal-content"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    test
-                  </div>
-                </div>
-              )} */}
               <Button
                 color="primary"
                 className="mobile-terms mobile-ftr-btn"

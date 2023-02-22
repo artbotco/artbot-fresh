@@ -14,9 +14,9 @@ aside.aside {
     color:           $color-light;
 
     h1:first-of-type {
-        margin-top:   $gutter;
-        padding-top:  6px;
-        padding-left: $gutter;
+        margin-top:    $gutter;
+        padding-top:   6px;
+        padding-left:  $gutter;
         padding-right: calc($gutter + 34px);
     }
 
@@ -38,8 +38,9 @@ aside.aside {
         }
     }
 
-    .active {
+    &.active {
         transition: 0.3s ease-in-out;
+        box-shadow: 0 0 50px 5px rgba(0, 0, 0, 0.5);
     }
 
     .aside-close {

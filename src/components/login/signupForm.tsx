@@ -157,10 +157,10 @@ function SignUpForm(props: any) {
                     <input type="checkbox" id="termsOfUse" name="termsOfUse" />
                     <label htmlFor="termsOfUse">I agree to the terms of use</label>
                 </div>
-                <Button type="submit" className={"margin-half-top"}>
+                <Button type="submit" className={"margin-half-top notoggle"}>
                     Sign Up
                 </Button>
-                <Button color={"secondary"} onClick={props.backToLogin} className={"justify-content-center margin-half-top"}>Back</Button>
+                <Button color={"secondary"} onClick={props.backToLogin} notoggle="#aside-login"  className={"justify-content-center margin-half-top"}>Back</Button>
             </form>
         </>
     );

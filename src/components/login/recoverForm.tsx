@@ -73,7 +73,7 @@ function RecoverForm(props: any) {
                 <Button type="submit" className={"margin-half-top"}>
                     Submit
                 </Button>
-                <Button color={"secondary"} onClick={props.backToLogin} className={"justify-content-center margin-half-top"}>Back</Button>
+                <Button color={"secondary"} onClick={props.backToLogin} notoggle="#aside-login"  className={"justify-content-center margin-half-top"}>Back</Button>
             </form>
         </>
     );

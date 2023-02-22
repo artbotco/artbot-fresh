@@ -11,6 +11,16 @@ class Aside extends React.Component<any> {
     name = "aside";
     element = "aside";
 
+    ref:any = React.createRef();
+
+    state = {
+        active: false
+    };
+
+    constructor(props: any, state: any) {
+        super(props);
+    }
+
     getClasses() {
         let classes = [];
         if (this.props.className) {
@@ -24,33 +34,39 @@ class Aside extends React.Component<any> {
         } else {
             classes.push(this.name + "-right");
         }
+        if (this.state.active) {
+            classes.push("active");
+        }
         return classes;
     }
 
-    registerCloseHandler = (element: HTMLElement) => {
-        document.addEventListener("click", (event) => {
-            // Check if document contains element with active class
-            let el = $(this.element + `#${this.props.id}`);
-            let target = $(event.target as Node);
-            if (target && target.attr("data-toggle") === `#${this.props.id}`) {
-                return;
-            }
-            let parentToggle = target.closest("[data-toggle]");
-            if (parentToggle.length && parentToggle.attr("data-toggle") === `#${this.props.id}`) {
-                return;
-            }
-            if (el.hasClass("active")) {
-                // Check if clicked element is not inside the aside
-                if (!el[0].contains(event.target as Node)) {
-                    el.removeClass("active");
-                }
-            }
-        });
-    };
+    public componentDidMount() {
+        let element = this.ref.current;
+        if(!element) {
+            return;
+        }
+        $(element).on("toggle", () => {this.toggleState();});
+    }
+
+    public toggleState() {
+        if (this.state.active) {
+            this.setState({active: false});
+        } else {
+            this.setState({active: true});
+        }
+    }
+
+    public componentWillUnmount() {
+        let element = this.ref.current;
+        if(!element) {
+            return;
+        }
+        $(element).off("toggle");
+    }
 
     render() {
         return (
-            <aside id={this.props.id} ref={this.registerCloseHandler} className={Helpers.getClasses(this.name, this.getClasses())}>
+            <aside id={this.props.id} ref={this.ref} className={Helpers.getClasses(this.name, this.getClasses())}>
                 <Button color="light" size="xl" toggle={`#${this.props.id}`} className={Helpers.getClasses("btn-content-only", this.name + "-close")}><FontAwesomeIcon icon={faTimes} /></Button>
                 {this.props.children}
             </aside>
