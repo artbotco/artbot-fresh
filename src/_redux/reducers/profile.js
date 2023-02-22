@@ -18,10 +18,11 @@ const initialState = {
 };
 const copyState    = {...initialState};
 const profile      = (state = initialState, action) => {
-    const {
-              name,
-              value
-          } = action.e.target;
+    let name = '', value = '';
+    if(action && action.e && action.e.target) {
+        name = action.e.target.name;
+        value = action.e.target.value;
+    }
     let updateSubscription,
         editSubsc,
         updateSubsc;

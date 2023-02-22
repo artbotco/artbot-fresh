@@ -74,7 +74,13 @@ const videoCategoryReducer = (state = initialState, action) => {
         name:  action.name,
         value: action.value
     };
-    const tracks      = [...state.audioTracks, ...action.tracks];
+    let tracks      = [];
+    if(state.audioTracks) {
+        tracks = tracks.concat(state.audioTracks);
+    }
+    if(action.tracks) {
+        tracks = tracks.concat(action.tracks);
+    }
     let updateCredit,
         updateCredit1,
         updateImages,
