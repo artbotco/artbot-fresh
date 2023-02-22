@@ -1,17 +1,17 @@
 import * as actions from '../actionTypes';
 
-const initialState = {
-    title: {
+const initialState         = {
+    title:            {
         value: '',
         touch: false,
         error: false
     },
-    description: {
+    description:      {
         value: '',
         touch: false,
         error: true
     },
-    albumPrice: {
+    albumPrice:       {
         value: '',
         touch: false,
         error: true
@@ -21,49 +21,73 @@ const initialState = {
         touch: false,
         error: true
     },
-    tags: [],
-    genres: [],
+    tags:             [],
+    genres:           [],
     // genres: { value: '', touch: false, error: false },
-    videoFile: null,
-    videoFileUrl: null,
-    thumbnail: null,
-    creditArray: [{ position: '', username: '', percentage: '' }],
-    subscriptionArray: [],
-    imagedetails: {
-        type: 'illustration',
+    videoFile:          null,
+    videoFileUrl:       null,
+    thumbnail:          null,
+    creditArray:        [
+        {
+            position:   '',
+            username:   '',
+            percentage: ''
+        }
+    ],
+    subscriptionArray:  [],
+    imagedetails:       {
+        type:          'illustration',
         matureContent: 'mature',
-        description: '',
-        category: ''
+        description:   '',
+        category:      ''
     },
-    albumThumbnail: {
+    albumThumbnail:     {
         file: null,
-        url: null
+        url:  null
     },
-    audioTracks: [],
-    audioTracksPrice: [],
-    imageType: { value: 'illustration' },
-    imageMatureContent: { value: 'mature' },
-    imageTitle: {
+    audioTracks:        [],
+    audioTracksPrice:   [],
+    imageType:          {value: 'illustration'},
+    imageMatureContent: {value: 'mature'},
+    imageTitle:         {
         value: '',
         touch: false,
         error: false
     },
-    imageDescription: {
+    imageDescription:   {
         value: '',
         touch: false,
         error: false
     },
-    imageCategory: {
+    imageCategory:      {
         value: '',
         touch: false,
         error: false
     },
-    imagesArray: [],
-    imagesFiles: null,
-    imageDetail: []
+    imagesArray:        [],
+    imagesFiles:        null,
+    imageDetail:        []
 };
-const copyState = initialState;
+const copyState            = initialState;
 const videoCategoryReducer = (state = initialState, action) => {
+    const updatePrice = {
+        name:  action.name,
+        value: action.value
+    };
+    const tracks      = [...state.audioTracks, ...action.tracks];
+    let updateCredit,
+        updateCredit1,
+        updateImages,
+        updateImageDetail,
+        updateImageDetail1,
+        updateAudioTracks,
+        updateAudios,
+        file,
+        trackPrice,
+        updatedtags,
+        updatedTags,
+        updatedGenre,
+        removeGenre;
     switch (action.type) {
         case actions.INPUT_CHANGE:
             return {
@@ -75,28 +99,28 @@ const videoCategoryReducer = (state = initialState, action) => {
                 }
             };
         case actions.TAGS_ADD:
-            const updatedtags = [...state.tags];
+            updatedtags = [...state.tags];
             updatedtags.push(action.value);
             return {
                 ...state,
                 tags: updatedtags
             };
         case actions.TAGS_REMOVE:
-            const updatedTags = [...state.tags];
+            updatedTags = [...state.tags];
             updatedTags.splice(action.index, 1);
             return {
                 ...state,
                 tags: updatedTags
             };
         case actions.GENRE_ADD:
-            const updatedGenre = [...state.genres];
+            updatedGenre = [...state.genres];
             updatedGenre.push(action.value);
             return {
                 ...state,
                 genres: updatedGenre
             };
         case actions.GENRE_REMOVE:
-            const removeGenre = [...state.genres];
+            removeGenre = [...state.genres];
             removeGenre.splice(action.index, 1);
             return {
                 ...state,
@@ -105,13 +129,13 @@ const videoCategoryReducer = (state = initialState, action) => {
         case actions.VIDEO_FILE_CHANGE:
             return {
                 ...state,
-                videoFile: action.file,
+                videoFile:    action.file,
                 videoFileUrl: action.videoUrl
             };
         case actions.CLEAR_URL:
             return {
                 ...state,
-                videoFile: null,
+                videoFile:    null,
                 videoFileUrl: null
             };
         case actions.ADD_THUMBNAIL:
@@ -122,10 +146,16 @@ const videoCategoryReducer = (state = initialState, action) => {
         case actions.ADD_CREDIT:
             return {
                 ...state,
-                creditArray: [...state.creditArray, { position: '', username: '', percentage: '' }]
+                creditArray: [
+                    ...state.creditArray, {
+                        position:   '',
+                        username:   '',
+                        percentage: ''
+                    }
+                ]
             };
         case actions.CREDIT_HANDLE_CHANGE:
-            const updateCredit = [...state.creditArray];
+            updateCredit                                                                         = [...state.creditArray];
             updateCredit[action.e.target.name.split('-')[1]][action.e.target.name.split('-')[0]] =
                 action.e.target.value;
             return {
@@ -133,7 +163,7 @@ const videoCategoryReducer = (state = initialState, action) => {
                 creditArray: updateCredit
             };
         case actions.REMOVE_CREDIT:
-            const updateCredit1 = [...state.creditArray];
+            updateCredit1 = [...state.creditArray];
             updateCredit1.splice(action.index, 1);
             return {
                 ...state,
@@ -152,18 +182,18 @@ const videoCategoryReducer = (state = initialState, action) => {
                 imageDetail: [
                     ...state.imageDetail,
                     ...[...action.images].map((k) => ({
-                        title: '',
-                        desc: '',
+                        title:    '',
+                        desc:     '',
                         category: '',
-                        type: '',
-                        mature: ''
+                        type:     '',
+                        mature:   ''
                     }))
                 ]
             };
         case actions.REMOVE_IMAGE:
-            const updateImages = [...state.imagesArray];
+            updateImages = [...state.imagesArray];
             updateImages.splice(action.index, 1);
-            const updateImageDetail = [...state.imageDetail];
+            updateImageDetail = [...state.imageDetail];
             updateImageDetail.splice(action.index, 1);
             return {
                 ...state,
@@ -175,7 +205,7 @@ const videoCategoryReducer = (state = initialState, action) => {
                 ...state,
                 albumThumbnail: {
                     file: action.file,
-                    url: action.url
+                    url:  action.url
                 }
             };
         case actions.ALBUM_THUMBNAIL_REMOVE:
@@ -183,34 +213,39 @@ const videoCategoryReducer = (state = initialState, action) => {
                 ...state,
                 albumThumbnail: {
                     file: null,
-                    url: null
+                    url:  null
                 }
             };
         case actions.ADD_IMAGE_DETAIL:
-            const updateImageDetail1 = [...state.imageDetail];
+            updateImageDetail1               = [...state.imageDetail];
             updateImageDetail1[action.index] = action.data;
             return {
                 ...state,
                 imageDetail: updateImageDetail1
             };
         case actions.ADD_AUDIO_TRACKS:
-            const tracks = [...state.audioTracks, ...action.tracks];
             return {
                 ...state,
-                audioTracks: tracks,
-                audioTracksPrice: tracks.map((k, i) => ({ name: '', value: '' }))
+                audioTracks:      tracks,
+                audioTracksPrice: tracks.map((k, i) => ({
+                    name:  '',
+                    value: ''
+                }))
             };
         case actions.REMOVE_AUDIO_TRACK:
-            const updateAudioTracks = [...state.audioTracks];
+            updateAudioTracks = [...state.audioTracks];
             updateAudioTracks.splice(action.index, 1);
             return {
                 ...state,
-                audioTracks: updateAudioTracks,
-                audioTracksPrice: updateAudioTracks.map((k, i) => ({ name: '', value: '' }))
+                audioTracks:      updateAudioTracks,
+                audioTracksPrice: updateAudioTracks.map((k, i) => ({
+                    name:  '',
+                    value: ''
+                }))
             };
         case actions.UPDATE_AUDIO_TRACK:
-            const updateAudios = [...state.audioTracks];
-            const file = new File([updateAudios[action.index]], action.name, {
+            updateAudios               = [...state.audioTracks];
+            file                       = new File([updateAudios[action.index]], action.name, {
                 type: updateAudios[action.index].type
             });
             updateAudios[action.index] = file;
@@ -219,8 +254,7 @@ const videoCategoryReducer = (state = initialState, action) => {
                 audioTracks: updateAudios
             };
         case actions.UPDATE_AUDIO_TRACK_PRICE:
-            const trackPrice = [...state.audioTracksPrice];
-            const updatePrice = { name: action.name, value: action.value };
+            trackPrice               = [...state.audioTracksPrice];
             trackPrice[action.index] = updatePrice;
 
             return {
@@ -230,7 +264,7 @@ const videoCategoryReducer = (state = initialState, action) => {
         case actions.UPDATE_DATA:
             return {
                 ...state,
-                title: {
+                title:       {
                     ...state.title,
                     value: action.data.title
                 },
@@ -242,12 +276,12 @@ const videoCategoryReducer = (state = initialState, action) => {
                 // 	...state.genres,
                 // 	value: action.data.genre
                 // },
-                genres: action.data.genre,
-                tags: action.data.tags,
+                genres:         action.data.genre,
+                tags:           action.data.tags,
                 albumThumbnail: {
                     ...state.albumThumbnail,
                     file: null,
-                    url: action.data.thumbnail
+                    url:  action.data.thumbnail
                 }
             };
         case actions.CLEAR_VIDEO_STATE:
