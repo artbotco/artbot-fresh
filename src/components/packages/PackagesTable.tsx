@@ -6,6 +6,7 @@ import { useRouter } from "services/Router";
 import { createFundingPaymentHistory } from "services/util";
 import DonateCard, { DonateItem } from "./DonateCard";
 import packages from "./packages";
+import "./packages.scss";
 
 const LetsMakeaMovie = () => {
     const formRef: LegacyRef<any> = React.useRef();
@@ -106,11 +107,11 @@ const LetsMakeaMovie = () => {
             <React.Fragment>
                 {/* How much donate */}
                 <div className="container">
-                    <p className="much-donate-title">
+                    <p className="packages-title">
                         How much do you want to back
                         <span className="lets-make-movie--fact">?</span>
                     </p>
-                    <div className="row ">
+                    <div className="package-container">
                         {packages.plans.map((item, i: number) => {
                             return (
                                 <div key={i} className="col-md-4">

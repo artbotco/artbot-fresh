@@ -4,6 +4,7 @@ import Helpers from "../../Helpers";
 import Button from "components/visual/Button";
 // import ReactIcons from '../UI/ReactIcons/ReactIcons';
 import ReactIcons from "assets/ReactIcons";
+import "./packages.scss";
 
 export type DonateItem = {
     _id?: string;
@@ -24,7 +25,7 @@ const DonateCard = ({ id, title, price, originalPrice, leftPrice, benefits, tota
     const [amount, setAmount] = React.useState(0);
     const [edit, setEdit] = React.useState(false);
     return (
-        <div className="much-donate-card">
+        <div className="packages">
             <p className="much-donate-card--title">{title}</p>
             {benefits.map((item, i) => (
                 <div key={i} className="d-flex much-donate-card-inner align-items-center1 ">

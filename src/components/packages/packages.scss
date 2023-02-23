@@ -1,0 +1,17 @@
+.packages-title {
+    text-align: center;
+    font-weight: 64px;
+    font-size: 32px;
+}
+
+.package-container {
+    display: flex;
+    grid-template: auto auto auto;
+    padding: 10px;
+}
+
+.packages {
+    border: 1px solid;
+    border-radius: 1rem;
+    font-size: 16px;
+}
