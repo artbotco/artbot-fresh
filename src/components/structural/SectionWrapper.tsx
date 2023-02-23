@@ -1,13 +1,13 @@
-import Section                                         from "components/structural/Section";
-import SectionWrapperNavigator                         from "components/visual/SectionWrapperNavigator";
-import Helpers                                         from "Helpers";
-import React, {Component}                              from "react";
-import {Mousewheel, Navigation, Pagination, Scrollbar} from "swiper";
+import Section                             from "components/structural/Section";
+import SectionWrapperNavigator             from "components/visual/SectionWrapperNavigator";
+import Helpers                             from "Helpers";
+import React, {Component}                  from "react";
+import {Mousewheel, Pagination, Scrollbar} from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import {Swiper, SwiperSlide}                           from "swiper/react";
+import {Swiper, SwiperSlide}               from "swiper/react";
 import "./SectionWrapper.scss";
 
 class SectionWrapper extends Component<any> {
@@ -34,33 +34,44 @@ class SectionWrapper extends Component<any> {
     // @ts-ignore
     moveMountain(swiper: Swiper, translate: number) {
         if (!this.wrapper.current) {
+            console.error("No swiper wrapper");
             return false;
         }
         const scroll = Math.floor(translate * -1);
 
-        if (scroll === this.currentMountainOffset) {
+        if (scroll === this.currentMountainOffset || scroll < 1) {
+            console.log("No scroll necessary", scroll, this.currentMountainOffset);
             return false;
         }
+        console.log("Scrolling", scroll, this.currentMountainOffset);
         this.currentMountainOffset = scroll;
 
         const windowHeight = window.innerHeight;
         const bodyHeight = this.wrapper.current.swiper.virtualSize;
         const scrollPercent = scroll / (bodyHeight - windowHeight);
         const offset = 70 - (45 * scrollPercent);
-        const sectionWrapper = document.querySelector<HTMLElement>(".sectionwrapper");
-        if (sectionWrapper) {
-            sectionWrapper.style.backgroundPositionY = `${offset}vh`;
-        }
-
-        console.log(translate);
-
-        swiper.setTranslate(translate);
+        console.log("Setting background position", offset);
+        this.wrapper.current.style.backgroundPositionY = `${offset.toFixed()}vh`;
 
         return true;
     }
 
     componentDidMount() {
         this.currentMountainOffset = 0;
+
+        this.wrapper.current.swiper.on("setTranslate", (swiper: any, translate: number) => {
+            this.moveMountain(swiper, translate);
+        });
+    }
+
+    componentWillUnmount(): void {
+        if (!this.wrapper.current) {
+            return;
+        }
+        if (!this.wrapper.current.swiper) {
+            return;
+        }
+        this.wrapper.current.swiper.off("setTranslate");
     }
 
     render() {
