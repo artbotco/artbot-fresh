@@ -5,44 +5,45 @@
 
     .package {
         border-radius: 15px;
-        padding:       0 1rem;
-        background:    adjust-color($color-secondary-shadow, $lightness: -20%);
-        border:        0.5px solid $color-secondary;
-        box-shadow:    0 0 45px adjust-color($color-secondary, $alpha: -0.5);
+        padding: 0 1rem;
+        background: adjust-color($color-secondary-shadow, $lightness: -20%);
+        border: 0.5px solid $color-secondary;
+        box-shadow: 0 0 45px adjust-color($color-secondary, $alpha: -0.5);
 
-        &:hover, &:focus, &:focus-within {
-            border:     0.5px solid $color-primary;
+        &:hover,
+        &:focus,
+        &:focus-within {
+            border: 0.5px solid $color-primary;
             box-shadow: 0 0 45px adjust-color($color-primary, $alpha: -0.5);
         }
 
         .package-title {
-            font-size:   1.5rem;
+            font-size: 1.5rem;
             font-weight: 600;
-            margin:      1rem 0;
-            text-align:  center;
-            width:       100%;
-
+            margin: 1rem 0;
+            text-align: center;
+            width: 100%;
         }
 
         ul.package-benefits {
-            margin:     0;
-            padding:    0;
+            margin: 0;
+            padding: 0;
             list-style: none;
 
             li.package-benefit {
                 margin-bottom: 0.5rem;
-                font-size:     0.75rem;
-                font-weight:   400;
-                padding-left:  1.5rem;
+                font-size: 0.75rem;
+                font-weight: 400;
+                padding-left: 1.5rem;
 
                 img {
-                    width:          1rem;
-                    height:         1rem;
-                    display:        inline-block;
-                    margin-right:   0.5rem;
+                    width: 1rem;
+                    height: 1rem;
+                    display: inline-block;
+                    margin-right: 0.5rem;
                     vertical-align: middle;
-                    float:          left;
-                    margin-left:    -1.5rem;
+                    float: left;
+                    margin-left: -1.5rem;
                 }
 
                 &.package-benefit-check {
@@ -56,25 +57,25 @@
         }
 
         .package-price {
-            font-size:   2.5rem;
+            font-size: 2.5rem;
             font-weight: 600;
-            margin:      1rem 0;
-            text-align:  center;
-            position:    relative;
-            display:     inline-block;
-            width:       auto;
-            margin:      auto;
+            margin: 1rem 0;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: auto;
+            margin: auto;
 
             .package-price-original {
                 text-decoration: line-through;
-                color:           hsla(0, 0%, 100%, .5);
-                font-size:       0.75rem;
-                vertical-align:  middle;
-                padding-right:   0.5rem;
-                position:        absolute;
-                top:             50%;
-                left:            -1rem;
-                transform:       translate(-50%, -50%);
+                color: hsla(0, 0%, 100%, 0.5);
+                font-size: 0.75rem;
+                vertical-align: middle;
+                padding-right: 0.5rem;
+                position: absolute;
+                top: 50%;
+                left: -1rem;
+                transform: translate(-50%, -50%);
             }
 
             .package-price-now {
@@ -83,17 +84,17 @@
         }
 
         .package-number-left {
-            font-size:   1rem;
+            font-size: 1rem;
             font-weight: 400;
-            margin:      1rem 0;
-            text-align:  center;
-            width:       100%;
-            color:       $color-light;
+            margin: 1rem 0;
+            text-align: center;
+            width: 100%;
+            color: $color-light;
         }
 
         .package-button {
-            display:    inline-block;
-            margin:     1rem auto;
+            display: inline-block;
+            margin: 1rem auto;
             box-shadow: none;
             background: none;
         }
@@ -102,4 +103,8 @@
     & + .package-row {
         margin-top: calc($gutter / 2);
     }
+}
+
+.modal-content {
+    width: 100vh !important;
 }
