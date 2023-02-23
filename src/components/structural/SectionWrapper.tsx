@@ -1,8 +1,10 @@
-import Section                             from "components/structural/Section";
-import SectionWrapperNavigator             from "components/visual/SectionWrapperNavigator";
-import {getClasses}                        from "Helpers";
-import $                                   from "jquery";
+import {faHouse}                           from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon}                   from "@fortawesome/react-fontawesome";
+import Section                                      from "components/structural/Section";
+import {filterClasses, getClasses, scrollToSection} from "Helpers";
+import $                                            from "jquery";
 import React, {Component}                  from "react";
+import {renderToString}                    from "react-dom/server";
 import {Mousewheel, Pagination, Scrollbar} from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -19,18 +21,6 @@ class SectionWrapper extends Component<any> {
     windowScroll = () => {
         // Scroll handler for mountain background
     };
-
-    renderNavigator() {
-        let indexes: any[] = [];
-        this.props.children.forEach((child: any) => {
-            if (child.type === Section && child.props.index !== undefined) {
-                indexes.push(child.props.index);
-            }
-        });
-        return (
-            <SectionWrapperNavigator indexes={indexes} />
-        );
-    }
 
     moveMountain(swiper: any, translate: number) {
         if (!this.wrapper.current) {
@@ -103,7 +93,6 @@ class SectionWrapper extends Component<any> {
                         direction={"vertical"}
                         pagination={{
                             clickable: true,
-                            el: "ul.section-navigator",
                             renderBullet: this.renderBullet
                         }}
                         slidesPerView={1}
@@ -125,19 +114,28 @@ class SectionWrapper extends Component<any> {
                             }
                         })}
                     </Swiper>
-                    {this.renderNavigator()}
                 </div>
                 <></>
             </>
         );
     }
 
-    renderBullet = (index: number, className: string) => {
+    getNavigatorItem(num: number, className: string) {
+        if (num === 0) {
+            return (
+                <li key={"navigator-item-" + num} className={filterClasses(getClasses("section-navigator-item", className), [])} data-section={num} onClick={() => scrollToSection(num)}>
+                    <FontAwesomeIcon icon={faHouse} />
+                </li>
+            );
+        }
         return (
-            <li key={index} className={className}>
-                <a href={`#section-${index}`}>{index}</a>
+            <li key={"navigator-item-" + num} className={filterClasses(getClasses("section-navigator-item", className), [])} data-section={num} onClick={() => scrollToSection(num)}>
+                &nbsp;
             </li>
         );
+    }
+    renderBullet = (index: number, className: string) => {
+        return renderToString(this.getNavigatorItem(index, className));
     };
 }
 

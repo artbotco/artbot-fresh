@@ -66,3 +66,23 @@ export function getSwiperTranslate() {
     }
     return swiperInstance.translate * -1;
 }
+
+export function scrollToSection(num: number) {
+    let swiper: any = document.querySelector(".swiper");
+    if (!swiper) {
+        return false;
+    }
+    let swiperInstance: Swiper = swiper.swiper;
+    if (!swiperInstance) {
+        return false;
+    }
+    swiperInstance.slideTo(num, 1000);
+}
+
+export function filterClasses(classes:string, exclude:string[] = []):string {
+    let ret = classes.split(" ").filter((c) => {
+        console.log(c);
+        return exclude.indexOf(c) === -1;
+    });
+    return ret.join(" ");
+}

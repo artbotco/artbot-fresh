@@ -7,9 +7,9 @@ import LoginContainer                                from "components/login/logi
 import Aside                                         from "components/structural/Aside";
 import {Column, Row}                                 from "components/structural/Grid";
 import Group                                         from "components/structural/Group";
-import Button                                        from "components/visual/Button";
-import {scrollTo}                                       from "Helpers";
-import $                                             from "jquery";
+import Button                      from "components/visual/Button";
+import {scrollTo, scrollToSection} from "Helpers";
+import $                           from "jquery";
 import React                                         from "react";
 import {useSelector}                                 from "react-redux";
 import {privacy, terms}                              from "../../utils/FooterText";
@@ -98,7 +98,7 @@ const Header: React.FC<any> = () => {
                                 size="lg"
                                 className="btn-text-light"
                                 data-section="0"
-                                onClick={() => clickHandler(".section[data-section=\"0\"]")}
+                                onClick={() => scrollToSection(0)}
                             >
                                 Home
                             </Button>
@@ -109,7 +109,7 @@ const Header: React.FC<any> = () => {
                                 size="lg"
                                 className="btn-text-light"
                                 data-section="1"
-                                onClick={() => clickHandler(".section[data-section=\"1\"]")}
+                                onClick={() => scrollToSection(1)}
                             >
                                 1. Vote
                             </Button>
@@ -120,7 +120,7 @@ const Header: React.FC<any> = () => {
                                 size="lg"
                                 className="btn-text-light"
                                 data-section="2"
-                                onClick={() => clickHandler(".section[data-section=\"2\"]")}
+                                onClick={() => scrollToSection(2)}
                             >
                                 2. Crowdfund
                             </Button>
@@ -131,7 +131,7 @@ const Header: React.FC<any> = () => {
                                 size="lg"
                                 className="btn-text-light"
                                 data-section="3"
-                                onClick={() => clickHandler(".section[data-section=\"3\"]")}
+                                onClick={() => scrollToSection(3)}
                             >
                                 3. Pre-production
                             </Button>
@@ -142,7 +142,7 @@ const Header: React.FC<any> = () => {
                                 size="lg"
                                 className="btn-text-light"
                                 data-section="4"
-                                onClick={() => clickHandler(".section[data-section=\"4\"]")}
+                                onClick={() => scrollToSection(4)}
                             >
                                 4. Production
                             </Button>
@@ -153,7 +153,7 @@ const Header: React.FC<any> = () => {
                                 size="lg"
                                 className="btn-text-light"
                                 data-section="5"
-                                onClick={() => clickHandler(".section[data-section=\"5\"]")}
+                                onClick={() => scrollToSection(5)}
                             >
                                 5. Profit!
                             </Button>
