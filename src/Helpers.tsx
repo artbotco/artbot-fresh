@@ -81,7 +81,6 @@ export function scrollToSection(num: number) {
 
 export function filterClasses(classes:string, exclude:string[] = []):string {
     let ret = classes.split(" ").filter((c) => {
-        console.log(c);
         return exclude.indexOf(c) === -1;
     });
     return ret.join(" ");
