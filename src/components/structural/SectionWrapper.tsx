@@ -32,8 +32,7 @@ class SectionWrapper extends Component<any> {
         );
     }
 
-    // @ts-ignore
-    moveMountain(swiper: Swiper, translate: number) {
+    moveMountain(swiper: any, translate: number) {
         if (!this.wrapper.current) {
             return false;
         }
@@ -57,12 +56,28 @@ class SectionWrapper extends Component<any> {
         return true;
     }
 
+    checkSwiperTranslate(swiper: any, translate: number) {
+        if (!this.wrapper.current) {
+            return false;
+        }
+        const scroll = Math.floor(translate * -1);
+
+        if (scroll === this.currentMountainOffset) {
+            return false;
+        }
+
+        $(window).trigger("swiperTranslate", [swiper, translate]);
+        return true;
+    }
+
     componentDidMount() {
         this.currentMountainOffset = 0;
 
         this.wrapper.current.swiper.on("setTranslate", (swiper: any, translate: number) => {
+            this.checkSwiperTranslate(swiper, translate);
+        });
+        $(window).on("swiperTranslate", (event: any, swiper: any, translate: number) => {
             this.moveMountain(swiper, translate);
-            $(window).trigger("swiperTranslate", [swiper, translate]);
         });
     }
 
@@ -74,6 +89,7 @@ class SectionWrapper extends Component<any> {
             return;
         }
         this.wrapper.current.swiper.off("setTranslate");
+        $(window).off("swiperTranslate");
     }
 
     render() {
