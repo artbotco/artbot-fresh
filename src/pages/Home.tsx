@@ -26,29 +26,46 @@ class HomeContent extends React.Component {
         if (!tower) {
             return;
         }
-        const towerStart = document.querySelector<HTMLElement>(".tower-start");
+        let towerStart = document.querySelector<HTMLElement>(".tower-start");
+        if (!towerStart) {
+            return;
+        }
+        towerStart = towerStart.parentNode as HTMLElement;
         if (!towerStart) {
             return;
         }
 
-        const towerStartTop = towerStart.offsetTop;
-        const bodyHeight = document.body.clientHeight;
-        const scrollRange = bodyHeight - window.innerHeight - towerStartTop;
-
-        const windowScroll = getSwiperTranslate() - towerStartTop;
-        const towerHeight = tower.clientHeight;
-        const baseOffset = window.innerHeight + window.innerHeight * 0.3;
-
-        if (windowScroll < 0) {
-            tower.style.top = `${baseOffset}px`;
+        let swiper:any = document.querySelector(".swiper");
+        if (!swiper) {
+            return;
+        }
+        let swiperHeight = swiper?.swiper.virtualSize;
+        if (!swiperHeight) {
             return;
         }
 
-        const maxOffset = bodyHeight - towerHeight - window.innerHeight * 0.3;
+        const towerStartTop = towerStart.offsetTop;
+        const scrollRange = swiperHeight - window.innerHeight - towerStartTop;
+
+        const windowScroll = getSwiperTranslate() - towerStartTop;
+        const towerHeight = tower.clientHeight;
+        const baseOffset = window.innerHeight * 0.3;
+
+/*        if (windowScroll < 0) {
+            tower.style.top = `${baseOffset}px`;
+            return;
+        }*/
+
+        const maxOffset = swiperHeight - towerHeight - window.innerHeight * 0.3;
         const offsetRange = maxOffset - baseOffset;
         const windowOffsetPercentage = windowScroll / scrollRange;
 
         const offset = baseOffset + offsetRange * windowOffsetPercentage;
+
+
+
+        console.table({towerStartTop, scrollRange, windowScroll, towerHeight, baseOffset, maxOffset, offsetRange, windowOffsetPercentage, offset})
+
         tower.style.top = `${offset}px`;
     };
 
