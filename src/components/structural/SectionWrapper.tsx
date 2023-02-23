@@ -34,16 +34,13 @@ class SectionWrapper extends Component<any> {
     // @ts-ignore
     moveMountain(swiper: Swiper, translate: number) {
         if (!this.wrapper.current) {
-            //console.error("No swiper wrapper");
             return false;
         }
         const scroll = Math.floor(translate * -1);
 
-        if (scroll === this.currentMountainOffset || scroll < 1) {
-            //console.log("No scroll necessary", scroll, this.currentMountainOffset);
+        if (scroll === this.currentMountainOffset) {
             return false;
         }
-        //console.log("Scrolling", scroll, this.currentMountainOffset);
         this.currentMountainOffset = scroll;
 
         const windowHeight = window.innerHeight;
