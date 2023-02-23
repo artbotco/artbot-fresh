@@ -1,5 +1,5 @@
-import queryString                                         from "query-string";
-import {useMemo}                                           from "react";
+import queryString              from "query-string";
+import {useMemo}                from "react";
 import {useLocation, useParams} from "react-router-dom";
 
 export function useRouter() {
@@ -18,7 +18,7 @@ export function useRouter() {
                 ...queryString.parse(location.search), // Convert string to object
                 ...params
             },
-            location,
+            location
         };
     }, [params, location]);
 }

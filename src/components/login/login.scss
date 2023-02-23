@@ -18,7 +18,7 @@ aside#aside-login {
             height:        36px;
             line-height:   36px;
             border-radius: 15px;
-            padding:       2px $gutter/2;
+            padding:       2px calc($gutter/2);
         }
 
         &.radio {
@@ -35,7 +35,7 @@ aside#aside-login {
         }
 
         label {
-            padding: 2px $gutter/2;
+            padding: 2px calc($gutter/2);
         }
 
     }

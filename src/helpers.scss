@@ -61,23 +61,23 @@
 }
 
 .margin-half {
-    margin: $gutter / 2 !important;
+    margin: calc($gutter / 2) !important;
 }
 
 .margin-half-top {
-    margin-top: $gutter / 2 !important;
+    margin-top: calc($gutter / 2) !important;
 }
 
 .margin-half-bottom {
-    margin-bottom: $gutter / 2 !important;
+    margin-bottom: calc($gutter / 2) !important;
 }
 
 .margin-half-left {
-    margin-left: $gutter / 2 !important;
+    margin-left: calc($gutter / 2) !important;
 }
 
 .margin-half-right {
-    margin-right: $gutter / 2 !important;
+    margin-right: calc($gutter / 2) !important;
 }
 
 .margin {
@@ -101,23 +101,23 @@
 }
 
 .padding-half {
-    padding: $gutter / 2 !important;
+    padding: calc($gutter / 2) !important;
 }
 
 .padding-half-top {
-    padding-top: $gutter / 2 !important;
+    padding-top: calc($gutter / 2) !important;
 }
 
 .padding-half-bottom {
-    padding-bottom: $gutter / 2 !important;
+    padding-bottom: calc($gutter / 2) !important;
 }
 
 .padding-half-left {
-    padding-left: $gutter / 2 !important;
+    padding-left: calc($gutter / 2) !important;
 }
 
 .padding-half-right {
-    padding-right: $gutter / 2 !important;
+    padding-right: calc($gutter / 2) !important;
 }
 
 .padding {
@@ -142,8 +142,8 @@
 
 
 .form {
-    display:         flex;
-    flex-direction:  column;
+    display:        flex;
+    flex-direction: column;
 
     &.form-centered {
         justify-items:   center;
