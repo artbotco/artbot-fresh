@@ -1,3 +1,4 @@
+import $                  from "jquery";
 import React, {Component} from "react";
 import * as THREE         from "three";
 import "./StarryNight.scss";
@@ -14,6 +15,8 @@ class StarryNight extends Component {
         if (this.canvas.current) {
             this.bootStarfield();
         }
+
+        $(window).on("resize.starrynight", this.resize.bind(this));
     }
 
     bootStarfield() {
@@ -38,6 +41,21 @@ class StarryNight extends Component {
         this.renderFrame();
     }
 
+    resize() {
+        if (!this.canvas.current || !this.camera || !this.renderer) {
+            return;
+        }
+        let heroSection = document.querySelector(".section.hero") as HTMLElement;
+        if (!heroSection) {
+            return;
+        }
+        let heroHeight = heroSection.offsetHeight;
+        let heroWidth = heroSection.offsetWidth;
+        this.camera.aspect = heroWidth / heroHeight;
+        this.camera.updateProjectionMatrix();
+        this.renderer.setSize(heroWidth, heroHeight);
+    }
+
     renderFrame() {
         requestAnimationFrame(this.renderFrame.bind(this));
 
@@ -59,7 +77,7 @@ class StarryNight extends Component {
         let division = 30;
         let heroHeight = heroSection.offsetHeight;
         if (window.scrollY > 0) {
-            division = 30 + 500 * (window.scrollY / heroHeight);
+            division = 30 + 250 * (window.scrollY / heroHeight);
 
             let opacity = 1 - (window.scrollY / heroHeight);
             // Set canvas opacity
@@ -141,6 +159,8 @@ class StarryNight extends Component {
         this.renderer = undefined;
         this.scene = undefined;
         this.stars = [];
+
+        $(window).off("resize.starrynight", this.resize.bind(this));
     }
 
     render() {
