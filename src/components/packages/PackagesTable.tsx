@@ -1,12 +1,11 @@
-import { changeBacking } from "_redux/reducers/auth.duck";
-import React, { LegacyRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllPlans } from "services/movie";
-import { useRouter } from "services/Router";
-import { createFundingPaymentHistory } from "services/util";
-import DonateCard, { DonateItem } from "./DonateCard";
-import packages from "./packages";
-import { Row, Column } from "components/structural/Grid";
+import {changeBacking}               from "_redux/reducers/auth.duck";
+import {Row}                         from "components/structural/Grid";
+import React, {LegacyRef}            from "react";
+import {useDispatch, useSelector}    from "react-redux";
+import {useRouter}                   from "services/Router";
+import {createFundingPaymentHistory} from "services/util";
+import DonateCard                    from "./DonateCard";
+import packages                      from "./packages";
 import "./packages.scss";
 
 const LetsMakeaMovie = () => {
@@ -19,7 +18,7 @@ const LetsMakeaMovie = () => {
         message: "",
         open: false,
         login: false,
-        parse: false,
+        parse: false
     });
 
     const dispatch = useDispatch();
@@ -35,7 +34,7 @@ const LetsMakeaMovie = () => {
     //     if (data.code === "ABT0000") setPackages([...data.plans]);
     // };
     React.useEffect(() => {
-        const { success } = router.query;
+        const {success} = router.query;
         const pay = JSON.parse(localStorage.getItem("pay") ?? "[]");
         if (success && pay) {
             localStorage.setItem("pay", "false");
@@ -44,7 +43,7 @@ const LetsMakeaMovie = () => {
                 open: true,
                 parse: true,
                 message:
-                    "<p className='mb-0'>Thanks for taking the first step in helping us #letsmakeamovie.</p><p className='mb-0'> Please check your email and spam for your private discord invite.</p><p className='mb-0'> Let's make something amazing!</p>",
+                    "<p className='mb-0'>Thanks for taking the first step in helping us #letsmakeamovie.</p><p className='mb-0'> Please check your email and spam for your private discord invite.</p><p className='mb-0'> Let's make something amazing!</p>"
             });
             createPaymentHistory();
         }
@@ -54,7 +53,7 @@ const LetsMakeaMovie = () => {
         if (!price) {
             return;
         }
-        const plan = packages.plans.find(({ priceId }) => parseInt(priceId, 10) === price);
+        const plan = packages.plans.find(({priceId}) => parseInt(priceId, 10) === price);
         if (!plan) {
             return;
         }
@@ -93,7 +92,7 @@ const LetsMakeaMovie = () => {
             payTo: "5f0de0fb57fce500203473bb",
             amount: price,
             paymentFor: "croudfunding",
-            planId: planId,
+            planId: planId
         };
         dispatch(changeBacking(price, planTitle));
         localStorage.removeItem("price");
@@ -103,41 +102,58 @@ const LetsMakeaMovie = () => {
         // getPlans();
     };
 
+    const renderPackages = () => {
+        // Get packages.plans in groups of three
+        const packagesGroups = [];
+        let group = [];
+        for (let i = 0; i < packages.plans.length; i++) {
+            group.push(packages.plans[i]);
+            if (group.length === 3) {
+                packagesGroups.push(group);
+                group = [];
+            }
+        }
+        if (group.length > 0) {
+            packagesGroups.push(group);
+        }
+        return packagesGroups.map((group, i) => {
+            return (
+                <Row className={`package-row`} key={i}>
+                    {group.map((item, j: number) => {
+                        return (
+                            <DonateCard
+                                id={item._id}
+                                key={j}
+                                index={i}
+                                priceId={item.priceId}
+                                title={item.title}
+                                price={item.price}
+                                originalPrice={item.originalPrice}
+                                total={item.total}
+                                benefits={item.benefits}
+                                leftPrice={item.leftCount}
+                                donateHandler={donateHandler}
+                            />
+                        );
+                    })}
+                </Row>
+            );
+        });
+    };
+
     let fragment: JSX.Element = (
         <>
             <React.Fragment>
                 {/* How much donate */}
-                <div className="container">
-                    <p className="packages-title">
-                        How much do you want to back
-                        <span className="lets-make-movie--fact">?</span>
-                    </p>
-                    {/* <div className="package-container"> */}
-                    {packages.plans.map((item, i: number) => {
-                        return (
-                            <Row key={i}>
-                                <DonateCard
-                                    id={item._id}
-                                    index={i}
-                                    priceId={item.priceId}
-                                    title={item.title}
-                                    price={item.price}
-                                    originalPrice={item.originalPrice}
-                                    total={item.total}
-                                    benefits={item.benefits}
-                                    leftPrice={item.leftCount}
-                                    donateHandler={donateHandler}
-                                />
-                            </Row>
-                        );
-                    })}
-                    {/* </div> */}
-                    <div className="opacity-0">
-                        <form ref={formRef} action="https://artbot-backend-api-9v7k9.ondigitalocean.app/api/plan/openStripe" method="POST">
-                            <input type="hidden" value={price} name="priceId" />
-                            <button type="submit">Checkout</button>
-                        </form>
-                    </div>
+                <h1>
+                    How much do you want to back?
+                </h1>
+                {renderPackages()}
+                <div className="opacity-0">
+                    <form ref={formRef} action="https://artbot-backend-api-9v7k9.ondigitalocean.app/api/plan/openStripe" method="POST">
+                        <input type="hidden" value={price} name="priceId" />
+                        <button type="submit">Checkout</button>
+                    </form>
                 </div>
             </React.Fragment>
         </>
