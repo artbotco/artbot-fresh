@@ -78,9 +78,9 @@ class StarryNight extends Component {
         let division = 30;
         let heroHeight = heroSection.offsetHeight;
         if (getSwiperTranslate() > 0) {
-            division = 30 + 250 * (window.scrollY / heroHeight);
+            division = 30 + 250 * (getSwiperTranslate() / heroHeight);
 
-            let opacity = 1 - window.scrollY / heroHeight;
+            let opacity = 1 - getSwiperTranslate() / heroHeight;
             // Set canvas opacity
             if (this.canvas.current) {
                 this.canvas.current.style.opacity = opacity.toString();
