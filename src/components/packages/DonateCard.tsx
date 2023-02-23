@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import Helpers from "../../Helpers";
+import Button from "components/visual/Button";
 // import ReactIcons from '../UI/ReactIcons/ReactIcons';
 import ReactIcons from "assets/ReactIcons";
 
@@ -50,16 +51,17 @@ const DonateCard = ({ id, title, price, originalPrice, leftPrice, benefits, tota
                 </div>
             )}
             <p className={Helpers.getClasses(`much-donate-card--left`, index === 0 ? "opacity-0" : "")}>{leftPrice} left at this price</p>
-            <button
+            <Button
                 onClick={() => {
                     setEdit(false);
                     donateHandler(id, priceId);
                     setAmount(0);
                 }}
-                className="much-donate-card--btn btn rounded-pill"
+                className=""
+                color={"secondary"}
             >
                 Choose
-            </button>
+            </Button>
         </div>
     );
 };

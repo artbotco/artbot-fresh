@@ -71,7 +71,7 @@ const LetsMakeaMovie = () => {
 
     const donateHandler = (id?: string, price?: number | undefined | string) => {
         if (!user.authToken) {
-            setOpenModel({ open: true, message: " to choose backing tier", login: true, parse: false });
+            console.log("not logged in");
             return;
         }
         setPrice(price as number);
