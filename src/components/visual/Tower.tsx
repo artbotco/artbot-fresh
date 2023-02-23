@@ -33,6 +33,9 @@ class Tower extends React.Component {
         const scrollRange = swiperHeight - window.innerHeight - towerStartTop;
 
         const windowScroll = getSwiperTranslate() - towerStartTop;
+
+        console.log(windowScroll);
+
         const towerHeight = tower.clientHeight;
         const baseOffset = window.innerHeight * 0.3;
 
@@ -47,10 +50,7 @@ class Tower extends React.Component {
 
         const offset = baseOffset + offsetRange * windowOffsetPercentage;
 
-
-        console.table({towerStartTop, scrollRange, windowScroll, towerHeight, baseOffset, maxOffset, offsetRange, windowOffsetPercentage, offset});
-
-        tower.style.top = `${offset}px`;
+        tower.style.top = `${window.innerHeight - getSwiperTranslate()}px`;
     };
 
     componentDidMount() {
