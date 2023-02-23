@@ -6,6 +6,7 @@ import { useRouter } from "services/Router";
 import { createFundingPaymentHistory } from "services/util";
 import DonateCard, { DonateItem } from "./DonateCard";
 import packages from "./packages";
+import { Row, Column } from "components/structural/Grid";
 import "./packages.scss";
 
 const LetsMakeaMovie = () => {
@@ -111,26 +112,26 @@ const LetsMakeaMovie = () => {
                         How much do you want to back
                         <span className="lets-make-movie--fact">?</span>
                     </p>
-                    <div className="package-container">
-                        {packages.plans.map((item, i: number) => {
-                            return (
-                                <div key={i} className="col-md-4">
-                                    <DonateCard
-                                        id={item._id}
-                                        index={i}
-                                        priceId={item.priceId}
-                                        title={item.title}
-                                        price={item.price}
-                                        originalPrice={item.originalPrice}
-                                        total={item.total}
-                                        benefits={item.benefits}
-                                        leftPrice={item.leftCount}
-                                        donateHandler={donateHandler}
-                                    />
-                                </div>
-                            );
-                        })}
-                    </div>
+                    {/* <div className="package-container"> */}
+                    {packages.plans.map((item, i: number) => {
+                        return (
+                            <Row key={i}>
+                                <DonateCard
+                                    id={item._id}
+                                    index={i}
+                                    priceId={item.priceId}
+                                    title={item.title}
+                                    price={item.price}
+                                    originalPrice={item.originalPrice}
+                                    total={item.total}
+                                    benefits={item.benefits}
+                                    leftPrice={item.leftCount}
+                                    donateHandler={donateHandler}
+                                />
+                            </Row>
+                        );
+                    })}
+                    {/* </div> */}
                     <div className="opacity-0">
                         <form ref={formRef} action="https://artbot-backend-api-9v7k9.ondigitalocean.app/api/plan/openStripe" method="POST">
                             <input type="hidden" value={price} name="priceId" />

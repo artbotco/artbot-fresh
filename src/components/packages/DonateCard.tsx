@@ -4,6 +4,7 @@ import Helpers from "../../Helpers";
 import Button from "components/visual/Button";
 // import ReactIcons from '../UI/ReactIcons/ReactIcons';
 import ReactIcons from "assets/ReactIcons";
+import { Column } from "components/structural/Grid";
 import "./packages.scss";
 
 export type DonateItem = {
@@ -26,43 +27,45 @@ const DonateCard = ({ id, title, price, originalPrice, leftPrice, benefits, tota
     const [edit, setEdit] = React.useState(false);
     return (
         <div className="packages">
-            <p className="much-donate-card--title">{title}</p>
-            {benefits.map((item, i) => (
-                <div key={i} className="d-flex much-donate-card-inner align-items-center1 ">
-                    <img className="much-donate-card--check" src={`/img/${i <= total ? "check.svg" : "cross.svg"}`} alt="alt" />
-                    <p className={`mb-0 ${i <= total ? "much-donate-card-inner--active" : "much-donate-card-inner--disable"}`}>&nbsp; {item}</p>
-                </div>
-            ))}
-            <div className="d-flex justify-content-center align-items-center">
-                <p className="much-donate-card--original ">
-                    {originalPrice ? "$" : ""}
-                    {originalPrice}
-                </p>
-                &nbsp;&nbsp;
-                <p className="much-donate-card--price">${price}</p>
-                {/* <ReactIcons.FaEdit
+            <Column>
+                <p className="much-donate-card--title">{title}</p>
+                {benefits.map((item, i) => (
+                    <div key={i} className="d-flex much-donate-card-inner align-items-center1 ">
+                        <img className="much-donate-card--check" src={`/img/${i <= total ? "check.svg" : "cross.svg"}`} alt="alt" />
+                        <p className={`mb-0 ${i <= total ? "much-donate-card-inner--active" : "much-donate-card-inner--disable"}`}>&nbsp; {item}</p>
+                    </div>
+                ))}
+                <div className="d-flex justify-content-center align-items-center">
+                    <p className="much-donate-card--original ">
+                        {originalPrice ? "$" : ""}
+                        {originalPrice}
+                    </p>
+                    &nbsp;&nbsp;
+                    <p className="much-donate-card--price">${price}</p>
+                    {/* <ReactIcons.FaEdit
                     size={20}
                     className="pointer mx-2 mb-3"
                     onClick={() => setEdit(!edit)}
                 /> */}
-            </div>
-            {edit && (
-                <div>
-                    <input className="form-control  bg-transparent form-input__feild" type="number" value={amount} onChange={(e) => setAmount(parseInt(e.target.value, 10))} min="0" />
                 </div>
-            )}
-            <p className={Helpers.getClasses(`much-donate-card--left`, index === 0 ? "opacity-0" : "")}>{leftPrice} left at this price</p>
-            <Button
-                onClick={() => {
-                    setEdit(false);
-                    donateHandler(id, priceId);
-                    setAmount(0);
-                }}
-                className=""
-                color={"secondary"}
-            >
-                Choose
-            </Button>
+                {edit && (
+                    <div>
+                        <input className="form-control  bg-transparent form-input__feild" type="number" value={amount} onChange={(e) => setAmount(parseInt(e.target.value, 10))} min="0" />
+                    </div>
+                )}
+                <p className={Helpers.getClasses(`much-donate-card--left`, index === 0 ? "opacity-0" : "")}>{leftPrice} left at this price</p>
+                <Button
+                    onClick={() => {
+                        setEdit(false);
+                        donateHandler(id, priceId);
+                        setAmount(0);
+                    }}
+                    className=""
+                    color={"secondary"}
+                >
+                    Choose
+                </Button>
+            </Column>
         </div>
     );
 };

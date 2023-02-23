@@ -1,26 +1,24 @@
-.packages-title {
-    text-align: center;
-    font-weight: 64px;
-    font-size: 32px;
-}
+// .packages-title {
+//     text-align: center;
+//     font-weight: 64px;
+//     font-size: 32px;
+// }
 
-.package-container {
-    display: flex;
-    grid-template: auto auto auto;
-    padding: 10px;
-}
+// .package-container {
+//     display: flex;
+//     // grid-template: 1fr 1fr 1fr;
+//     padding: 10px;
+// }
 
 .packages {
-    border: 1px solid;
-    border-radius: 1rem;
-    font-size: 16px;
+    display: flex;
 }
 
-.modal-plans {
-    width: 100vw !important;
-}
+// .modal-plans {
+//     width: 100vw !important;
+// }
 
-.modal-content {
-    width: 100vw !important;
-    font-size: 8px !important;
-}
+// .modal-content {
+//     width: 100% !important;
+//     font-size: 10px !important;
+// }
