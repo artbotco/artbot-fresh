@@ -1,106 +1,24 @@
-import ScrollCTA from "assets/scroll-cta.png";
-import Tower from "assets/tower.png";
-import Aside from "components/structural/Aside";
-import { Card } from "components/structural/Card";
-import Modal from "components/structural/Modal";
-import Section from "components/structural/Section";
-import SectionWrapper from "components/structural/SectionWrapper";
-import Button from "components/visual/Button";
-import Slide from "components/visual/Slide";
-import Slider from "components/visual/Slider";
-import Video from "components/visual/Video";
-import { ratioResize, scrollTo, getSwiperTranslate } from "Helpers";
-import $ from "jquery";
-import Page from "Page";
-import React from "react";
-import PackagesTable from "components/packages/PackagesTable";
-import StarryNight from "components/structural/StarryNight";
+import ScrollCTA               from "assets/scroll-cta.png";
+import PackagesTable           from "components/packages/PackagesTable";
+import Aside                   from "components/structural/Aside";
+import {Card}                  from "components/structural/Card";
+import Modal                   from "components/structural/Modal";
+import Section                 from "components/structural/Section";
+import SectionWrapper          from "components/structural/SectionWrapper";
+import Button                  from "components/visual/Button";
+import Slide                   from "components/visual/Slide";
+import Slider                  from "components/visual/Slider";
+import StarryNight             from "components/visual/StarryNight";
+import Tower                   from "components/visual/Tower";
+import Video                                    from "components/visual/Video";
+import {ratioResize, scrollTo, scrollToSection} from "Helpers";
+import $                                        from "jquery";
+import Page                    from "Page";
+import React                   from "react";
 import "./Home.scss";
 
 class HomeContent extends React.Component {
-    private scrollTimeout: any;
-    private animating = false;
 
-    towerScroll = () => {
-        const tower = document.querySelector<HTMLElement>(".tower");
-        if (!tower) {
-            return;
-        }
-        let towerStart = document.querySelector<HTMLElement>(".tower-start");
-        if (!towerStart) {
-            return;
-        }
-        towerStart = towerStart.parentNode as HTMLElement;
-        if (!towerStart) {
-            return;
-        }
-
-        let swiper:any = document.querySelector(".swiper");
-        if (!swiper) {
-            return;
-        }
-        let swiperHeight = swiper?.swiper.virtualSize;
-        if (!swiperHeight) {
-            return;
-        }
-
-        const towerStartTop = towerStart.offsetTop;
-        const scrollRange = swiperHeight - window.innerHeight - towerStartTop;
-
-        const windowScroll = getSwiperTranslate() - towerStartTop;
-        const towerHeight = tower.clientHeight;
-        const baseOffset = window.innerHeight * 0.3;
-
-/*        if (windowScroll < 0) {
-            tower.style.top = `${baseOffset}px`;
-            return;
-        }*/
-
-        const maxOffset = swiperHeight - towerHeight - window.innerHeight * 0.3;
-        const offsetRange = maxOffset - baseOffset;
-        const windowOffsetPercentage = windowScroll / scrollRange;
-
-        const offset = baseOffset + offsetRange * windowOffsetPercentage;
-
-
-
-        console.table({towerStartTop, scrollRange, windowScroll, towerHeight, baseOffset, maxOffset, offsetRange, windowOffsetPercentage, offset})
-
-        tower.style.top = `${offset}px`;
-    };
-
-    scrollSnap = (ev: any) => {
-        if (this.scrollTimeout) {
-            clearTimeout(this.scrollTimeout);
-        }
-        this.scrollTimeout = setTimeout(() => {
-            let sections = document.querySelectorAll<HTMLElement>(".section");
-            let sectionCenters = [];
-            for (let i = 0; i < sections.length; i++) {
-                let section = sections[i];
-                let sectionCenter = section.offsetTop + section.clientHeight / 2;
-                sectionCenters.push(sectionCenter);
-            }
-            let currentViewCenter = getSwiperTranslate() + window.innerHeight / 2;
-            let closestSection = 0;
-            let closestDistance = document.body.clientHeight;
-            for (let i = 0; i < sectionCenters.length; i++) {
-                let sectionCenter = sectionCenters[i];
-                let distance = Math.abs(sectionCenter - currentViewCenter);
-                if (distance < closestDistance) {
-                    closestSection = i;
-                    closestDistance = distance;
-                }
-            }
-            this.animating = true;
-            scrollTo(sections[closestSection], undefined, () => {
-                this.animating = false;
-                $("[data-section].active").removeClass("active");
-                let sectionNumber = $(sections[closestSection]).attr("data-section");
-                $('[data-section="' + sectionNumber + '"]').addClass("active");
-            });
-        }, 250);
-    };
 
     resizeActiveVideo = () => {
         ratioResize($(".video:visible"));
@@ -153,17 +71,11 @@ class HomeContent extends React.Component {
     }
 
     componentDidMount() {
-        $(window).on("swiperTranslate", this.towerScroll);
-        //window.addEventListener("scroll", this.towerScroll);
-        window.addEventListener("resize", this.towerScroll);
         window.addEventListener("resize", this.resizeActiveVideo);
         $(window).on("click", this.closeAsides);
     }
 
     componentWillUnmount() {
-        $(window).off("swiperTranslate", this.towerScroll);
-        //window.removeEventListener("scroll", this.towerScroll);
-        window.removeEventListener("resize", this.towerScroll);
         window.removeEventListener("resize", this.resizeActiveVideo);
         $(window).off("click", this.closeAsides);
     }
@@ -193,7 +105,7 @@ class HomeContent extends React.Component {
                                 <h5>Two lifelong friends and apprentice ninja cats take different paths in life after the brutal massacre of their sensei and dojo.</h5>
                             </Slide>
                         </Slider>
-                        <img src={ScrollCTA} className="scroll-cta" onClick={this.scrollToFirstSection} alt="Scroll down to see more" />
+                        <img src={ScrollCTA} className="scroll-cta" onClick={() => scrollToSection(1)} alt="Scroll down to see more" />
                     </Section>
                     <Section className="tower-start" index={1}>
                         <Card>
@@ -426,7 +338,7 @@ class HomeContent extends React.Component {
                         </li>
                     </ul>
                 </Aside>
-                <img src={Tower} className="tower" alt="tower" />
+                <Tower />
                 <Aside id="learnmore-shares">
                     <h2>Shares</h2>
                     <ul className="modal-list">
@@ -441,13 +353,6 @@ class HomeContent extends React.Component {
                 </Modal>
             </>
         );
-    }
-
-    private scrollToFirstSection(): any {
-        let firstSection = $(".sectionwrapper").find(".section:not(.hero)");
-        if (firstSection.length) {
-            scrollTo(firstSection);
-        }
     }
 }
 
