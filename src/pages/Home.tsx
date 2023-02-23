@@ -13,8 +13,8 @@ import { ratioResize, scrollTo, getSwiperTranslate } from "Helpers";
 import $ from "jquery";
 import Page from "Page";
 import React from "react";
-import PackagesTable from "../components/packages/PackagesTable";
-import StarryNight from "../components/structural/StarryNight";
+import PackagesTable from "components/packages/PackagesTable";
+import StarryNight from "components/structural/StarryNight";
 import "./Home.scss";
 
 class HomeContent extends React.Component {

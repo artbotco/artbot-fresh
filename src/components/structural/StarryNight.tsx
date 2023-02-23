@@ -85,6 +85,11 @@ class StarryNight extends Component {
             if (this.canvas.current) {
                 this.canvas.current.style.opacity = opacity.toString();
             }
+        } else {
+            // Set canvas opacity
+            if (this.canvas.current) {
+                this.canvas.current.style.opacity = "1";
+            }
         }
         for (var i = 0; i < this.stars.length; i++) {
             var star = this.stars[i];
