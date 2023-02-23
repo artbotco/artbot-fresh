@@ -1,6 +1,7 @@
 import Section                             from "components/structural/Section";
 import SectionWrapperNavigator             from "components/visual/SectionWrapperNavigator";
-import {getClasses}                             from "Helpers";
+import {getClasses}                        from "Helpers";
+import $                                   from "jquery";
 import React, {Component}                  from "react";
 import {Mousewheel, Pagination, Scrollbar} from "swiper";
 import "swiper/css";
@@ -61,6 +62,7 @@ class SectionWrapper extends Component<any> {
 
         this.wrapper.current.swiper.on("setTranslate", (swiper: any, translate: number) => {
             this.moveMountain(swiper, translate);
+            $(window).trigger("swiperTranslate", [swiper, translate]);
         });
     }
 

@@ -136,22 +136,18 @@ class HomeContent extends React.Component {
     }
 
     componentDidMount() {
-        window.addEventListener("scroll", this.towerScroll);
+        $(window).on('swiperTranslate', this.towerScroll);
+        //window.addEventListener("scroll", this.towerScroll);
         window.addEventListener("resize", this.towerScroll);
         window.addEventListener("resize", this.resizeActiveVideo);
-        $(window).on("load", this.scrollSnap);
-        $(window).on("scroll", this.scrollSnap);
-        $(window).on("keydown mousedown", this.scrollSnap);
         $(window).on("click", this.closeAsides);
     }
 
     componentWillUnmount() {
-        window.removeEventListener("scroll", this.towerScroll);
+        $(window).off('swiperTranslate', this.towerScroll);
+        //window.removeEventListener("scroll", this.towerScroll);
         window.removeEventListener("resize", this.towerScroll);
         window.removeEventListener("resize", this.resizeActiveVideo);
-        $(window).off("load", this.scrollSnap);
-        $(window).off("scroll", this.scrollSnap);
-        $(window).off("keydown mousedown", this.scrollSnap);
         $(window).off("click", this.closeAsides);
     }
 
