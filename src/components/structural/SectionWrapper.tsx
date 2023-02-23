@@ -34,24 +34,27 @@ class SectionWrapper extends Component<any> {
     // @ts-ignore
     moveMountain(swiper: Swiper, translate: number) {
         if (!this.wrapper.current) {
-            console.error("No swiper wrapper");
+            //console.error("No swiper wrapper");
             return false;
         }
         const scroll = Math.floor(translate * -1);
 
         if (scroll === this.currentMountainOffset || scroll < 1) {
-            console.log("No scroll necessary", scroll, this.currentMountainOffset);
+            //console.log("No scroll necessary", scroll, this.currentMountainOffset);
             return false;
         }
-        console.log("Scrolling", scroll, this.currentMountainOffset);
+        //console.log("Scrolling", scroll, this.currentMountainOffset);
         this.currentMountainOffset = scroll;
 
         const windowHeight = window.innerHeight;
         const bodyHeight = this.wrapper.current.swiper.virtualSize;
         const scrollPercent = scroll / (bodyHeight - windowHeight);
         const offset = 70 - (45 * scrollPercent);
-        console.log("Setting background position", offset);
-        this.wrapper.current.style.backgroundPositionY = `${offset.toFixed()}vh`;
+        //console.log("Setting background position", offset);
+        const sectionWrapper = document.querySelector<HTMLElement>(".sectionwrapper");
+        if (sectionWrapper) {
+            sectionWrapper.style.backgroundPositionY = `${offset}vh`;
+        }
 
         return true;
     }
@@ -79,41 +82,40 @@ class SectionWrapper extends Component<any> {
         let self = this;
         return (
             <>
-                <Swiper
-                    className={Helpers.getClasses("sectionwrapper", this.props.className)}
-                    direction={"vertical"}
-                    pagination={{
-                        clickable: true
-                    }}
-                    slidesPerView={1}
-                    onSwiper={(swiper) => {
-                        console.log(swiper);
-                    }}
-                    ref={this.wrapper}
-                    watchSlidesProgress={true}
-                    /*onSetTranslate={(swiper, translate) => {
-                        self.moveMountain(swiper, translate);
-                    }}*/
-                    observer={true}
-                    observeParents={true}
-                    observeSlideChildren={true}
-                    scrollbar={{draggable: true}}
-                    mousewheel={true}
-                    modules={[Pagination, Scrollbar, Mousewheel]}
-                >
+                <div className={Helpers.getClasses("sectionwrapper", this.props.className)}>
+                    <Swiper
+                        className={this.props.className}
+                        direction={"vertical"}
+                        pagination={{
+                            clickable: true
+                        }}
+                        slidesPerView={1}
+                        onSwiper={(swiper) => {
+                            console.log(swiper);
+                        }}
+                        ref={this.wrapper}
+                        watchSlidesProgress={true}
+                        /*onSetTranslate={(swiper, translate) => {
+                            self.moveMountain(swiper, translate);
+                        }}*/
+                        scrollbar={{draggable: true}}
+                        mousewheel={true}
+                        modules={[Pagination, Scrollbar, Mousewheel]}
+                    >
 
-                    {this.props.children.map((child: any) => {
-                        if (child.type === Section) {
-                            key++;
-                            return (
-                                <SwiperSlide key={key}>
-                                    {child}
-                                </SwiperSlide>
-                            );
-                        }
-                    })}
-                </Swiper>
-                {/*{this.renderNavigator()}*/}
+                        {this.props.children.map((child: any) => {
+                            if (child.type === Section) {
+                                key++;
+                                return (
+                                    <SwiperSlide key={key}>
+                                        {child}
+                                    </SwiperSlide>
+                                );
+                            }
+                        })}
+                    </Swiper>
+                    {/*{this.renderNavigator()}*/}
+                </div>
                 <></>
             </>
         );

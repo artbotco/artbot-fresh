@@ -23,3 +23,8 @@
         scroll-snap-align: center;
     }
 }
+
+.swiper {
+    width:  100%;
+    height: calc(100vh - $header-height);
+}
