@@ -1,7 +1,7 @@
 @import "base";
 
 .tower {
-    position:       absolute;
+    position:       fixed;
     top:            200vh;
     right:          45%;
     display:        inline-block;

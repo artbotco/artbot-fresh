@@ -5,6 +5,13 @@ body {
     background-attachment: fixed;
 }
 
+.page-home, .page-home .home {
+    max-height: 100vh;
+    width:      100vw;
+    max-width:  100vw;
+    overflow:   hidden;
+}
+
 .section.hero .slider {
     height: 60vh;
 
@@ -58,6 +65,7 @@ body {
         .slider {
             max-height: 45vh;
         }
+
         .slide {
             h3, h5 {
                 padding: 0 5vw;
