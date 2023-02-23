@@ -5,13 +5,13 @@ import './Section.scss';
 class Section extends Component<any> {
   render() {
     return (
-      <div
+      <section
         className={Helpers.getClasses('section', this.props.className)}
         data-section={this.props.index}
         id={this.props.id}
       >
         {this.props.children}
-      </div>
+      </section>
     );
   }
 }
