@@ -20,6 +20,12 @@ class Tower extends React.Component {
             return;
         }
 
+        let sectionWrapper: any = document.querySelector(".sectionwrapper");
+        if (!sectionWrapper) {
+            return;
+        }
+        let offsetTop = sectionWrapper.offsetTop; // Header height
+
         let swiper: any = document.querySelector(".swiper");
         if (!swiper) {
             return;
@@ -29,28 +35,28 @@ class Tower extends React.Component {
             return;
         }
 
-        const towerStartTop = towerStart.offsetTop;
-        const scrollRange = swiperHeight - window.innerHeight - towerStartTop;
+        let windowHeight = swiper.clientHeight; // Actual window height minus header
+        const towerStartTop = towerStart.offsetTop; // Start offset of tower (second slide) from top of slider
+        const scrollRange = swiperHeight - windowHeight - towerStartTop; // We only slide the height of the swiper until the bottom hits the end, and we subtract the slider starting position
 
-        const windowScroll = getSwiperTranslate() - towerStartTop;
+        const windowScroll = getSwiperTranslate() - towerStartTop; // Current scroll position of the slider minus the starting position of the tower
 
-        console.log(windowScroll);
+        if(windowScroll < 0) {
+            tower.style.top = `${windowHeight * 2}px`;
+            return;
+        }
 
-        const towerHeight = tower.clientHeight;
-        const baseOffset = window.innerHeight * 0.3;
+        const towerHeight = tower.clientHeight - (windowHeight * 0.6); // Actual height of the tower as rendered
 
-        /*        if (windowScroll < 0) {
-                    tower.style.top = `${baseOffset}px`;
-                    return;
-                }*/
+        const baseOffset = offsetTop + (windowHeight * 0.3); // We want to offset by header height + a third of VH
 
-        const maxOffset = swiperHeight - towerHeight - window.innerHeight * 0.3;
-        const offsetRange = maxOffset - baseOffset;
+        //const maxOffset = swiperHeight - towerHeight - windowHeight * 0.3;
+        //const offsetRange = maxOffset - baseOffset;
         const windowOffsetPercentage = windowScroll / scrollRange;
 
-        const offset = baseOffset + offsetRange * windowOffsetPercentage;
+        const offset = baseOffset - (towerHeight * windowOffsetPercentage);
 
-        tower.style.top = `${window.innerHeight - getSwiperTranslate()}px`;
+        tower.style.top = `${offset}px`;
     };
 
     componentDidMount() {
