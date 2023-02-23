@@ -52,12 +52,12 @@ const LetsMakeaMovie = () => {
         if (!price) {
             return;
         }
-        const plan = packages.plans.find(({ priceId }) => priceId === price);
+        const plan = packages.plans.find(({ priceId }) => parseInt(priceId, 10) === price);
         if (!plan) {
             return;
         }
         localStorage.setItem("pay", "true");
-        localStorage.setItem("price", plan["price"] as string);
+        localStorage.setItem("price", plan["price"] as unknown as string);
         localStorage.setItem("planId", plan["_id"] as string);
         localStorage.setItem("planTitle", plan["title"] as string);
 
@@ -111,22 +111,24 @@ const LetsMakeaMovie = () => {
                         <span className="lets-make-movie--fact">?</span>
                     </p>
                     <div className="row ">
-                        {packages.plans.map((item: DonateItem, i: number) => (
-                            <div key={i} className="col-md-4">
-                                <DonateCard
-                                    id={item._id}
-                                    index={i}
-                                    priceId={item.priceId}
-                                    title={item.title}
-                                    price={item.price}
-                                    originalPrice={item.originalPrice}
-                                    total={item.total}
-                                    benefits={item.benefits}
-                                    leftPrice={item.leftCount}
-                                    donateHandler={donateHandler}
-                                />
-                            </div>
-                        ))}
+                        {packages.plans.map((item, i: number) => {
+                            return (
+                                <div key={i} className="col-md-4">
+                                    <DonateCard
+                                        id={item._id}
+                                        index={i}
+                                        priceId={item.priceId}
+                                        title={item.title}
+                                        price={item.price}
+                                        originalPrice={item.originalPrice}
+                                        total={item.total}
+                                        benefits={item.benefits}
+                                        leftPrice={item.leftCount}
+                                        donateHandler={donateHandler}
+                                    />
+                                </div>
+                            );
+                        })}
                     </div>
                     <div className="opacity-0">
                         <form ref={formRef} action="https://artbot-backend-api-9v7k9.ondigitalocean.app/api/plan/openStripe" method="POST">

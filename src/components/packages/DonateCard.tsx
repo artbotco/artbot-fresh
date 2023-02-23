@@ -8,7 +8,7 @@ export type DonateItem = {
     id?: string;
     title: string;
     price: number;
-    originalPrice: number;
+    originalPrice?: number;
     leftPrice?: number;
     benefits: string[];
     total: number;
