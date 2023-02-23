@@ -5,26 +5,6 @@ body {
     background-attachment: fixed;
 }
 
-.tower {
-    position:       absolute;
-    top:            100%;
-    right:          45%;
-    display:        inline-block;
-    width:          55vw;
-    max-width:      1000px;
-    height:         auto;
-    pointer-events: none;
-    z-index: 25;
-}
-
-@media ($mobile) {
-    .tower {
-        width:     60vh;
-        left:      50%;
-        transform: translate(-50%, -25vh);
-    }
-}
-
 .section.hero .slider {
     height: 60vh;
 

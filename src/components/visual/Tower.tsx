@@ -2,6 +2,7 @@ import towerImage           from "assets/tower.png";
 import $                    from "jquery";
 import React                from "react";
 import {getSwiperTranslate} from "../../Helpers";
+import "./Tower.scss";
 
 class Tower extends React.Component {
 
