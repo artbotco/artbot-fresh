@@ -1,10 +1,12 @@
+@import "base";
+
 .sectionwrapper {
     position:              relative;
     display:               block;
     clear:                 both;
     overflow:              hidden;
     width:                 100%;
-    height:                auto;
+    height:                calc(100vh - $header-height);
     margin:                0;
     padding:               0;
 
@@ -14,6 +16,8 @@
     background-position-x: center;
     background-position-y: 70vh;
     background-size:       cover;
+
+    transition:            0.2s ease-in-out;
 
     .section {
         scroll-snap-align: center;

@@ -1,18 +1,19 @@
 @import "../../base";
 
-ul.section-navigator {
+ul.section-navigator, .swiper-pagination {
     display:    inline-block;
     width:      auto;
     height:     auto;
     list-style: none;
     position:   fixed;
-    left:       $gutter;
+    left:       $gutter !important;
     top:        50%;
     transform:  translateY(-50%);
     margin:     0;
     padding:    0;
+    right:      unset !important;
 
-    li {
+    li, .swiper-pagination-bullet {
         list-style: none;
         margin:     0;
         padding:    0;

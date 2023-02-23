@@ -11,7 +11,10 @@ body {
         box-sizing:      border-box;
         image-rendering: pixelated;
     }
-    scroll-behavior: smooth;
+
+    scroll-behavior:         smooth;
+    max-height:              100vh;
+    overflow:                hidden;
 }
 
 code {

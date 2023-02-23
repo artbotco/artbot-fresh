@@ -1,19 +1,21 @@
-import React, { Component } from 'react';
-import Helpers              from 'Helpers';
-import './Section.scss';
+import Helpers            from "Helpers";
+import React, {Component} from "react";
+import "swiper/css";
+import {SwiperSlide}      from "swiper/react";
+import "./Section.scss";
 
 class Section extends Component<any> {
-  render() {
-    return (
-      <section
-        className={Helpers.getClasses('section', this.props.className)}
-        data-section={this.props.index}
-        id={this.props.id}
-      >
-        {this.props.children}
-      </section>
-    );
-  }
+    render() {
+        return (
+            <div
+                className={Helpers.getClasses("section", this.props.className)}
+                data-section={this.props.index}
+                id={this.props.id}
+            >
+                {this.props.children}
+            </div>
+        );
+    }
 }
 
 export default Section;
