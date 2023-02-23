@@ -1,10 +1,10 @@
-import React   from "react";
-import Helpers from "Helpers";
+import {ratioResize} from "Helpers";
+import React         from "react";
 
 class Video extends React.Component<any> {
 
     ratioResize = (element: any) => {
-        Helpers.ratioResize(element, 16, 9);
+        ratioResize(element, 16, 9);
     };
 
     render() {

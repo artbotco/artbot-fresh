@@ -3,13 +3,13 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import $                 from "jquery";
 import React             from "react";
 import "./SectionWrapperNavigator.scss";
-import Helpers           from "../../Helpers";
+import {scrollTo}           from "../../Helpers";
 
 class SectionWrapperNavigator extends React.Component<any> {
 
     scrollToSection = (num: number) => {
         let section = $('.section[data-section="' + num + '"]');
-        Helpers.scrollTo(section, undefined, () => {
+        scrollTo(section, undefined, () => {
             $('[data-section].active').removeClass('active');
             section.addClass('active');
         });

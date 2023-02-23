@@ -1,20 +1,20 @@
-import ScrollCTA      from "assets/scroll-cta.png";
-import Tower          from "assets/tower.png";
-import Aside          from "components/structural/Aside";
-import {Card}         from "components/structural/Card";
-import Modal          from "components/structural/Modal";
-import Section        from "components/structural/Section";
-import SectionWrapper from "components/structural/SectionWrapper";
-import Button         from "components/visual/Button";
-import Slide          from "components/visual/Slide";
-import Slider         from "components/visual/Slider";
-import Video          from "components/visual/Video";
-import Helpers        from "Helpers";
-import $              from "jquery";
-import Page           from "Page";
-import React          from "react";
-import PackagesTable  from "../components/packages/PackagesTable";
-import StarryNight    from "../components/structural/StarryNight";
+import ScrollCTA               from "assets/scroll-cta.png";
+import Tower                   from "assets/tower.png";
+import Aside                   from "components/structural/Aside";
+import {Card}                  from "components/structural/Card";
+import Modal                   from "components/structural/Modal";
+import Section                 from "components/structural/Section";
+import SectionWrapper          from "components/structural/SectionWrapper";
+import Button                  from "components/visual/Button";
+import Slide                   from "components/visual/Slide";
+import Slider                  from "components/visual/Slider";
+import Video                   from "components/visual/Video";
+import {ratioResize, scrollTo} from "Helpers";
+import $                       from "jquery";
+import Page                    from "Page";
+import React                   from "react";
+import PackagesTable           from "../components/packages/PackagesTable";
+import StarryNight             from "../components/structural/StarryNight";
 import "./Home.scss";
 
 class HomeContent extends React.Component {
@@ -76,7 +76,7 @@ class HomeContent extends React.Component {
                 }
             }
             this.animating = true;
-            Helpers.scrollTo(sections[closestSection], undefined, () => {
+            scrollTo(sections[closestSection], undefined, () => {
                 this.animating = false;
                 $("[data-section].active").removeClass("active");
                 let sectionNumber = $(sections[closestSection]).attr("data-section");
@@ -86,7 +86,7 @@ class HomeContent extends React.Component {
     };
 
     resizeActiveVideo = () => {
-        Helpers.ratioResize($(".video:visible"));
+        ratioResize($(".video:visible"));
     };
 
     closeAsides = (ev: any) => {
@@ -435,7 +435,7 @@ class HomeContent extends React.Component {
     private scrollToFirstSection(): any {
         let firstSection = $(".sectionwrapper").find(".section:not(.hero)");
         if (firstSection.length) {
-            Helpers.scrollTo(firstSection);
+            scrollTo(firstSection);
         }
     }
 }

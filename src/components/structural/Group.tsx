@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Helpers            from "Helpers";
+import {getClasses}            from "Helpers";
 
 class Group extends Component<any> {
     getSpacing() {
@@ -22,7 +22,7 @@ class Group extends Component<any> {
 
     render() {
         return (
-            <div style={this.getStyle()} className={Helpers.getClasses("group", this.props.className)}>
+            <div style={this.getStyle()} className={getClasses("group", this.props.className)}>
                 {this.props.children}
             </div>
         );

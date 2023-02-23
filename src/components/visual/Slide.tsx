@@ -1,10 +1,10 @@
 import React   from "react";
-import Helpers from "Helpers";
+import {getClasses} from "Helpers";
 
 class Slide extends React.Component<any> {
     render() {
         return (
-            <div className={Helpers.getClasses("slide", this.props.className)}>
+            <div className={getClasses("slide", this.props.className)}>
                 {this.props.children}
             </div>
         );

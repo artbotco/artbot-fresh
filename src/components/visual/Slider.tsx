@@ -1,8 +1,8 @@
 import {faCaretLeft, faCaretRight} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon}           from "@fortawesome/react-fontawesome";
-import $                           from "jquery";
+import {FontAwesomeIcon}         from "@fortawesome/react-fontawesome";
+import {getClasses, ratioResize} from "Helpers";
+import $                         from "jquery";
 import React                       from "react";
-import Helpers                     from "Helpers";
 import Button                      from "./Button";
 import "./Slider.scss";
 
@@ -14,7 +14,7 @@ class Slider extends React.Component<any> {
         }
         $(".slider .slide.active").removeClass("active");
         slide.addClass("active");
-        Helpers.ratioResize(slide.find('.video'));
+        ratioResize(slide.find('.video'));
     };
 
     nextSlide = () => {
@@ -24,12 +24,12 @@ class Slider extends React.Component<any> {
         }
         $(".slider .slide.active").removeClass("active");
         slide.addClass("active");
-        Helpers.ratioResize(slide.find('.video'));
+        ratioResize(slide.find('.video'));
     };
 
     render() {
         return (
-            <div className={Helpers.getClasses("slider", this.props.className)}>
+            <div className={getClasses("slider", this.props.className)}>
                 <Button className="slider-arrow slider-arrow-left" onClick={this.prevSlide}><FontAwesomeIcon icon={faCaretLeft} /></Button>
                 {this.props.children}
                 <Button className="slider-arrow slider-arrow-right" onClick={this.nextSlide}><FontAwesomeIcon icon={faCaretRight} /></Button>

@@ -1,7 +1,7 @@
 import {faTimes}         from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Button            from "components/visual/Button";
-import Helpers           from "Helpers";
+import {getClasses}           from "Helpers";
 import $                 from "jquery";
 import React             from "react";
 import "./Aside.scss";
@@ -67,8 +67,8 @@ class Aside extends React.Component<any> {
 
     render() {
         return (
-            <aside id={this.props.id} ref={this.ref} className={Helpers.getClasses(this.name, this.getClasses())}>
-                <Button color="light" size="xl" toggle={`#${this.props.id}`} className={Helpers.getClasses("btn-content-only", this.name + "-close")}><FontAwesomeIcon icon={faTimes} /></Button>
+            <aside id={this.props.id} ref={this.ref} className={getClasses(this.name, this.getClasses())}>
+                <Button color="light" size="xl" toggle={`#${this.props.id}`} className={getClasses("btn-content-only", this.name + "-close")}><FontAwesomeIcon icon={faTimes} /></Button>
                 {this.props.children}
             </aside>
         );

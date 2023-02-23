@@ -8,7 +8,7 @@ import Aside                                         from "components/structural
 import {Column, Row}                                 from "components/structural/Grid";
 import Group                                         from "components/structural/Group";
 import Button                                        from "components/visual/Button";
-import Helpers                                       from "Helpers";
+import {scrollTo}                                       from "Helpers";
 import $                                             from "jquery";
 import React                                         from "react";
 import {useSelector}                                 from "react-redux";
@@ -23,7 +23,7 @@ const Header: React.FC<any> = () => {
     const clickHandler = (ele: string) => {
         let aside = $("#aside-sidebar-left");
         aside.trigger("toggle");
-        Helpers.scrollTo($(ele));
+        scrollTo($(ele));
     };
 
     return (

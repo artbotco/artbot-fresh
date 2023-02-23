@@ -1,6 +1,6 @@
 import Section                             from "components/structural/Section";
 import SectionWrapperNavigator             from "components/visual/SectionWrapperNavigator";
-import Helpers                             from "Helpers";
+import {getClasses}                             from "Helpers";
 import React, {Component}                  from "react";
 import {Mousewheel, Pagination, Scrollbar} from "swiper";
 import "swiper/css";
@@ -79,7 +79,7 @@ class SectionWrapper extends Component<any> {
         let self = this;
         return (
             <>
-                <div className={Helpers.getClasses("sectionwrapper", this.props.className)}>
+                <div className={getClasses("sectionwrapper", this.props.className)}>
                     <Swiper
                         className={this.props.className}
                         direction={"vertical"}
