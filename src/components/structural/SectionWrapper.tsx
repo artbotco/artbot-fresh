@@ -102,17 +102,13 @@ class SectionWrapper extends Component<any> {
                         className={this.props.className}
                         direction={"vertical"}
                         pagination={{
-                            clickable: true
+                            clickable: true,
+                            el: "ul.section-navigator",
+                            renderBullet: this.renderBullet
                         }}
                         slidesPerView={1}
-                        onSwiper={(swiper) => {
-                            console.log(swiper);
-                        }}
                         ref={this.wrapper}
                         watchSlidesProgress={true}
-                        /*onSetTranslate={(swiper, translate) => {
-                            self.moveMountain(swiper, translate);
-                        }}*/
                         scrollbar={{draggable: true}}
                         mousewheel={true}
                         modules={[Pagination, Scrollbar, Mousewheel]}
@@ -129,12 +125,20 @@ class SectionWrapper extends Component<any> {
                             }
                         })}
                     </Swiper>
-                    {/*{this.renderNavigator()}*/}
+                    {this.renderNavigator()}
                 </div>
                 <></>
             </>
         );
     }
+
+    renderBullet = (index: number, className: string) => {
+        return (
+            <li key={index} className={className}>
+                <a href={`#section-${index}`}>{index}</a>
+            </li>
+        );
+    };
 }
 
 export default SectionWrapper;
