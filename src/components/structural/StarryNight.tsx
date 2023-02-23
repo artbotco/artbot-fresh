@@ -59,7 +59,7 @@ class StarryNight extends Component {
         let division = 30;
         let heroHeight = heroSection.offsetHeight;
         if (window.scrollY > 0) {
-            division = 30 + 30 * (window.scrollY / heroHeight);
+            division = 30 + 500 * (window.scrollY / heroHeight);
 
             let opacity = 1 - (window.scrollY / heroHeight);
             // Set canvas opacity
@@ -138,6 +138,9 @@ class StarryNight extends Component {
 
     componentWillUnmount(): void {
         this.camera = undefined;
+        this.renderer = undefined;
+        this.scene = undefined;
+        this.stars = [];
     }
 
     render() {
