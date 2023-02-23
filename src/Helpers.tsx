@@ -1,4 +1,5 @@
-import $ from "jquery";
+import $      from "jquery";
+import Swiper from "swiper";
 
 export function mergeNonEmpty(...stringsOrArrays: any): any[] {
     let retArr = [] as any[];
@@ -51,4 +52,17 @@ export function scrollTo(element: JQuery<HTMLElement> | HTMLElement, duration: n
             callback();
         }
     });
+}
+
+export function getSwiperTranslate() {
+    //.swiper.translate * -1
+    let swiper: any = document.querySelector(".swiper");
+    if (!swiper) {
+        return 0;
+    }
+    let swiperInstance: Swiper = swiper.swiper;
+    if (!swiperInstance) {
+        return 0;
+    }
+    return swiperInstance.translate * -1;
 }
