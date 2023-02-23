@@ -1,20 +1,20 @@
-import ScrollCTA               from "assets/scroll-cta.png";
-import Tower                   from "assets/tower.png";
-import Aside                   from "components/structural/Aside";
-import {Card}                  from "components/structural/Card";
-import Modal                   from "components/structural/Modal";
-import Section                 from "components/structural/Section";
-import SectionWrapper          from "components/structural/SectionWrapper";
-import Button                  from "components/visual/Button";
-import Slide                   from "components/visual/Slide";
-import Slider                  from "components/visual/Slider";
-import Video                   from "components/visual/Video";
-import {ratioResize, scrollTo} from "Helpers";
-import $                       from "jquery";
-import Page                    from "Page";
-import React                   from "react";
-import PackagesTable           from "../components/packages/PackagesTable";
-import StarryNight             from "../components/structural/StarryNight";
+import ScrollCTA from "assets/scroll-cta.png";
+import Tower from "assets/tower.png";
+import Aside from "components/structural/Aside";
+import { Card } from "components/structural/Card";
+import Modal from "components/structural/Modal";
+import Section from "components/structural/Section";
+import SectionWrapper from "components/structural/SectionWrapper";
+import Button from "components/visual/Button";
+import Slide from "components/visual/Slide";
+import Slider from "components/visual/Slider";
+import Video from "components/visual/Video";
+import { ratioResize, scrollTo, getSwiperTranslate } from "Helpers";
+import $ from "jquery";
+import Page from "Page";
+import React from "react";
+import PackagesTable from "../components/packages/PackagesTable";
+import StarryNight from "../components/structural/StarryNight";
 import "./Home.scss";
 
 class HomeContent extends React.Component {
@@ -35,7 +35,7 @@ class HomeContent extends React.Component {
         const bodyHeight = document.body.clientHeight;
         const scrollRange = bodyHeight - window.innerHeight - towerStartTop;
 
-        const windowScroll = window.scrollY - towerStartTop;
+        const windowScroll = getSwiperTranslate() - towerStartTop;
         const towerHeight = tower.clientHeight;
         const baseOffset = window.innerHeight + window.innerHeight * 0.3;
 
@@ -64,7 +64,7 @@ class HomeContent extends React.Component {
                 let sectionCenter = section.offsetTop + section.clientHeight / 2;
                 sectionCenters.push(sectionCenter);
             }
-            let currentViewCenter = window.scrollY + window.innerHeight / 2;
+            let currentViewCenter = getSwiperTranslate() + window.innerHeight / 2;
             let closestSection = 0;
             let closestDistance = document.body.clientHeight;
             for (let i = 0; i < sectionCenters.length; i++) {
@@ -80,7 +80,7 @@ class HomeContent extends React.Component {
                 this.animating = false;
                 $("[data-section].active").removeClass("active");
                 let sectionNumber = $(sections[closestSection]).attr("data-section");
-                $("[data-section=\"" + sectionNumber + "\"]").addClass("active");
+                $('[data-section="' + sectionNumber + '"]').addClass("active");
             });
         }, 250);
     };
@@ -136,7 +136,7 @@ class HomeContent extends React.Component {
     }
 
     componentDidMount() {
-        $(window).on('swiperTranslate', this.towerScroll);
+        $(window).on("swiperTranslate", this.towerScroll);
         //window.addEventListener("scroll", this.towerScroll);
         window.addEventListener("resize", this.towerScroll);
         window.addEventListener("resize", this.resizeActiveVideo);
@@ -144,7 +144,7 @@ class HomeContent extends React.Component {
     }
 
     componentWillUnmount() {
-        $(window).off('swiperTranslate', this.towerScroll);
+        $(window).off("swiperTranslate", this.towerScroll);
         //window.removeEventListener("scroll", this.towerScroll);
         window.removeEventListener("resize", this.towerScroll);
         window.removeEventListener("resize", this.resizeActiveVideo);
@@ -154,7 +154,6 @@ class HomeContent extends React.Component {
     render() {
         return (
             <>
-
                 <StarryNight />
                 <SectionWrapper>
                     <Section className="hero" index={0}>
@@ -202,8 +201,7 @@ class HomeContent extends React.Component {
                             <h2>Collaborate with the community</h2>
                             <p>
                                 Vote on every step of the movie making process. Vote on script ideas or join the writing room and help write the script. Help create concept art to show your own vision for the movie. You can create from your
-                                own
-                                hand or use Midjourney to create AI concept art.
+                                own hand or use Midjourney to create AI concept art.
                             </p>
                             <Button toggle="#learnmore-getinvolved" className="btn-text-dark">
                                 Learn More
