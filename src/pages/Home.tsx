@@ -96,13 +96,17 @@ class HomeContent extends React.Component {
                             </Slide>
                             <Slide>
                                 <Video src="https://www.youtube.com/embed/P4KLh3kpH3A" />
-                                <h3>Ninja Cats: Teaser One</h3>
-                                <h5>Two lifelong friends and apprentice ninja cats take different paths in life after the brutal massacre of their sensei and dojo.</h5>
+                                <div className="hero-slidecard">
+                                    <h3>Ninja Cats: Teaser One</h3>
+                                    <h5>Two lifelong friends and apprentice ninja cats take different paths in life after the brutal massacre of their sensei and dojo.</h5>
+                                </div>
                             </Slide>
                             <Slide>
                                 <Video src="https://www.youtube.com/embed/t1yJSKgJnyo" />
-                                <h3>Ninja Cats: Tease Two</h3>
-                                <h5>Two lifelong friends and apprentice ninja cats take different paths in life after the brutal massacre of their sensei and dojo.</h5>
+                                <div className="hero-slidecard">
+                                    <h3>Ninja Cats: Tease Two</h3>
+                                    <h5>Two lifelong friends and apprentice ninja cats take different paths in life after the brutal massacre of their sensei and dojo.</h5>
+                                </div>
                             </Slide>
                         </Slider>
                         <img src={ScrollCTA} className="scroll-cta" onClick={() => scrollToSection(1)} alt="Scroll down to see more" />

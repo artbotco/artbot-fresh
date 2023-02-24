@@ -15,8 +15,9 @@
 }
 
 .footer {
-    position: sticky;
-    margin-left: auto;
-    margin-right: auto;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     z-index: 100;
 }
