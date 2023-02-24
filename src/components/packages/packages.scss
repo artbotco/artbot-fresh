@@ -104,6 +104,19 @@
     }
 }
 
+@media ($mobile) {
+    .package-row {
+        flex-direction: column;
+
+
+        .col {
+            width: 100%;
+            max-width: 100%;
+            flex: 1 0 100%;
+        }
+    }
+}
+
 .opacity-0 {
     display: none;
 }
