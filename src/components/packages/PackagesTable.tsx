@@ -1,11 +1,11 @@
-import {changeBacking}               from "_redux/reducers/auth.duck";
-import {Row}                         from "components/structural/Grid";
-import React, {LegacyRef}            from "react";
-import {useDispatch, useSelector}    from "react-redux";
-import {useRouter}                   from "services/Router";
-import {createFundingPaymentHistory} from "services/util";
-import DonateCard                    from "./DonateCard";
-import packages                      from "./packages";
+import { changeBacking } from "_redux/reducers/auth.duck";
+import { Row } from "components/structural/Grid";
+import React, { LegacyRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "services/Router";
+import { createFundingPaymentHistory } from "services/util";
+import DonateCard from "./DonateCard";
+import packages from "./packages";
 import "./packages.scss";
 
 const LetsMakeaMovie = () => {
@@ -18,7 +18,7 @@ const LetsMakeaMovie = () => {
         message: "",
         open: false,
         login: false,
-        parse: false
+        parse: false,
     });
 
     const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const LetsMakeaMovie = () => {
     //     if (data.code === "ABT0000") setPackages([...data.plans]);
     // };
     React.useEffect(() => {
-        const {success} = router.query;
+        const { success } = router.query;
         const pay = JSON.parse(localStorage.getItem("pay") ?? "[]");
         if (success && pay) {
             localStorage.setItem("pay", "false");
@@ -43,7 +43,7 @@ const LetsMakeaMovie = () => {
                 open: true,
                 parse: true,
                 message:
-                    "<p className='mb-0'>Thanks for taking the first step in helping us #letsmakeamovie.</p><p className='mb-0'> Please check your email and spam for your private discord invite.</p><p className='mb-0'> Let's make something amazing!</p>"
+                    "<p className='mb-0'>Thanks for taking the first step in helping us #letsmakeamovie.</p><p className='mb-0'> Please check your email and spam for your private discord invite.</p><p className='mb-0'> Let's make something amazing!</p>",
             });
             createPaymentHistory();
         }
@@ -53,7 +53,7 @@ const LetsMakeaMovie = () => {
         if (!price) {
             return;
         }
-        const plan = packages.plans.find(({priceId}) => parseInt(priceId, 10) === price);
+        const plan = packages.plans.find(({ priceId }) => parseInt(priceId, 10) === price);
         if (!plan) {
             return;
         }
@@ -92,7 +92,7 @@ const LetsMakeaMovie = () => {
             payTo: "5f0de0fb57fce500203473bb",
             amount: price,
             paymentFor: "croudfunding",
-            planId: planId
+            planId: planId,
         };
         dispatch(changeBacking(price, planTitle));
         localStorage.removeItem("price");
@@ -145,14 +145,14 @@ const LetsMakeaMovie = () => {
         <>
             <React.Fragment>
                 {/* How much donate */}
-                <h1>
-                    How much do you want to back?
-                </h1>
+                <h1>How much do you want to back?</h1>
                 {renderPackages()}
                 <div className="opacity-0">
                     <form ref={formRef} action="https://artbot-backend-api-9v7k9.ondigitalocean.app/api/plan/openStripe" method="POST">
                         <input type="hidden" value={price} name="priceId" />
-                        <button type="submit">Checkout</button>
+                        <button className="package-checkout" type="submit">
+                            Checkout
+                        </button>
                     </form>
                 </div>
             </React.Fragment>
