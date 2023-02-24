@@ -39,8 +39,21 @@ export function ratioResize(element: JQuery<HTMLElement> | HTMLElement, wR: numb
     }
     // Get width for 16:9
     let ratio = wR / hR;
-    // Set width
-    $element.css("width", height * ratio);
+
+    // Get calculated new width
+    let newWidth = height * ratio;
+    // Get content width
+    let contentWidth = window.innerWidth;
+
+    // If new width is bigger than content width, set width to content width and calculate height
+    if (newWidth > contentWidth) {
+        newWidth = contentWidth;
+        height = newWidth / ratio;
+    }
+
+    // Set width and height
+    $element.css("width", newWidth + "px");
+    $element.css("height", height + "px");
 }
 
 export function scrollTo(element: JQuery<HTMLElement> | HTMLElement, duration: number = 1000, callback?: () => void) {
