@@ -1,4 +1,4 @@
-import { faDiscord, faInstagram, faTiktok, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faDiscord, faFacebook, faInstagram, faReddit, faTiktok, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faBars, faPerson } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { logout } from "_redux/reducers/auth.duck";
@@ -108,19 +108,27 @@ const Header: React.FC<any> = () => {
                         </li>
                     </ul>
                     <div className={"main-menu-footer"}>
-                        <Button color="primary" size="lg">
-                            Work in Progress
-                        </Button>
+                        <a href="https://artbot.tv/" target="_blank" rel="noreferrer">
+                            <Button color="primary" size="lg">
+                                Work in Progress
+                            </Button>
+                        </a>
                         <Group spacing="1em">
-                            <Button color="primary" size="lg" className="btn-icon-only">
-                                <FontAwesomeIcon icon={faInstagram} />
-                            </Button>
-                            <Button color="primary" size="lg" className="btn-icon-only">
-                                <FontAwesomeIcon icon={faTiktok} />
-                            </Button>
-                            <Button color="primary" size="lg" className="btn-icon-only">
-                                <FontAwesomeIcon icon={faTwitter} />
-                            </Button>
+                            <a href="https://www.reddit.com/r/ArtBotTV/" target="_blank" rel="noreferrer">
+                                <Button color="primary" size="lg" className="btn-icon-only">
+                                    <FontAwesomeIcon icon={faReddit} />
+                                </Button>
+                            </a>
+                            <a href="https://www.facebook.com/ArtbotTv" target="_blank" rel="noreferrer">
+                                <Button color="primary" size="lg" className="btn-icon-only">
+                                    <FontAwesomeIcon icon={faFacebook} />
+                                </Button>
+                            </a>
+                            <a href="https://twitter.com/ArtBotTV" target="_blank" rel="noreferrer">
+                                <Button color="primary" size="lg" className="btn-icon-only">
+                                    <FontAwesomeIcon icon={faTwitter} />
+                                </Button>
+                            </a>
                         </Group>
                         <Group spacing="1em">
                             <Button color="primary" className="mobile-ftr-btn" size="lg" toggle="#modal-terms">

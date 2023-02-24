@@ -1,25 +1,23 @@
-import ScrollCTA               from "assets/scroll-cta.png";
-import PackagesTable           from "components/packages/PackagesTable";
-import Aside                   from "components/structural/Aside";
-import {Card}                  from "components/structural/Card";
-import Modal                   from "components/structural/Modal";
-import Section                 from "components/structural/Section";
-import SectionWrapper          from "components/structural/SectionWrapper";
-import Button                  from "components/visual/Button";
-import Slide                   from "components/visual/Slide";
-import Slider                  from "components/visual/Slider";
-import StarryNight             from "components/visual/StarryNight";
-import Tower                   from "components/visual/Tower";
-import Video                                    from "components/visual/Video";
-import {ratioResize, scrollTo, scrollToSection} from "Helpers";
-import $                                        from "jquery";
-import Page                    from "Page";
-import React                   from "react";
+import ScrollCTA from "assets/scroll-cta.png";
+import PackagesTable from "components/packages/PackagesTable";
+import Aside from "components/structural/Aside";
+import { Card } from "components/structural/Card";
+import Modal from "components/structural/Modal";
+import Section from "components/structural/Section";
+import SectionWrapper from "components/structural/SectionWrapper";
+import Button from "components/visual/Button";
+import Slide from "components/visual/Slide";
+import Slider from "components/visual/Slider";
+import StarryNight from "components/visual/StarryNight";
+import Tower from "components/visual/Tower";
+import Video from "components/visual/Video";
+import { ratioResize, scrollTo, scrollToSection } from "Helpers";
+import $ from "jquery";
+import Page from "Page";
+import React from "react";
 import "./Home.scss";
 
 class HomeContent extends React.Component {
-
-
     resizeActiveVideo = () => {
         ratioResize($(".video:visible"));
     };
@@ -86,13 +84,15 @@ class HomeContent extends React.Component {
                 <StarryNight />
                 <SectionWrapper>
                     <Section className="hero" index={0}>
-                        <h1>Let&apos;s Make a Movie!</h1>
-                        <h2>Vote on every step of the movie making process, and earn money as the movie does!</h2>
+                        <h1 className="hero-title">Let&apos;s Make a Movie!</h1>
+                        <h2 className="hero-tagline">Vote on every step of the movie making process, and earn money as the movie does!</h2>
                         <Slider>
                             <Slide className="active">
                                 <Video src="https://www.youtube.com/embed/__jYHX5CGic" />
-                                <h3>Birth of ArtBot</h3>
-                                <h5>Io Travels Time And Space To Save Great Works Of Art.</h5>
+                                <div className="hero-slidecard">
+                                    <h3>Birth of ArtBot</h3>
+                                    <h5>Io Travels Time And Space To Save Great Works Of Art.</h5>
+                                </div>
                             </Slide>
                             <Slide>
                                 <Video src="https://www.youtube.com/embed/P4KLh3kpH3A" />
