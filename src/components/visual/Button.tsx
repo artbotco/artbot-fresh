@@ -62,7 +62,7 @@ class Button extends React.Component<any> {
     render() {
         const dataToggle = this.props.toggle ? {"data-toggle": this.props.toggle} : {};
         const dataNoToggle = this.props.notoggle ? {"data-notoggle": this.props.notoggle} : {};
-        const href = this.props.href ? {href: this.props.href, target: "_blank"} : {};
+        const href = this.props.href ? {href: this.props.href, target: "_blank", rel: "noreferrer"} : {};
         return (
             <a ref={this.ref} className={this.getClassNames()} {...dataToggle} {...dataNoToggle} {...href}>
                 {this.props.children}

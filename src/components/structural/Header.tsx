@@ -1,20 +1,20 @@
-import { faDiscord, faFacebook, faInstagram, faReddit, faTiktok, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faBars, faPerson } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { logout } from "_redux/reducers/auth.duck";
-import Logo from "assets/logo.png";
-import LoginContainer from "components/login/loginContainer";
-import Aside from "components/structural/Aside";
-import { Column, Row } from "components/structural/Grid";
-import Group from "components/structural/Group";
-import Button from "components/visual/Button";
-import { scrollTo, scrollToSection } from "Helpers";
-import $ from "jquery";
-import React from "react";
-import { useSelector } from "react-redux";
-import { privacy, terms } from "../../utils/FooterText";
+import {faDiscord, faFacebook, faReddit, faTwitter} from "@fortawesome/free-brands-svg-icons";
+import {faBars, faPerson}                           from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon}                            from "@fortawesome/react-fontawesome";
+import {logout}                                     from "_redux/reducers/auth.duck";
+import Logo                                         from "assets/logo.png";
+import LoginContainer                               from "components/login/loginContainer";
+import Aside                                        from "components/structural/Aside";
+import {Column, Row}                                from "components/structural/Grid";
+import Group                                        from "components/structural/Group";
+import Button                                       from "components/visual/Button";
+import {scrollTo, scrollToSection}                  from "Helpers";
+import $                                            from "jquery";
+import React                                        from "react";
+import {useSelector}                                from "react-redux";
+import {privacy, terms}                             from "../../utils/FooterText";
 import "./Header.scss";
-import Modal from "./Modal";
+import Modal                                        from "./Modal";
 import "./Modal.scss";
 
 const Header: React.FC<any> = () => {
@@ -108,27 +108,21 @@ const Header: React.FC<any> = () => {
                         </li>
                     </ul>
                     <div className={"main-menu-footer"}>
-                        <a href="https://artbot.tv/" target="_blank" rel="noreferrer">
-                            <Button color="primary" size="lg">
-                                Work in Progress
-                            </Button>
-                        </a>
+                        <Button href="https://artbot.tv/" color="primary" size="lg">
+                            Work in Progress
+                        </Button>
                         <Group spacing="1em">
-                            <a href="https://www.reddit.com/r/ArtBotTV/" target="_blank" rel="noreferrer">
-                                <Button color="primary" size="lg" className="btn-icon-only">
-                                    <FontAwesomeIcon icon={faReddit} />
-                                </Button>
-                            </a>
-                            <a href="https://www.facebook.com/ArtbotTv" target="_blank" rel="noreferrer">
-                                <Button color="primary" size="lg" className="btn-icon-only">
-                                    <FontAwesomeIcon icon={faFacebook} />
-                                </Button>
-                            </a>
-                            <a href="https://twitter.com/ArtBotTV" target="_blank" rel="noreferrer">
-                                <Button color="primary" size="lg" className="btn-icon-only">
-                                    <FontAwesomeIcon icon={faTwitter} />
-                                </Button>
-                            </a>
+                            <Button href="https://www.reddit.com/r/ArtBotTV/" color="primary" size="lg" className="btn-icon-only">
+                                <FontAwesomeIcon icon={faReddit} />
+                            </Button>
+
+                            <Button href="https://www.facebook.com/ArtbotTv" color="primary" size="lg" className="btn-icon-only">
+                                <FontAwesomeIcon icon={faFacebook} />
+                            </Button>
+
+                            <Button href="https://twitter.com/ArtBotTV" color="primary" size="lg" className="btn-icon-only">
+                                <FontAwesomeIcon icon={faTwitter} />
+                            </Button>
                         </Group>
                         <Group spacing="1em">
                             <Button color="primary" className="mobile-ftr-btn" size="lg" toggle="#modal-terms">
@@ -143,11 +137,11 @@ const Header: React.FC<any> = () => {
             </Aside>
             <Modal id="modal-terms">
                 <h1>{terms.title}</h1>
-                <div dangerouslySetInnerHTML={{ __html: terms.desc }}></div>
+                <div dangerouslySetInnerHTML={{__html: terms.desc}}></div>
             </Modal>
             <Modal id="modal-privacy">
                 <h1>{privacy.title}</h1>
-                <div dangerouslySetInnerHTML={{ __html: privacy.desc }}></div>
+                <div dangerouslySetInnerHTML={{__html: privacy.desc}}></div>
             </Modal>
         </>
     );
