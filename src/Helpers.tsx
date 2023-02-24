@@ -33,6 +33,9 @@ export function getClasses(...stringsOrArrays: any[]): string {
 export function ratioResize(element: JQuery<HTMLElement> | HTMLElement, wR: number = 16, hR: number = 9) {
     let $element = $(element);
     if (!$element) return;
+
+    $element.removeAttr("style");
+
     let height = $element.height();
     if (!height) {
         return;
