@@ -1,18 +1,18 @@
 @import "../../base";
 
 .card {
-    position:      absolute;
-    top:           50%;
-    right:         $gutter;
-    left:          55%;
-    display:       inline-block;
-    width:         40vw;
-    max-width:     500px;
-    height:        auto;
-    padding:       2em;
-    transform:     translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: $gutter;
+    left: 55%;
+    display: inline-block;
+    width: 40vw;
+    max-width: 500px;
+    height: auto;
+    padding: 2em;
+    transform: translateY(-50%);
     border-radius: 15px;
-    background:    rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
 
     .learn-more {
         display: none;
@@ -21,14 +21,14 @@
 
 @media ($mobile) {
     .card {
-        width:           100vw;
-        height:          auto;
-        display:         block;
-        left:            0;
-        max-width:       unset;
-        top:             unset;
-        bottom:          40px;
+        width: 100vw;
+        height: auto;
+        display: block;
+        left: 0;
+        max-width: unset;
+        top: unset;
+        bottom: 90px;
         backdrop-filter: blur(10px);
-        transform:       unset;
+        transform: unset;
     }
 }

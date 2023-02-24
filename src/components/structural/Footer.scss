@@ -1,11 +1,11 @@
 .mobile-discord-btn {
     position: fixed;
-    display:  block;
-    width:    100vw;
-    height:   40px;
-    left:     0;
-    bottom:   0;
-    z-index:  100;
+    display: block;
+    width: 100vw;
+    height: 40px;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
 }
 
 .btn-text-dark {
@@ -14,8 +14,9 @@
     // margin-right: auto;
 }
 
-// .footer {
-//   position: sticky;
-//   margin-left: auto;
-//   margin-right: auto;
-// }
+.footer {
+    position: sticky;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 100;
+}
