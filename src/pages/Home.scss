@@ -52,8 +52,13 @@ body {
 
 @media ($mobile) {
     .section.hero {
+        bottom: 100px;
+    }
+    .section.hero {
         h1 {
-            font-size: 250%;
+            font-size: 230%;
+            margin-left: 4px;
+            margin-right: 4px;
         }
 
         h2 {
