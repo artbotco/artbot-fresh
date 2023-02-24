@@ -75,21 +75,10 @@ class StarryNight extends Component {
         if (!heroSection) {
             return;
         }
-        let division = 30;
+        let division = 50;
         let heroHeight = heroSection.offsetHeight;
-        if (getSwiperTranslate() > 0) {
-            division = 30 + 250 * (getSwiperTranslate() / heroHeight);
-
-            let opacity = 1 - getSwiperTranslate() / heroHeight;
-            // Set canvas opacity
-            if (this.canvas.current) {
-                this.canvas.current.style.opacity = opacity.toString();
-            }
-        } else {
-            // Set canvas opacity
-            if (this.canvas.current) {
-                this.canvas.current.style.opacity = "1";
-            }
+        if(getSwiperTranslate() > 0) {
+            division += 250 * (getSwiperTranslate() / heroHeight);
         }
         for (var i = 0; i < this.stars.length; i++) {
             var star = this.stars[i];
