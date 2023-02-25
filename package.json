@@ -26,8 +26,9 @@
 		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
+        "git-info": "echo export default \"{\\\"logMessage\\\": \\\"$(git log -1 --oneline)\\\"}\"  > src/_git_commit.js",
 		"start": "react-scripts start",
-		"build": "react-scripts build",
+		"build": "yarn git-info; react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
