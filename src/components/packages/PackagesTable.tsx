@@ -33,6 +33,7 @@ const LetsMakeaMovie = () => {
     //     const data = await getAllPlans();
     //     if (data.code === "ABT0000") setPackages([...data.plans]);
     // };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     React.useEffect(() => {
         const { success } = router.query;
         const pay = JSON.parse(localStorage.getItem("pay") ?? "[]");
@@ -47,7 +48,7 @@ const LetsMakeaMovie = () => {
             });
             createPaymentHistory();
         }
-    }, []);
+    });
 
     React.useEffect(() => {
         if (!price) {

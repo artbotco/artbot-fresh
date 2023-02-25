@@ -17,6 +17,7 @@ header {
     .nav-brand.logo {
         display: inline-block;
         height: 100%;
+        cursor: pointer;
 
         img {
             display: inline-block;
@@ -31,6 +32,7 @@ aside.main-menu {
         padding-top: 0;
 
         .nav-brand.logo {
+            cursor: pointer;
             vertical-align: top;
             display: inline-block;
             position: absolute;

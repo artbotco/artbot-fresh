@@ -101,3 +101,11 @@ export function filterClasses(classes:string, exclude:string[] = []):string {
     });
     return ret.join(" ");
 }
+
+export function closeAside(aside:string = 'all') {
+    if(aside === 'all') {
+        $("aside.active").trigger('toggle');
+    } else {
+        $(`aside${aside}.active`).trigger('toggle');
+    }
+}

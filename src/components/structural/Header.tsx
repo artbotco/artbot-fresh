@@ -8,8 +8,7 @@ import Aside                                        from "components/structural/
 import {Column, Row}                                from "components/structural/Grid";
 import Group                                        from "components/structural/Group";
 import Button                                       from "components/visual/Button";
-import {scrollTo, scrollToSection}                  from "Helpers";
-import $                                            from "jquery";
+import {closeAside, scrollToSection}                from "Helpers";
 import React                                        from "react";
 import {useSelector}                                from "react-redux";
 import {privacy, terms}                             from "../../utils/FooterText";
@@ -20,11 +19,11 @@ import "./Modal.scss";
 const Header: React.FC<any> = () => {
     const user = useSelector((state: any) => state.auth);
 
-    const clickHandler = (ele: string) => {
-        let aside = $("#aside-sidebar-left");
-        aside.trigger("toggle");
-        scrollTo($(ele));
+    const clickHandler = (section: number) => {
+        closeAside();
+        scrollToSection(section);
     };
+
 
     return (
         <>
@@ -36,9 +35,9 @@ const Header: React.FC<any> = () => {
                         </Button>
                     </Column>
                     <Column className="justify-content-center align-items-center">
-                        <a className={"nav-brand logo"} href={"/"}>
+                        <Button className={"nav-brand logo"} onClick={() => clickHandler(0)}>
                             <img src={Logo} alt="logo" />
-                        </a>
+                        </Button>
                     </Column>
                     <Column className="justify-content-center align-items-end">
                         <Group spacing="1em">
@@ -70,39 +69,39 @@ const Header: React.FC<any> = () => {
             </Aside>
             <Aside id="aside-sidebar-left" className="main-menu" side="left">
                 <h1>
-                    <a className={"nav-brand logo"} href={"/"}>
+                    <Button className={"nav-brand logo"} onClick={() => clickHandler(0)}>
                         <img src={Logo} alt="logo" />
-                    </a>
+                    </Button>
                 </h1>
                 <div className={"main-menu-contents"}>
                     <ul>
                         <li>
-                            <Button color="secondary" size="lg" className="btn-text-light" data-section="0" onClick={() => scrollToSection(0)}>
+                            <Button color="secondary" size="lg" className="btn-text-light" data-section="0" onClick={() => clickHandler(0)}>
                                 Home
                             </Button>
                         </li>
                         <li>
-                            <Button color="secondary" size="lg" className="btn-text-light" data-section="1" onClick={() => scrollToSection(1)}>
+                            <Button color="secondary" size="lg" className="btn-text-light" data-section="1" onClick={() => clickHandler(1)}>
                                 1. Vote
                             </Button>
                         </li>
                         <li>
-                            <Button color="secondary" size="lg" className="btn-text-light" data-section="2" onClick={() => scrollToSection(2)}>
+                            <Button color="secondary" size="lg" className="btn-text-light" data-section="2" onClick={() => clickHandler(2)}>
                                 2. Crowdfund
                             </Button>
                         </li>
                         <li>
-                            <Button color="secondary" size="lg" className="btn-text-light" data-section="3" onClick={() => scrollToSection(3)}>
+                            <Button color="secondary" size="lg" className="btn-text-light" data-section="3" onClick={() => clickHandler(3)}>
                                 3. Pre-production
                             </Button>
                         </li>
                         <li>
-                            <Button color="secondary" size="lg" className="btn-text-light" data-section="4" onClick={() => scrollToSection(4)}>
+                            <Button color="secondary" size="lg" className="btn-text-light" data-section="4" onClick={() => clickHandler(4)}>
                                 4. Production
                             </Button>
                         </li>
                         <li>
-                            <Button color="secondary" size="lg" className="btn-text-light" data-section="5" onClick={() => scrollToSection(5)}>
+                            <Button color="secondary" size="lg" className="btn-text-light" data-section="5" onClick={() => clickHandler(5)}>
                                 5. Profit!
                             </Button>
                         </li>
