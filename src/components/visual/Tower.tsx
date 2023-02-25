@@ -46,6 +46,19 @@ class Tower extends React.Component {
             return;
         }
 
+        let shifts = [
+            0,
+            0.1,
+            0,
+            0,
+            0
+        ];
+        let slide = Math.floor(getSwiperTranslate() / windowHeight) - 1;
+        let extraOffset = 0;
+        if(shifts[slide]) {
+            extraOffset = shifts[slide];
+        }
+
         const towerHeight = tower.clientHeight - (windowHeight * 0.6); // Actual height of the tower as rendered
 
         const baseOffset = offsetTop + (windowHeight * 0.3); // We want to offset by header height + a third of VH
@@ -54,7 +67,7 @@ class Tower extends React.Component {
         //const offsetRange = maxOffset - baseOffset;
         const windowOffsetPercentage = windowScroll / scrollRange;
 
-        const offset = baseOffset - (towerHeight * windowOffsetPercentage);
+        const offset = baseOffset - (towerHeight * windowOffsetPercentage) + (windowHeight * extraOffset);
 
         tower.style.top = `${offset}px`;
     };
