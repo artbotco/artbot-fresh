@@ -77,9 +77,9 @@ class StarryNight extends Component {
         }
         let division = 50;
         let heroHeight = heroSection.offsetHeight;
-        if(getSwiperTranslate() > 0) {
+        // if(getSwiperTranslate() > 0) {
             division += 250 * (getSwiperTranslate() / heroHeight);
-        }
+        // }
         for (var i = 0; i < this.stars.length; i++) {
             var star = this.stars[i];
             star.position.z += i / division;
