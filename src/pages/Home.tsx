@@ -161,7 +161,7 @@ class HomeContent extends React.Component {
                     </Section>
                 </SectionWrapper>
                 <Aside id="learnmore-projects">
-                    <h2>Projects</h2>
+                    <h1>Projects</h1>
                     <ul className="modal-list">
                         <li>
                             The Birth of IO the Artbot
@@ -190,7 +190,7 @@ class HomeContent extends React.Component {
                     </ul>
                 </Aside>
                 <Aside id="learnmore-royalties">
-                    <h2>Royalties</h2>
+                    <h1>Royalties</h1>
                     <ul className="modal-list">
                         <li>
                             Extra - <a href="https://www.google.com/search?q=extra+benefits">Benefits</a>
@@ -213,7 +213,7 @@ class HomeContent extends React.Component {
                     </ul>
                 </Aside>
                 <Aside id="learnmore-getinvolved">
-                    <h2>Get involved</h2>
+                    <h1>Get involved</h1>
                     <ul className="modal-list">
                         <li>
                             Concept Development:
@@ -296,7 +296,7 @@ class HomeContent extends React.Component {
                     </ul>
                 </Aside>
                 <Aside id="learnmore-ai">
-                    <h2>We can use AI to help enable the animation process, starting with key frames</h2>
+                    <h1>We can use AI to help enable the animation process, starting with key frames</h1>
                     <ul>
                         <li>
                             Preparation:
@@ -344,7 +344,7 @@ class HomeContent extends React.Component {
                 </Aside>
                 <Tower />
                 <Aside id="learnmore-shares">
-                    <h2>Shares</h2>
+                    <h1>Shares</h1>
                     <ul className="modal-list">
                         <li>Backers: 50%</li>
                         <li>Producer tier backers: 20% (I’m debating this as an option)</li>

@@ -1,64 +1,68 @@
 @import "../../base";
 
 header {
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    right: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
+    position:        fixed;
+    z-index:         100;
+    top:             0;
+    right:           0;
+    left:            0;
+    display:         flex;
+    align-items:     center;
     justify-content: space-between;
-    height: $header-height;
-    background: rgba(0, 0, 0, 0.5);
+    height:          $header-height;
+    background:      rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
-    width: 100vw;
+    width:           100vw;
 
     .nav-brand.logo {
         display: inline-block;
-        height: 100%;
-        cursor: pointer;
+        height:  100%;
+        cursor:  pointer;
 
         img {
             display: inline-block;
-            width: auto;
-            height: auto;
+            width:   auto;
+            height:  auto;
         }
     }
 }
 
 aside.main-menu {
+    display:         flex;
+    flex-direction:  column;
+    justify-content: space-between;
+    align-items:     center;
+
     h1 {
         padding-top: 0;
 
         .nav-brand.logo {
-            cursor: pointer;
+            cursor:         pointer;
             vertical-align: top;
-            display: inline-block;
-            position: absolute;
-            top: 5px;
-            left: $gutter;
+            display:        inline-block;
+            position:       absolute;
+            top:            5px;
+            left:           $gutter;
         }
     }
 
     .main-menu-contents {
-        display: flex;
-        height: 100%;
-        flex-direction: column;
-        overflow: auto;
-        width: 100%;
-        padding: $header-height $gutter;
-        flex-wrap: nowrap;
+        display:         flex;
+        flex-direction:  column;
+        overflow:        auto;
+        width:           100%;
+        padding:         $header-height $gutter $gutter;
+        box-sizing:      border-box;
+        flex-wrap:       nowrap;
         justify-content: space-between;
+        align-items:     center;
+        flex-grow:       1;
 
         ul {
             list-style: none;
-            width: 70%;
-            height: 80% !important;
-            margin: 0;
-            padding: 0;
-            margin-left: auto;
-            margin-right: auto;
+            width:      70%;
+            height:     auto !important;
+            padding:    0;
 
             li {
                 margin-bottom: calc($gutter / 2);
@@ -70,10 +74,10 @@ aside.main-menu {
         }
 
         .main-menu-footer {
-            display: flex;
+            display:        flex;
             flex-direction: column;
-            gap: calc($gutter / 2);
-            align-items: center;
+            gap:            calc($gutter / 2);
+            align-items:    center;
 
             .group.social-icons {
                 justify-content: center !important;

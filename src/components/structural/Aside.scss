@@ -12,7 +12,7 @@ aside.aside {
     top: 0;
     transition: 0.3s ease-in-out;
     color: $color-light;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     h1:first-of-type {
         margin-top: $gutter;
