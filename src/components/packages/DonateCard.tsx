@@ -1,9 +1,6 @@
-/* eslint-disable react/prop-types */
-// import ReactIcons from '../UI/ReactIcons/ReactIcons';
-import {Column}     from "components/structural/Grid";
-import Button       from "components/visual/Button";
-import React        from "react";
-import {getClasses} from "../../Helpers";
+import {Column} from "components/structural/Grid";
+import Button   from "components/visual/Button";
+import React    from "react";
 import "./packages.scss";
 
 export type DonateItem = {
@@ -28,12 +25,12 @@ const DonateCard = ({id, title, price, originalPrice, leftPrice, benefits, total
         <Column className="package">
             <h3 className={`package-title`}>{title}</h3>
             <ul className="package-benefits">
-            {benefits.map((item, i) => (
-                <li key={i} className={`package-benefit ${i <= total ? 'package-benefit-check' : 'package-benefit-cross'}`}>
-                    <img className="benefit-check" src={`/img/${i <= total ? "check.svg" : "cross.svg"}`} alt="alt" />
-                    {item}
-                </li>
-            ))}
+                {benefits.map((item, i) => (
+                    <li key={i} className={`package-benefit ${i <= total ? "package-benefit-check" : "package-benefit-cross"}`}>
+                        <img className="benefit-check" src={`/img/${i <= total ? "check.svg" : "cross.svg"}`} alt="alt" />
+                        {item}
+                    </li>
+                ))}
             </ul>
             <p className={`package-price`}>
                 <span className={`package-price-original`}>
@@ -50,7 +47,7 @@ const DonateCard = ({id, title, price, originalPrice, leftPrice, benefits, total
                 </div>
             )}
             {leftPrice && (
-                <p className={'package-number-left'}>{leftPrice} left at this price</p>
+                <p className={"package-number-left"}>{leftPrice} left at this price</p>
             )}
             <Button
                 onClick={() => {

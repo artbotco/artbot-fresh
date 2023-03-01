@@ -1,7 +1,6 @@
-import $ from "jquery";
-import React, { Component } from "react";
-import * as THREE from "three";
-import { getSwiperTranslate } from "Helpers";
+import $                  from "jquery";
+import React, {Component} from "react";
+import * as THREE         from "three";
 import "./StarryNight.scss";
 
 class StarryNight extends Component {
@@ -34,7 +33,7 @@ class StarryNight extends Component {
         this.camera.position.z = 5;
         this.scene = new THREE.Scene();
         this.scene.background = new THREE.Color(0x140c24);
-        this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas.current, antialias: true });
+        this.renderer = new THREE.WebGLRenderer({canvas: this.canvas.current, antialias: true});
         this.renderer.setSize(heroWidth, heroHeight);
 
         this.addStars();
@@ -76,10 +75,6 @@ class StarryNight extends Component {
             return;
         }
         let division = 50;
-        let heroHeight = heroSection.offsetHeight;
-        // if(getSwiperTranslate() > 0) {
-            // division += 250 * (getSwiperTranslate() / heroHeight);
-        // }
         for (var i = 0; i < this.stars.length; i++) {
             var star = this.stars[i];
             star.position.z += i / division;
@@ -120,7 +115,7 @@ class StarryNight extends Component {
             }
             var geometry = new THREE.SphereGeometry(0.5, 32, 32);
             let material = new THREE.MeshBasicMaterial({
-                color: colorValue,
+                color: colorValue
             });
             var sphere = new THREE.Mesh(geometry, material);
             var sphere1 = new THREE.Mesh(geometry, material);

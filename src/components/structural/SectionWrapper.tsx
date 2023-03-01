@@ -84,7 +84,6 @@ class SectionWrapper extends Component<any> {
 
     render() {
         let key = 0;
-        let self = this;
         return (
             <>
                 <div className={getClasses("sectionwrapper", this.props.className)}>
@@ -111,11 +110,12 @@ class SectionWrapper extends Component<any> {
                                         {child}
                                     </SwiperSlide>
                                 );
+                            } else {
+                                return (<></>);
                             }
                         })}
                     </Swiper>
                 </div>
-                <></>
             </>
         );
     }
