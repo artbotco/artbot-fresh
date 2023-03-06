@@ -27,7 +27,7 @@
 	},
 	"scripts": {
         "git-info": "echo \"var msg = {\\\"logMessage\\\": \\\"$(git log -1 --oneline)\\\"}; export default msg\" > src/_git_commit.js",
-		"start": "react-scripts start",
+		"start": "PORT=8080 react-scripts --max_old_space_size=2048 start",
 		"build": "yarn git-info; react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
