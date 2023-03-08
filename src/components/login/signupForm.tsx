@@ -162,9 +162,9 @@ function SignUpForm(props: any) {
                     <input type="checkbox" id="termsOfUse" name="termsOfUse" />
                     <label htmlFor="termsOfUse">I agree to the terms of use</label>
                 </div>
-                <Button type="submit" className={"margin-half-top notoggle"}>
+                <button type="submit" className={"btn btn-primary margin-half-top notoggle"}>
                     Sign Up
-                </Button>
+                </button>
                 <Button color={"secondary"} onClick={props.backToLogin} notoggle="#aside-login"  className={"justify-content-center margin-half-top"}>Back</Button>
             </form>
         </>

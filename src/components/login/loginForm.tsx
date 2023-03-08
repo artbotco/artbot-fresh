@@ -116,9 +116,9 @@ const LoginForm = (props: any) => {
                         {message?.message}
                     </div>
                 )}
-                <Button type="submit" className={"margin-half-top notoggle"}>
+                <button type="submit" className={"btn btn-primary margin-half-top notoggle"}>
                     Log In
-                </Button>
+                </button>
                 <Group className={"justify-content-center margin-half-top"}>
                     <Button color={"secondary"} notoggle="#aside-login" onClick={props.toSignup}>Sign Up</Button>
                     <Button color={"secondary"} notoggle="#aside-login" onClick={props.toRecover}>Recover</Button>
