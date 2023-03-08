@@ -63,7 +63,7 @@ function SignUpForm(props: any) {
     return (
         <>
             <h1>Sign Up</h1>
-            <form className={"form form-centered padding"}>
+            <form onSubmit={submitHandler} className={"form form-centered padding"}>
                 <div className="form-container">
                     <div className="form-item">
                         <label htmlFor="username">Username:</label>
@@ -162,7 +162,7 @@ function SignUpForm(props: any) {
                     <input type="checkbox" id="termsOfUse" name="termsOfUse" />
                     <label htmlFor="termsOfUse">I agree to the terms of use</label>
                 </div>
-                <Button onClick={submitHandler} className={"margin-half-top notoggle"}>
+                <Button type="submit" className={"margin-half-top notoggle"}>
                     Sign Up
                 </Button>
                 <Button color={"secondary"} onClick={props.backToLogin} notoggle="#aside-login"  className={"justify-content-center margin-half-top"}>Back</Button>

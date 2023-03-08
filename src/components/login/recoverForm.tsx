@@ -38,7 +38,7 @@ function RecoverForm(props: any) {
     return (
         <>
             <h1>Forgot Password</h1>
-            <form className={"form form-centered padding"}>
+            <form onSubmit={submitHandler} className={"form form-centered padding"}>
                 <div className="form-container">
                     <div className={"form-item"}>
                         <label htmlFor="email">Email:</label>
@@ -69,7 +69,7 @@ function RecoverForm(props: any) {
                         {message?.message}
                     </div>
                 )}
-                <Button onClick={submitHandler} className={"margin-half-top"}>
+                <Button type="submit" className={"margin-half-top"}>
                     Submit
                 </Button>
                 <Button color={"secondary"} onClick={props.backToLogin} notoggle="#aside-login"  className={"justify-content-center margin-half-top"}>Back</Button>
