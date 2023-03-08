@@ -40,7 +40,7 @@ const LoginForm = (props: any) => {
                 jwt_decode(loginResponse.data.userToken),
                 loginResponse.data.userToken
             );
-            navigate("/");
+            window.location.reload();
         } else {
             setLoading(false);
             setMessage({

@@ -306,6 +306,8 @@ export const getAllPlaylists = async (type, page = 1, limit = 10) => {
 export const logoutFromServer = async () => {
     try {
         await axios.post('/auth/logout', {});
+
+        window.location.reload();
     } catch (error) {
         console.log(error);
     }
