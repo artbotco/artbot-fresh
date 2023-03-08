@@ -103,7 +103,7 @@ function SignUpForm(props: any) {
                                 })
                             }
                             className="form-control login-form__input"
-                            placeholder="Username"
+                            placeholder="Email"
                         />
                     </div>
                 </div>
@@ -122,7 +122,7 @@ function SignUpForm(props: any) {
                                 })
                             }
                             className="form-control login-form__input"
-                            placeholder="Username"
+                            placeholder="Password"
                         />
                     </div>
                 </div>
