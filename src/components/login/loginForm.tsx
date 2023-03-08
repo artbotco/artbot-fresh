@@ -29,8 +29,8 @@ const LoginForm = (props: any) => {
     let navigate = useNavigate();
 
     const submitHandler = async (e: any) => {
-        e.preventDefault();
         setLoading(true);
+        e.preventDefault();
         let loginResponse = await login({
             username: username.value,
             password: password.value
@@ -53,7 +53,7 @@ const LoginForm = (props: any) => {
     return (
         <>
             <h1>Login</h1>
-            <form className={"form form-centered padding"}>
+            <form onSubmit={submitHandler} className={"form form-centered padding"}>
                 <div className="form-container">
                     {/* icon here */}
                     <div className="form-item">
@@ -116,7 +116,7 @@ const LoginForm = (props: any) => {
                         {message?.message}
                     </div>
                 )}
-                <Button onClick={submitHandler} className={"margin-half-top notoggle"}>
+                <Button type="submit" className={"margin-half-top notoggle"}>
                     Log In
                 </Button>
                 <Group className={"justify-content-center margin-half-top"}>
