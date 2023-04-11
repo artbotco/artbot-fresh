@@ -344,10 +344,10 @@ class HomeContent extends React.Component {
                 </Aside>
                 <Tower />
                 <Aside id="learnmore-shares">
-                    <h1>Shares</h1>
+                    <h1>Royalties Breakdown</h1>
                     <ul className="modal-list">
                         <li>Backers: 50%</li>
-                        <li>Producer tier backers: 20% (I’m debating this as an option)</li>
+                        <li>Producer tier backers: 20%</li>
                         <li>Cast and crew: 30%</li>
                     </ul>
                 </Aside>
