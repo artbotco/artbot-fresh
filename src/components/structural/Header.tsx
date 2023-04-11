@@ -42,7 +42,7 @@ const Header: React.FC<any> = () => {
                     </Column>
                     <Column className="justify-content-center align-items-end">
                         <Group spacing="1em">
-                            <Button href="https://discord.gg/artbot" color="secondary" className="btn-text-light">
+                            <Button href="https://discord.gg/uuCcj5VVkf" color="secondary" className="btn-text-light">
                                 <FontAwesomeIcon icon={faDiscord} />
                                 <span className="hidden-mobile"> Discord</span>
                             </Button>
