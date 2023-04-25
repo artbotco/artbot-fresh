@@ -1,0 +1,25 @@
+@import "../../base";
+
+.aside-content {
+    padding: 1rem;
+
+    .aside-accordion {
+        font-family: $font-default !important;
+        background-color: transparent !important;
+        color: #ffffff !important;
+        margin: 0 !important;
+        border: 1px solid $color-default !important;
+
+        .Mui-expanded {
+            min-height: auto;
+        }
+
+        .aside-accordion-item {
+            border-top: 1px dashed $color-default !important;
+        }
+
+        li {
+            white-space: normal;
+        }
+    }
+}

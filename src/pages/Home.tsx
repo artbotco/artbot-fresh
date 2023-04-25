@@ -1,20 +1,21 @@
-import ScrollCTA                      from "assets/scroll-cta.png";
-import PackagesTable                  from "components/packages/PackagesTable";
-import Aside                          from "components/structural/Aside";
-import {Card}                         from "components/structural/Card";
-import Modal                          from "components/structural/Modal";
-import Section                        from "components/structural/Section";
-import SectionWrapper                 from "components/structural/SectionWrapper";
-import Button                         from "components/visual/Button";
-import Slide                          from "components/visual/Slide";
-import Slider                         from "components/visual/Slider";
-import StarryNight                    from "components/visual/StarryNight";
-import Tower                          from "components/visual/Tower";
-import Video                          from "components/visual/Video";
-import {ratioResize, scrollToSection} from "Helpers";
-import $                              from "jquery";
-import Page                           from "Page";
-import React                          from "react";
+import ScrollCTA from "assets/scroll-cta.png";
+import PackagesTable from "components/packages/PackagesTable";
+import Aside from "components/structural/Aside";
+import { Card } from "components/structural/Card";
+import Modal from "components/structural/Modal";
+import Section from "components/structural/Section";
+import SectionWrapper from "components/structural/SectionWrapper";
+import Button from "components/visual/Button";
+import Slide from "components/visual/Slide";
+import Slider from "components/visual/Slider";
+import StarryNight from "components/visual/StarryNight";
+import Tower from "components/visual/Tower";
+import Video from "components/visual/Video";
+import { ratioResize, scrollToSection } from "Helpers";
+import $ from "jquery";
+import Page from "Page";
+import React from "react";
+import AsideAccordion from "components/structural/AsideAccordion";
 import "./Home.scss";
 
 class HomeContent extends React.Component {
@@ -160,197 +161,12 @@ class HomeContent extends React.Component {
                         </Card>
                     </Section>
                 </SectionWrapper>
-                <Aside id="learnmore-projects">
-                    <h1>Projects</h1>
-                    <ul className="modal-list">
-                        <li>
-                            The Birth of IO the Artbot
-                            <ul>
-                                <li>A sentient robot, born of two junkyard robots, travels to earth after being inspired by movies, and helps a girl save her apartment building by putting on a great show.</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Ninja Cats
-                            <ul>
-                                <li>Two lifelong friends and apprentice ninja cats take different paths in life after the brutal massacre of their sensei and dojo.</li>
-                            </ul>
-                        </li>
-                        <li>
-                            The Last Humans
-                            <ul>
-                                <li>In a post-apocalyptic world that has been overtaken by nature, raiders attack a village, and a brother escapes with his sister as they begin a mission to find a mythical city.</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Saving Ai
-                            <ul>
-                                <li>The world has adopted the metaverse in every aspect of life, and when news leaks that the first true AI is about to be created, the race is on to control it, destroy it, or rescue it.</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </Aside>
-                <Aside id="learnmore-royalties">
-                    <h1>Royalties</h1>
-                    <ul className="modal-list">
-                        <li>
-                            Extra - <a href="https://www.google.com/search?q=extra+benefits">Benefits</a>
-                        </li>
-                        <li>
-                            Assistant - <a href="https://www.google.com/search?q=assistant+benefits">Benefits</a>
-                        </li>
-                        <li>
-                            Gaffer - <a href="https://www.google.com/search?q=gaffer+benefits">Benefits</a>
-                        </li>
-                        <li>
-                            Stuntperson - <a href="https://www.google.com/search?q=stuntperson+benefits">Benefits</a>
-                        </li>
-                        <li>
-                            Producer - <a href="https://www.google.com/search?q=producer+benefits">Benefits</a>
-                        </li>
-                        <li>
-                            Executive - <a href="https://www.google.com/search?q=executive+benefits">Benefits</a>
-                        </li>
-                    </ul>
-                </Aside>
-                <Aside id="learnmore-getinvolved">
-                    <h1>Get involved</h1>
-                    <ul className="modal-list">
-                        <li>
-                            Concept Development:
-                            <ul>
-                                <li>Develop the premise and theme of top-voted movie idea</li>
-                                <li>Define the target audience</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Script Writing:
-                            <ul>
-                                <li>Write and vote on script treatments</li>
-                                <li>Write and vote on spec scripts</li>
-                                <li>Write and vote on the final script</li>
-                                <li>Revise the script as needed</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Storyboarding:
-                            <ul>
-                                <li>Create and vote on the visual representations of the script</li>
-                                <li>Decide on camera angles, shots, and transitions</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Character Design:
-                            <ul>
-                                <li>Create and vote on the design of the characters and their personalities</li>
-                                <li>Decide on their costumes, hairstyles, and other physical attributes</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Background Design:
-                            <ul>
-                                <li>Create and vote on the design of the environments and settings in which the characters will live and move</li>
-                                <li>Decide on the color palette and visual style of the film</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Sound Design:
-                            <ul>
-                                <li>Vote on sound director(s) and/or composer(s)</li>
-                                <li>Plan the sound effects and music</li>
-                                <li>Create a sound effects library</li>
-                                <li>Create a musical score</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Voice Over Casting:
-                            <ul>
-                                <li>Vote on the voice actors for each character</li>
-                                <li>Determine the vocal range and tone for each character</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Animation:
-                            <ul>
-                                <li>Vote on animators and technicians to bring the story to life</li>
-                                <li>Schedule the animation and post-production phases</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Budgeting and Scheduling:
-                            <ul>
-                                <li>Determine the final budget for the film</li>
-                                <li>Create a detailed production schedule</li>
-                                <li>Allocate resources and personnel as needed</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Final Preparation:
-                            <ul>
-                                <li>Assemble the final storyboard</li>
-                                <li>Review and refine the character designs</li>
-                                <li>Review and refine the background designs</li>
-                                <li>Review and refine the sound design</li>
-                                <li>Confirm the budget and production schedule</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </Aside>
-                <Aside id="learnmore-ai">
-                    <h1>We can use AI to help enable the animation process, starting with key frames</h1>
-                    <ul>
-                        <li>
-                            Preparation:
-                            <ul>
-                                <li>Gather the necessary assets, including character designs, background designs, and storyboards</li>
-                                <li>Ensure all assets are properly formatted for use with the AI tools</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Key Frame Generation:
-                            <ul>
-                                <li>Use AI-powered key frame generation software to automatically generate rough key frames based on the storyboards and assets</li>
-                                <li>Review and edit the AI-generated key frames to ensure they meet the desired quality and style</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Refinement:
-                            <ul>
-                                <li>Use traditional animation techniques to refine and polish the AI-generated key frames</li>
-                                <li>Incorporate any additional details, such as facial expressions, body language, and camera movements</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Final Preparation:
-                            <ul>
-                                <li>Integrate the final key frames into the animation pipeline</li>
-                                <li>Conduct final quality control checks to ensure the key frames are ready for use in the animation process</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Animation process:
-                            <ul>
-                                <li>Use animators and AI to fill in the frames in between key frames</li>
-                                <li>Begin to incorporate voice acting, score, and sound effects into the animation</li>
-                                <li>Review and make changes to the animation and sound design as necessary</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Continuous marketing and community building:
-                            <ul>
-                                <li>We ask everyone to be continuous ambassadors of the project. Invite others to join the community, and help spread the word of our movie!</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </Aside>
+                <AsideAccordion id="learnmore-projects" />
+                <AsideAccordion id="learnmore-royalties" />
+                <AsideAccordion id="learnmore-getinvolved" />
+                <AsideAccordion id="learnmore-ai" />
                 <Tower />
-                <Aside id="learnmore-shares">
-                    <h1>Royalties Breakdown</h1>
-                    <ul className="modal-list">
-                        <li>Backers: 50%</li>
-                        <li>Producer tier backers: 20%</li>
-                        <li>Cast and crew: 30%</li>
-                    </ul>
-                </Aside>
+                <AsideAccordion id="learnmore-shares" />
                 <Modal id="modal-plans">
                     {" "}
                     <PackagesTable />
