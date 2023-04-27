@@ -1,6 +1,5 @@
 import ScrollCTA from "assets/scroll-cta.png";
 import PackagesTable from "components/packages/PackagesTable";
-import Aside from "components/structural/Aside";
 import { Card } from "components/structural/Card";
 import Modal from "components/structural/Modal";
 import Section from "components/structural/Section";
