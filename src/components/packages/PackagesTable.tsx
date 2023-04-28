@@ -11,7 +11,7 @@ import "./packages.scss";
 const LetsMakeaMovie = () => {
     const formRef: LegacyRef<any> = React.useRef();
     const user = useSelector((state: any) => state.auth);
-    const [price, setPrice] = React.useState(0);
+    const [price, setPrice] = React.useState('');
     const router = useRouter();
 
     const [openModel, setOpenModel] = React.useState({
@@ -51,10 +51,10 @@ const LetsMakeaMovie = () => {
     });
 
     React.useEffect(() => {
-        if (!price) {
+        if (price === '') {
             return;
         }
-        const plan = packages.plans.find(({ priceId }) => parseInt(priceId, 10) === price);
+        const plan = packages.plans.find(({ priceId }) => priceId === price);
         if (!plan) {
             return;
         }
@@ -71,13 +71,10 @@ const LetsMakeaMovie = () => {
         }, 1000);
     }, [price]);
 
-    const donateHandler = (id?: string, price?: number | undefined | string) => {
-        if (!user.authToken) {
-            console.log("not logged in");
-            return;
-        }
-        setPrice(price as number);
+    const donateHandler = (id: string, price: string) => {
+        setPrice(price);
         // setSelectedPlan(id);
+        // console.log(formRef.current);
         // formRef.current.submit();
     };
     const createPaymentHistory = async () => {
@@ -149,8 +146,8 @@ const LetsMakeaMovie = () => {
                 <h1>How much do you want to back?</h1>
                 {renderPackages()}
                 <div className="opacity-0">
-                    <form ref={formRef} action="https://artbot-backend-api-9v7k9.ondigitalocean.app/api/plan/openStripe" method="POST">
-                        <input type="hidden" value={price} name="priceId" />
+                    <form ref={formRef} action="http://squid-app-x77t6.ondigitalocean.app/api/plan/openStripe" method="POST">
+                        <input type="text" value={price} name="priceId" />
                         <button className="package-checkout" type="submit">
                             Checkout
                         </button>

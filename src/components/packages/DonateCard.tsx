@@ -5,7 +5,7 @@ import "./packages.scss";
 
 export type DonateItem = {
     _id?: string;
-    id?: string;
+    id: string;
     title: string;
     price: number;
     originalPrice?: number;
@@ -13,8 +13,8 @@ export type DonateItem = {
     benefits: string[];
     total: number;
     index?: number;
-    priceId?: string;
-    donateHandler: (id?: string, priceId?: string) => void;
+    priceId: string;
+    donateHandler: (id: string, priceId: string) => void;
     leftCount?: number;
 };
 
