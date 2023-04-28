@@ -84,33 +84,33 @@ const Header: React.FC<any> = () => {
                 <div className={"main-menu-contents"}>
                     <ul>
                         <li>
-                            <Button color="secondary" size="lg" className="btn-text-light" data-section="0" onClick={() => clickHandler(0)}>
+                            <Button color="transparent" size="lg" className="btn-text-primary" data-section="0" onClick={() => clickHandler(0)}>
                                 Home
                             </Button>
                         </li>
                         <li>
-                            <Button color="secondary" size="lg" className="btn-text-light" data-section="1" onClick={() => clickHandler(1)}>
-                                1. Vote
+                            <Button color="transparent" size="lg" className="btn-text-primary" data-section="1" onClick={() => clickHandler(1)}>
+                                Vote
                             </Button>
                         </li>
                         <li>
-                            <Button color="secondary" size="lg" className="btn-text-light" data-section="2" onClick={() => clickHandler(2)}>
-                                2. Crowdfund
+                            <Button color="transparent" size="lg" className="btn-text-primary" data-section="2" onClick={() => clickHandler(2)}>
+                                Crowdfund
                             </Button>
                         </li>
                         <li>
-                            <Button color="secondary" size="lg" className="btn-text-light" data-section="3" onClick={() => clickHandler(3)}>
-                                3. Pre-production
+                            <Button color="transparent" size="lg" className="btn-text-primary" data-section="3" onClick={() => clickHandler(3)}>
+                                Pre-production
                             </Button>
                         </li>
                         <li>
-                            <Button color="secondary" size="lg" className="btn-text-light" data-section="4" onClick={() => clickHandler(4)}>
-                                4. Production
+                            <Button color="transparent" size="lg" className="btn-text-primary" data-section="4" onClick={() => clickHandler(4)}>
+                                Production
                             </Button>
                         </li>
                         <li>
-                            <Button color="secondary" size="lg" className="btn-text-light" data-section="5" onClick={() => clickHandler(5)}>
-                                5. Profit!
+                            <Button color="transparent" size="lg" className="btn-text-primary" data-section="5" onClick={() => clickHandler(5)}>
+                                Profit!
                             </Button>
                         </li>
                     </ul>

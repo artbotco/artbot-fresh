@@ -67,6 +67,14 @@
         );
     }
 
+    &.btn-transparent {
+        @include button-color(
+                transparent,
+                transparent,
+                transparent,
+        );
+    }
+
     &.btn-default {
         @include button-color(
                 $color-default,
@@ -143,6 +151,10 @@
 
     &.btn-text-dark {
         color: $color-dark;
+    }
+
+    &.btn-text-primary {
+        color: $color-primary;
     }
 
     &.btn-content-only {
