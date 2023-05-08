@@ -84,58 +84,58 @@ const Header: React.FC<any> = () => {
                 <div className={"main-menu-contents"}>
                     <ul>
                         <li>
-                            <Button color="transparent" size="lg" className="btn-text-primary" data-section="0" onClick={() => clickHandler(0)}>
+                            <Button color="primary" size="lg" className="btn-text-grey" data-section="0" onClick={() => clickHandler(0)}>
                                 Home
                             </Button>
                         </li>
                         <li>
-                            <Button color="transparent" size="lg" className="btn-text-primary" data-section="1" onClick={() => clickHandler(1)}>
+                            <Button color="primary" size="lg" className="btn-text-grey" data-section="1" onClick={() => clickHandler(1)}>
                                 Vote
                             </Button>
                         </li>
                         <li>
-                            <Button color="transparent" size="lg" className="btn-text-primary" data-section="2" onClick={() => clickHandler(2)}>
+                            <Button color="primary" size="lg" className="btn-text-grey" data-section="2" onClick={() => clickHandler(2)}>
                                 Crowdfund
                             </Button>
                         </li>
                         <li>
-                            <Button color="transparent" size="lg" className="btn-text-primary" data-section="3" onClick={() => clickHandler(3)}>
+                            <Button color="primary" size="lg" className="btn-text-grey" data-section="3" onClick={() => clickHandler(3)}>
                                 Pre-production
                             </Button>
                         </li>
                         <li>
-                            <Button color="transparent" size="lg" className="btn-text-primary" data-section="4" onClick={() => clickHandler(4)}>
+                            <Button color="primary" size="lg" className="btn-text-grey" data-section="4" onClick={() => clickHandler(4)}>
                                 Production
                             </Button>
                         </li>
                         <li>
-                            <Button color="transparent" size="lg" className="btn-text-primary" data-section="5" onClick={() => clickHandler(5)}>
+                            <Button color="primary" size="lg" className="btn-text-grey" data-section="5" onClick={() => clickHandler(5)}>
                                 Profit!
                             </Button>
                         </li>
                     </ul>
                     <div className={"main-menu-footer"}>
-                        <Button href="https://artbot.tv/" color="primary" size="lg">
+                        <Button href="https://artbot.tv/" color="primary" size="lg" className="btn-text-grey">
                             Work in Progress
                         </Button>
                         <Group spacing="1em">
-                            <Button href="https://www.instagram.com/artbottv/?hl=en" color="primary" size="lg" className="btn-icon-only">
+                            <Button href="https://www.instagram.com/artbottv/?hl=en" color="primary" size="lg" className="btn-icon-only btn-text-grey">
                                 <FontAwesomeIcon icon={faInstagram} />
                             </Button>
 
-                            <Button href="https://www.facebook.com/ArtbotTv" color="primary" size="lg" className="btn-icon-only">
+                            <Button href="https://www.facebook.com/ArtbotTv" color="primary" size="lg" className="btn-icon-only btn-text-grey">
                                 <FontAwesomeIcon icon={faFacebook} />
                             </Button>
 
-                            <Button href="https://twitter.com/ArtBotTV" color="primary" size="lg" className="btn-icon-only">
+                            <Button href="https://twitter.com/ArtBotTV" color="primary" size="lg" className="btn-icon-only btn-text-grey">
                                 <FontAwesomeIcon icon={faTwitter} />
                             </Button>
                         </Group>
                         <Group spacing="1em">
-                            <Button color="primary" className="mobile-ftr-btn" size="lg" toggle="#modal-terms">
+                            <Button color="primary" className="mobile-ftr-btn btn-text-grey" size="lg" toggle="#modal-terms">
                                 Terms & Conditions
                             </Button>
-                            <Button color="primary" className="mobile-ftr-btn" size="lg" toggle="#modal-privacy">
+                            <Button color="primary" className="mobile-ftr-btn btn-text-grey" size="lg" toggle="#modal-privacy">
                                 Privacy Policy
                             </Button>
                         </Group>
