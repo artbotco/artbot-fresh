@@ -146,7 +146,7 @@ const LetsMakeaMovie = () => {
                 <h1>How much do you want to back?</h1>
                 {renderPackages()}
                 <div className="opacity-0">
-                    <form ref={formRef} action="http://squid-app-x77t6.ondigitalocean.app/api/plan/openStripe" method="POST">
+                    <form ref={formRef} action="http://api.artbot.tv/api/plan/openStripe" method="POST">
                         <input type="text" value={price} name="priceId" />
                         <button className="package-checkout" type="submit">
                             Checkout
