@@ -11,9 +11,13 @@
         // border: 1px dashed $color-primary !important;
 
         .aside-accordion-summary {
+            min-height: 48px !important;
+
             .MuiAccordionSummary-content {
                 display: flex;
                 align-items: center;
+                margin: 12px 0 !important;
+                font-weight: bold;
             }
         }
 
