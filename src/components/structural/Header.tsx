@@ -115,7 +115,7 @@ const Header: React.FC<any> = () => {
                         </li>
                     </ul>
                     <div className={"main-menu-footer"}>
-                        <Button href="https://artbot.tv/" color="primary" size="lg" className="btn-text-grey">
+                        <Button href="https://marketplace.artbot.tv/" color="primary" size="lg" className="btn-text-grey">
                             Work in Progress
                         </Button>
                         <Group spacing="1em">
